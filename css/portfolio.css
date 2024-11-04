@@ -1,0 +1,97 @@
+/* ============================= Portfolio ============================= */
+
+.portfolio button {
+  outline: none;
+  color: var(--black-color);
+  background-color: transparent;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.portfolio .tabs {
+  width: 100%;
+  margin-top: 50px;
+  background-color: #f9f9f9;
+  border-radius: 30px;
+}
+
+.portfolio .tabs button {
+  color: var(--black-color);
+  padding: 10px 30px;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 30px;
+  border: none;
+  transition: var(--transition);
+}
+
+.portfolio .tabs button.checked {
+  color: var(--white-color);
+  background-color: var(--blue-color);
+}
+
+.portfolio .portfolio_cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+  margin-top: 50px;
+}
+
+.portfolio .portfolio_cards .card img {
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ddd;
+}
+
+.portfolio .portfolio_cards .card .skills {
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.portfolio .portfolio_cards .card .skills span {
+  color: var(--blue-color);
+  border: 1px solid var(--blue-color);
+  border-radius: 30px;
+  font-size: 13px;
+  padding: 5px 10px;
+}
+
+.portfolio .portfolio_cards .card h3 {
+  font-size: 20px;
+}
+
+.portfolio .pagintion {
+  margin-top: 60px;
+  gap: 7px;
+}
+
+.portfolio .pagintion button {
+  border: 1px solid #eee;
+  width: 30px;
+  height: 30px;
+  font-size: 13px;
+}
+
+/* ============================= Portfolio - Media Query ============================= */
+
+@media (min-width: 769px) {
+  .portfolio button:hover {
+    color: var(--white-color);
+    background-color: var(--blue-color);
+  }
+}
+
+@media (max-width: 769px) {
+  .portfolio .tabs {
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: inline mandatory;
+  }
+
+  .portfolio .tabs::-webkit-scrollbar {
+    height: 0px;
+  }
+
+  .portfolio .tabs button {
+    white-space: nowrap;
+  }
+}

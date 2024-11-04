@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Awessome Library -->
+    <link rel="stylesheet" href="../../css/all.min.css" />
+    <link rel="stylesheet" href="../../css/portfolio.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <!-- AOS Library -->
+    <!-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" /> -->
+    <!-- <script src="https://unpkg.com/browser-image-compression@latest/dist/browser-image-compression.js"></script> -->
+    <!-- tab image -->
+    <link rel="shortcut icon" href="../../assets/Walf logo.png" />
+    <title>Wolf Pixel | Portfolio</title>
+  </head>
+  <body>
+    <!--============================== Loading =============================-->
+    <div class="loading">
+      <div class="logo">
+        <div class="flexAlignCenter">
+          <img
+            src="../../assets/Walf logo.png"
+            alt="Walf Pixel"
+            title="Walf Pixel"
+            loading="lazy"
+          />
+          <h2>Wolf Pixel</h2>
+        </div>
+      </div>
+    </div>
+
+    <!--========================= Floating Button =========================-->
+    <button
+      class="floating"
+      id="floating_btn"
+      name="floating-button"
+      title="Floating Button"
+    >
+      <i class="fa-solid fa-angle-up"></i>
+    </button>
+
+    <!--============================== Header =============================-->
+    <header>
+      <div class="container flexCenterBetween">
+        <div class="logo" data-aos="fade-right">
+          <a class="flexAlignCenter" onclick="move('home.html')">
+            <img
+              src="../../assets/Walf logo.png"
+              alt="Walf Pixel"
+              title="Walf Pixel"
+              loading="lazy"
+            />
+            <h2>Wolf Pixel</h2>
+          </a>
+        </div>
+        <nav class="flexCenterBetween" data-aos="fade-left">
+          <ul class="flexCenterBetween">
+            <li>
+              <a href="#" onclick="move('home.html')" class="flexAlignCenter">
+                <i class="fas fa-home nav-icon"></i>
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="#" onclick="move('about.html')" class="flexAlignCenter">
+                <i class="fas fa-info-circle nav-icon"></i> About</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                onclick="move('services.html')"
+                class="flexAlignCenter"
+                ><i class="fas fa-cogs nav-icon"></i>Services</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                onclick="move('portfolio.html')"
+                class="flexAlignCenter page_active"
+                ><i class="fas fa-briefcase nav-icon"></i>Portfolio</a
+              >
+            </li>
+            <li>
+              <a href="#" class="flexAlignCenter"
+                ><i class="fas fa-folder-open nav-icon"></i>Resourse</a
+              >
+            </li>
+          </ul>
+          <a href="#" onclick="move('letsStartTalk.html')" class="btn">
+            Let's Talk
+            <i class="fa-solid fa-angle-right"></i>
+          </a>
+        </nav>
+        <div class="menu-wrapper" data-aos="fade-left">
+          <div id="menu" class="flexColumnBetween">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!--============================= Portfolio ===========================-->
+    <section class="portfolio">
+      <div class="container">
+        <div class="title">
+          <h2>Discover Our Creative Project</h2>
+          <p>
+            Journy Through Our Diverse Projects, Unveiling innovation,
+            Creativity, and Excelience
+          </p>
+        </div>
+        <div class="tabs flexCenterBetween">
+          <button id="1" name="web-tab" data-category="web">
+            Website Design
+          </button>
+          <button id="2" name="mobile-tab" data-category="mobile">
+            Mobile App
+          </button>
+          <button id="3" name="design-tab" data-category="design">
+            SAAS UI/UX
+          </button>
+          <button id="4" name="brand-tab" data-category="brand">
+            Brand Identity
+          </button>
+          <button id="5" name="webflow-tab" data-category="webflow">
+            Webflow Development
+          </button>
+        </div>
+        <div class="portfolio_cards">
+          <!-- Code In JavaScript -->
+          <div class="card">
+            <img
+              src="../../assets/image-5.jpg"
+              alt="Creative Saas Design"
+              title="Creative Saas Design"
+              loading="lazy"
+            />
+            <div class="project_title">
+              <div class="skills flex">
+                <span class="flexCenter">Branding</span>
+                <span class="flexCenter">UIUX</span>
+              </div>
+              <h3>Creative Saas Design</h3>
+            </div>
+          </div>
+          <div class="card">
+            <img
+              src="../../assets/image-7.jpg"
+              alt="UI/UX Design for App"
+              title="UI/UX Design for App"
+              loading="lazy"
+            />
+            <div class="project_title">
+              <div class="skills flex">
+                <span class="flexCenter">Branding</span>
+                <span class="flexCenter">UIUX</span>
+              </div>
+              <h3>UI/UX Design for App</h3>
+            </div>
+          </div>
+        </div>
+        <div class="pagintion flexCenter">
+          <button name="pagintion-angle-left-icon">
+            <i class="fa-solid fa-angle-left"></i>
+          </button>
+          <button name="one">1</button>
+          <button name="two">2</button>
+          <button name="three">3</button>
+          <button name="four">4</button>
+          <button name="button-angle-right-icon">
+            <i class="fa-solid fa-angle-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!--============================== Blog ===============================-->
+    <section class="blog_section">
+      <div class="container">
+        <div class="information flexBetween">
+          <h2>Latest <br /><span> blog post</span></h2>
+          <div class="text">
+            <p>
+              Fresh Insights, Dive into My Latest Blog Post for Innovative Ideas
+              and Inspirations.
+            </p>
+            <a href="#" class="btn style_btn">
+              See More
+              <i class="fa-solid fa-angle-right"></i>
+            </a>
+          </div>
+        </div>
+        <div class="main_blogs blog_cards flexCenterBetween">
+          <!-- Code In JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!--============================== Footer =============================-->
+    <footer>
+      <div class="container">
+        <div class="connect flexCenterBetween">
+          <h4>Stay connected w/ me.</h4>
+          <div>
+            <div class="form flexCenterBetween" id="footer_form">
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                autocomplete="off"
+              />
+              <button id="submit" name="footer-submit">
+                <img
+                  src="../../assets/send-icon.png"
+                  alt="send"
+                  loading="lazy"
+                />
+              </button>
+            </div>
+            <p class="error" id="error"></p>
+          </div>
+        </div>
+        <div class="social_sec flexEndBetween">
+          <div class="info">
+            <div class="logo">
+              <a class="flexAlignCenter">
+                <img
+                  src="../../assets/Walf logo.png"
+                  alt="Walf Pixel"
+                  title="Walf Pixel"
+                  loading="lazy"
+                />
+                Wolf Pixel
+              </a>
+            </div>
+            <p>
+              I'm Waseem, a Front-End Developer with 3 years of experience.
+              planning, designing, and implementing high-quality websites.
+            </p>
+          </div>
+          <div class="social flexAlignCenter">
+            <a href="#" class="flexCenter"
+              ><i class="fa-brands fa-facebook-f"></i
+            ></a>
+            <a href="#" class="flexCenter"
+              ><i class="fa-brands fa-linkedin-in"></i
+            ></a>
+            <a href="#" class="flexCenter"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+            <a href="#" class="flexCenter"
+              ><i class="fa-brands fa-youtube"></i
+            ></a>
+          </div>
+        </div>
+        <div class="copy_right flexCenterBetween">
+          <p>&copy; 2024 All Rights Reserved by Wolf pixel</p>
+          <div class="policy flexAlignCenter">
+            <a href="#" onclick="move()">Terms Of Service</a>
+            <a href="#">Privacy Policy</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../../js/script.js"></script>
+    <!-- <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script> -->
+  </body>
+</html>
