@@ -1,0 +1,93 @@
+[
+  {
+    "id": 1,
+    "dataAos": "right",
+    "imgSrc": "image-5",
+    "title": "Agency Website Design",
+    "category": "web"
+  },
+  {
+    "id": 2,
+    "dataAos": "up",
+    "imgSrc": "image-7",
+    "title": "Real Estate Website Design",
+    "category": "web"
+  },
+  {
+    "id": 3,
+    "dataAos": "left",
+    "imgSrc": "image-5",
+    "title": "Website Design: Landing Page",
+    "category": "web"
+  },
+  {
+    "id": 4,
+    "dataAos": "right",
+    "imgSrc": "image-7",
+    "title": "Agency Website Design",
+    "category": "web"
+  },
+  {
+    "id": 5,
+    "dataAos": "up",
+    "imgSrc": "image-5",
+    "title": "Real Estate Website Design",
+    "category": "web"
+  },
+  {
+    "id": 6,
+    "dataAos": "left",
+    "imgSrc": "image-7",
+    "title": "Website Design: Landing Page",
+    "category": "web"
+  },
+  {
+    "id": 7,
+    "dataAos": "left",
+    "imgSrc": "image-5",
+    "title": "Parking App Casestudy",
+    "category": "mobile"
+  },
+  {
+    "id": 8,
+    "dataAos": "up",
+    "imgSrc": "image-7",
+    "title": "Parking App Casestudy",
+    "category": "mobile"
+  },
+  {
+    "id": 9,
+    "dataAos": "right",
+    "imgSrc": "image-5",
+    "title": "Parking App Casestudy",
+    "category": "mobile"
+  },
+  {
+    "id": 10,
+    "dataAos": "left",
+    "imgSrc": "image-5",
+    "title": "Creative Saas Design",
+    "category": "design"
+  },
+  {
+    "id": 11,
+    "dataAos": "left",
+    "imgSrc": "image-7",
+    "title": "UI/UX Design for App",
+    "category": "design"
+  },
+  {
+    "id": 12,
+    "dataAos": "left",
+    "imgSrc": "image-5",
+    "title": "Creative Design Agency (Brand)",
+    "category": "brand"
+  },
+  {
+    "id": 13,
+    "dataAos": "left",
+    "imgSrc": "image-7",
+    "title": "WebFlow Project",
+    "category": "webflow"
+  }
+]
