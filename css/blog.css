@@ -1,0 +1,242 @@
+/* ============================= Blog ============================= */
+
+.portfolio .pagintion {
+  margin-top: 60px;
+  gap: 7px;
+}
+
+.portfolio .pagintion button {
+  border: 1px solid #eee;
+  width: 30px;
+  height: 30px;
+  font-size: 13px;
+}
+
+.explore_blogs .info {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 40px;
+  margin-top: 60px;
+}
+
+@media (max-width: 561px) {
+  .explore_blogs .info {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+.explore_blogs .info .card {
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.explore_blogs .info .image {
+  position: relative;
+  width: 550px;
+  height: 440px;
+}
+
+.explore_blogs .info .card img {
+  width: inherit;
+  height: inherit;
+  object-fit: cover;
+}
+
+.explore_blogs .info .card .arrow {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  width: 80px;
+  height: 80px;
+  border-radius: 18px 0 6px 0;
+  cursor: pointer;
+  overflow: hidden;
+  background-color: var(--white-color);
+}
+
+.explore_blogs .info .card i {
+  color: var(--white-color);
+  background-color: var(--blue-color);
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  font-size: 30px;
+  transform: rotate(40deg);
+}
+
+.explore_blogs .info h2 {
+  font-size: 35px;
+  margin-bottom: 30px;
+}
+
+.explore_blogs .info p {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.explore_blogs .info a.btn {
+  display: inline-block;
+  margin-top: 40px;
+}
+
+.explore_blogs .info .posted {
+  margin-top: 50px;
+}
+
+.explore_blogs .info .posted p {
+  color: var(--black-color);
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.explore_blogs .info .date {
+  margin-top: 10px;
+  gap: 20px;
+  text-transform: capitalize !important;
+}
+
+.explore_blogs .info .date span:first-child {
+  padding: 5px 10px 5px 15px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  gap: 5px;
+  font-size: 14px;
+}
+
+.explore_blogs .info .date span:first-child i {
+  font-size: 8px;
+}
+
+.explore_blogs .info .date span:last-child {
+  color: var(--blue-color);
+  font-size: 13px;
+}
+
+.blog_section .search_active {
+  gap: 10px;
+}
+
+.blog_section .search_active :is(input, button) {
+  border-radius: 30px;
+  outline: none;
+}
+
+.blog_section .search_active input {
+  flex: 1;
+  padding: 10px 15px;
+  margin-bottom: 7px;
+  width: 300px;
+  font-size: 16px;
+  border: 1px solid var(--medium-gray-color);
+}
+
+.blog_section .search_active input::placeholder {
+  font-size: 13px;
+}
+
+.blog_section .search_active button {
+  padding: 8px 20px;
+  color: var(--white-color);
+  background-color: var(--blue-color);
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+}
+
+.blog_cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 50px;
+}
+
+.blog_cards .card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  width: 100% !important;
+}
+
+.blog_cards .card .arrow {
+  background-color: var(--white-color);
+  position: absolute;
+  right: 0px;
+  bottom: 4px;
+  width: 70px;
+  height: 70px;
+  border-radius: 30px 0 8px 0;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.blog_cards .card i {
+  color: var(--white-color);
+  background-color: var(--blue-color);
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  font-size: 25px;
+  transform: rotate(40deg);
+}
+
+.blog_section .pagintion {
+  margin-top: 60px;
+  gap: 7px;
+  display: none;
+}
+
+.blog_section .pagintion button {
+  outline: none;
+  color: var(--black-color);
+  background-color: transparent;
+  border: 1px solid #eee;
+  width: 30px;
+  height: 30px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.blog_section .pagintion button:hover {
+  color: var(--white-color);
+  background-color: var(--blue-color);
+}
+
+.blog_section .error {
+  color: var(--error-color);
+  padding-left: 15px;
+  display: none;
+}
+
+.blog_section .not-found {
+  text-align: center;
+  margin: 20px auto;
+  font-size: 20px;
+  display: none;
+}
+
+/* ============================= Blog - Media Query ============================= */
+
+@media (max-width: 426px) {
+  .explore_blogs .info .card .arrow {
+    width: 70px;
+    height: 70px;
+  }
+
+  .explore_blogs .info .card i {
+    width: 55px;
+    height: 55px;
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 376px) {
+  .blog_section .search_active {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .blog_section .search_active :is(input, button) {
+    width: 100%;
+  }
+}
