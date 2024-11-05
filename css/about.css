@@ -1,0 +1,43 @@
+/* ============================= About ============================= */
+
+.about-us .info {
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 40px;
+}
+
+.about-us .info:last-child {
+  margin-top: 80px;
+}
+
+.about-us .title h1 {
+  font-size: 49px;
+}
+
+.about-us .info img {
+  width: 100%;
+  max-width: 100%;
+  box-shadow: 0 0 10px #ddd;
+}
+
+.about-us .info h2 {
+  font-size: 35px;
+  margin-bottom: 30px;
+}
+
+.about-us .info p {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+/* ============================= About - Media Query ============================= */
+
+@media (max-width: 992px) {
+  .about-us .info {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
