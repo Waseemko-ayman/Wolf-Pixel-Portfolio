@@ -295,7 +295,8 @@ for (let i = 0; i < workDetailsArr.length; i++) {
       card.lastElementChild.classList.remove("iconRotate");
     });
 
-    let currentElId = document.querySelector(`[id="${window.localStorage.getItem("workId")}"]`)?.classList.add("active");
+    let currentElId = document.querySelector(`[id="${window.localStorage.getItem("workId")}"]`);
+    currentElId?.classList.add("active");
 
     if (currentElId?.classList.contains("active")) {
       // Add Class iconRotate to Icon In Current Target By Id
@@ -320,9 +321,6 @@ for (let i = 0; i < workDetailsArr.length; i++) {
       e.currentTarget.lastElementChild.classList.add("iconRotate");
 
       window.localStorage.setItem("workId", e.currentTarget.id);
-
-      // Test
-      // console.log(e.currentTarget.id);
     });
   });
 };
