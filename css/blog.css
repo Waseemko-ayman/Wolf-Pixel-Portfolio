@@ -95,6 +95,10 @@
   text-transform: capitalize !important;
 }
 
+.explore_blogs .info .date span {
+  font-weight: normal;
+}
+
 .explore_blogs .info .date span:first-child {
   padding: 5px 10px 5px 15px;
   border: 1px solid #ddd;

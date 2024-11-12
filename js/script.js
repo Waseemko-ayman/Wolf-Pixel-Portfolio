@@ -1,3 +1,30 @@
+
+// // Initialize EmailJS with your User ID
+// (function() {
+//   emailjs.init("YOUR_USER_ID");
+// })();
+
+// document.getElementById("emailForm").addEventListener("submit", function(event) {
+//   event.preventDefault(); // لمنع إعادة تحميل الصفحة
+
+//   // الحصول على قيمة البريد الإلكتروني
+//   const emailValue = document.getElementById("userEmail").value;
+
+//   // إعداد بيانات البريد الإلكتروني
+//   const templateParams = {
+//     to_email: emailValue,
+//   };
+
+//   // إرسال البريد باستخدام EmailJS
+//   emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", templateParams)
+//     .then((response) => {
+//       console.log("Email sent successfully!", response.status, response.text);
+//     })
+//     .catch((error) => {
+//       console.error("Error sending email:", error);
+//     });
+// });
+
 // ================ Optimize Images in JavaScript ================ //
 
 // document.addEventListener("DOMContentLoaded", async () => {
@@ -45,9 +72,9 @@ let header = document.querySelector("header");
 
 window.onscroll = function () {
   if (window.scrollY > 600) {
-    floatBtn.style.display = "block";
+    floatBtn.classList.add("show");
   } else {
-    floatBtn.style.display = "none";
+    floatBtn.classList.remove("show");
   };
 };
 
@@ -71,6 +98,17 @@ menuWrapper.addEventListener('click', () => {
 });
 
 // ======================= Home Page - Offerings Section ======================== //
+
+// async function works() {
+//   try {
+//     let data = await fetch("/json/works.json");
+//     let result = await data.json();
+//     console.log(result);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+// works();
 
 let offeringsCards = document.querySelector(".offerings_cards");
 
@@ -145,18 +183,8 @@ let offeringsInfoArr = [
 
 for (let i = 0; i < offeringsInfoArr.length; i++) {
   if (offeringsCards) {
-    offeringsCards.innerHTML += `
-      <div class="card" id="${offeringsInfoArr[i].id}" data-aos="${offeringsInfoArr[i].dataAos}">
-        <div class="image flexCenter">
-          <img src="../../assets/${offeringsInfoArr[i].iconSrc}.png" alt="${offeringsInfoArr[i].iconAlt}" loading="lazy">
-        </div>
-        <div class="info">
-          <h3>${offeringsInfoArr[i].title}</h3>
-          <p>${offeringsInfoArr[i].priefDesc}</p>
-        </div>
-      </div>
-    `;
-
+    offeringsCardsLayout(offeringsCards, offeringsInfoArr[i]);
+    
     let offeringsCard = document.querySelectorAll(".offerings_cards .card");
 
     // Open Offerings Card in Services Page Based On Section (Current Target Id)
@@ -167,6 +195,48 @@ for (let i = 0; i < offeringsInfoArr.length; i++) {
     })
   }
 };
+
+function offeringsCardsLayout(offeringsCards, offeringsInfoArr) {
+  let card = document.createElement("div");
+  card.classList.add("card");
+  card.id = `${offeringsInfoArr.id}`;
+  card.setAttribute("data-aos", `${offeringsInfoArr.dataAos}`);
+
+  let imageWrapper = document.createElement("image");
+  imageWrapper.classList.add("image", "flexCenter");
+
+  let cardImg = document.createElement("img");
+  cardImg.src = `../../assets/${offeringsInfoArr.iconSrc}.png`;
+  cardImg.alt = `${offeringsInfoArr.iconAlt}`;
+  cardImg.setAttribute("loading", "lazy");
+
+  let cardInfo = document.createElement("div");
+  cardInfo.classList.add("info");
+
+  let cardH3 = document.createElement("h3");
+  cardH3.textContent = `${offeringsInfoArr.title}`;
+
+  let cardPara = document.createElement("p");
+  cardPara.textContent = `${offeringsInfoArr.priefDesc}`;
+
+  // Add H3 To Card Info
+  cardInfo.appendChild(cardH3);
+
+  // Add Para To Card Info
+  cardInfo.appendChild(cardPara);
+
+  // Add Card Image to Image Wrapper
+  imageWrapper.appendChild(cardImg);
+
+  // Add Image Wrapper To Card
+  card.appendChild(imageWrapper);
+
+  // Add Card Info To Card
+  card.appendChild(cardInfo);
+
+  // Add Card To offerings Cards Parent Div
+  offeringsCards.appendChild(card);
+}
 
 // ================ Home Page - Experiences Section ================ //
 
@@ -335,8 +405,8 @@ for (let i = 0; i < offeringsInfoArr.length; i++) {
       <div class="info" id="${offeringsInfoArr[i].id}">
         <img
           src="../../assets/${offeringsInfoArr[i].imgSrc}.jpg"
-          alt="person"
-          title="person"
+          alt="offerings"
+          title="offerings"
           data-aos="fade-right"
           loading="lazy"
           style="order: ${offeringsInfoArr[i].imgOrder};"
@@ -345,7 +415,7 @@ for (let i = 0; i < offeringsInfoArr.length; i++) {
           <h2>${offeringsInfoArr[i].title}</h2>
           <p>${offeringsInfoArr[i].description}</p>
           <div class="links flexAlignCenter">
-            <a href="#" class="btn style_btn">
+            <a href="#" onclick="move('letsStartTalk.html')" class="btn style_btn">
               Let's Talk
               <i class="fa-solid fa-angle-right"></i>
             </a>
@@ -368,6 +438,7 @@ let blogs = [
     description: "Consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum",
     postDate: "June 27, 2022",
     category: "mobile",
+    skills: ["Mobile App", "UIUX"],
     dataAos: "right",
   },
   {
@@ -378,6 +449,7 @@ let blogs = [
     description: "Consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum",
     postDate: "Aug 17, 2023",
     category: "web",
+    skills: ["Website", "UIUX"],
     dataAos: "up",
   },
   {
@@ -388,6 +460,7 @@ let blogs = [
     description: "Consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum",
     postDate: "Sep 5, 2024",
     category: "design",
+    skills: ["Design", "UIUX"],
     dataAos: "left",
   },
   {
@@ -398,6 +471,7 @@ let blogs = [
     description: "Consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum",
     postDate: "Oct 2, 2019",
     category: "mobile",
+    skills: ["Mobile App", "UIUX"],
     dataAos: "right",
   },
   {
@@ -408,6 +482,7 @@ let blogs = [
     description: "Consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum",
     postDate: "May 20, 2015",
     category: "web",
+    skills: ["Website", "UIUX"],
     dataAos: "up",
   },
   {
@@ -418,6 +493,7 @@ let blogs = [
     description: "Consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum",
     postDate: "Sep 5, 2024",
     category: "design",
+    skills: ["Design", "UIUX"],
     dataAos: "left",
   },
   {
@@ -428,6 +504,7 @@ let blogs = [
     description: "Consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum",
     postDate: "Nov 14, 2020",
     category: "mobile",
+    skills: ["Mobile App", "UIUX"],
     dataAos: "right",
   },
   {
@@ -438,6 +515,7 @@ let blogs = [
     description: "Consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum",
     postDate: "Dec 10, 2022",
     category: "web",
+    skills: ["Website", "UIUX"],
     dataAos: "up",
   },
   {
@@ -448,6 +526,7 @@ let blogs = [
     description: "Consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum",
     postDate: "Sep 5, 2024",
     category: "design",
+    skills: ["Design", "UIUX"],
     dataAos: "left",
   },
   {
@@ -458,6 +537,7 @@ let blogs = [
     description: "Consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum",
     postDate: "June 27, 2022",
     category: "mobile",
+    skills: ["Mobile App", "UIUX"],
     dataAos: "right",
   },
   {
@@ -468,6 +548,7 @@ let blogs = [
     description: "Consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum",
     postDate: "Aug 17, 2023",
     category: "web",
+    skills: ["Website", "UIUX"],
     dataAos: "up",
   },
   {
@@ -478,6 +559,7 @@ let blogs = [
     description: "Consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum",
     postDate: "June 27, 2022",
     category: "brand",
+    skills: ["Branding", "UIUX"],
     dataAos: "right",
   },
   {
@@ -488,6 +570,7 @@ let blogs = [
     description: "Consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum",
     postDate: "Aug 17, 2023",
     category: "webflow",
+    skills: ["Webflow", "UIUX"],
     dataAos: "up",
   },
 ];
@@ -551,22 +634,51 @@ function displayBlogsTab(filteredBlogs) {
     // Clear Existing Blogs
     portfolioCards.innerHTML = "";
 
-    for (let i = 0; i < filteredBlogs.length; i++) {
-      portfolioCards.innerHTML += `
-        <div class="card">
-          <img src="../../assets/${filteredBlogs[i].src}.jpg" alt="${filteredBlogs[i].priveTitle}" title="${filteredBlogs[i].title}" loading="lazy" />
-          <div class="project_title">
-            <div class="skills flex">
-              <span class="flexCenter">Branding</span>
-              <span class="flexCenter">UIUX</span>
-            </div>
-            <h3>${filteredBlogs[i].priveTitle}</h3>
-          </div>
-        </div>
-      `;
-    };
+    createPortfolioTabsCards(filteredBlogs, portfolioCards);
   }
 };
+
+function createPortfolioTabsCards(filteredBlogs, portfolioCards) {
+  for (let i = 0; i < filteredBlogs.length; i++) {
+    let card = document.createElement("div");
+    card.classList.add("card");
+
+    let cardImg = document.createElement("img");
+    cardImg.src = `../../assets/${filteredBlogs[i].src}.jpg`;
+    cardImg.alt = `${filteredBlogs[i].title}`;
+    cardImg.title = `${filteredBlogs[i].priveTitle}`;
+    cardImg.setAttribute("loading", "lazy");
+
+    let projectTitle = document.createElement("div");
+    card.classList.add("project_title");
+
+    let skillsDiv = document.createElement("div");
+    skillsDiv.classList.add("skills", "flex");
+
+    // Display Skills
+    for (let j = 0; j < filteredBlogs[i].skills.length; j++) {
+      let span = document.createElement("span");
+      span.classList.add("flexCenter");
+      span.textContent = `${filteredBlogs[i].skills[j]}`;
+
+      // Add spans To Skills Div
+      skillsDiv.appendChild(span);
+    }
+
+    let priveTitle = document.createElement("h3");
+    priveTitle.textContent = `${filteredBlogs[i].priveTitle}`;
+
+    projectTitle.appendChild(skillsDiv);
+    projectTitle.appendChild(priveTitle);
+
+    // Add Card Image To Card
+    card.appendChild(cardImg);
+
+    card.appendChild(projectTitle);
+
+    portfolioCards.appendChild(card);
+  }
+}
 
 // ========================= Blog Section ========================== //
 let mainBlogCards = document.querySelector(".main_blogs");
@@ -577,36 +689,98 @@ if (window.localStorage.getItem("blogId")) {
   let blogData = JSON.parse(window.localStorage.getItem("blogId"));
 
   let exploreBlogInfo = document.querySelector(".explore_blogs .info");
+  exploreBlogCardLayout(blogData, exploreBlogInfo);
+}
 
+function exploreBlogCardLayout(blogData, exploreBlogInfo) {
   if (exploreBlogInfo) {
-    exploreBlogInfo.innerHTML = `
-      <div class="card">
-        <div class="image">
-          <img
-            src="../../assets/${blogData.src}.jpg"
-            alt="phone"
-            title="phone"
-            loading="lazy"
-          />
-        </div>
-      </div>
-      <div class="infos_text">
-        <h2>${blogData.title}</h2>
-        <p>${blogData.description}</p>
-        <a href="#" class="btn style_btn">
-          Read More
-          <i class="fa-solid fa-angle-right"></i>
-        </a>
-        <div class="posted">
-          <p>Posted on</p>
-          <div class="date flexAlignCenter">
-            <span class="flexAlignCenter">
-            <i class="fa-solid fa-dot-circle"></i>For ${blogData.category}</span>
-            <span>${blogData.postDate}</span>
-          </div>
-        </div>
-      </div>
-    `;
+    let card = document.createElement("div");
+    card.classList.add("card");
+
+    let imageWrapper = document.createElement("div");
+    imageWrapper.classList.add("image");
+
+    let cardImg = document.createElement("img");
+    cardImg.src = `../../assets/${blogData.src}.jpg`;
+    cardImg.title = `${blogData.title}`;
+    cardImg.alt = `${blogData.priveTitle}`;
+    cardImg.setAttribute("loading", "lazy");
+
+    // Add Image To Image Wrapper
+    imageWrapper.appendChild(cardImg);
+    // Add Image Wrapper To Card
+    card.appendChild(imageWrapper);
+
+    let infosText = document.createElement("infos_text");
+    infosText.classList.add("infos_text");
+
+    let infosHeading = document.createElement("h2");
+    infosHeading.textContent = `${blogData.title}`;
+
+    let infosPara = document.createElement("p");
+    infosPara.textContent = `${blogData.description}`;
+
+    let infosLink = document.createElement("a");
+    infosLink.href = "#";
+    infosLink.classList.add("btn", "style_btn")
+    infosLink.textContent = "Read More";
+
+    let linkIcon = document.createElement("i");
+    linkIcon.classList.add("fa-solid", "fa-angle-right");
+    // Add Link Icon To Link
+    infosLink.appendChild(linkIcon);
+
+    let posted = document.createElement("div");
+    posted.classList.add("posted");
+
+    let postedPara = document.createElement("p");
+    postedPara.textContent = "Posted on";
+
+    let dateDiv = document.createElement("p");
+    dateDiv.classList.add("date", "flexAlignCenter");
+
+    let spanCategory = document.createElement("span");
+    spanCategory.classList.add("flexAlignCenter");
+    spanCategory.textContent = `For ${blogData.category}`;
+
+    let circleIcon = document.createElement("i");
+    circleIcon.classList.add("fa-solid", "fa-dot-circle");
+
+    // Add Circle Icon To Span Category
+    spanCategory.prepend(circleIcon);
+
+    let spanPosteDate = document.createElement("span");
+    spanPosteDate.textContent = `${blogData.postDate}`;
+
+    // Add Span For-Category To Data Div
+    dateDiv.appendChild(spanCategory);
+
+    // Add Span For-Category To Data Div
+    dateDiv.appendChild(spanPosteDate);
+
+    // Add P To Posted Div
+    posted.appendChild(postedPara);
+
+    // Add Data Div To Posted Div
+    posted.appendChild(dateDiv);
+
+    // Add h2 To informations Text
+    infosText.appendChild(infosHeading);
+
+    // Add P To informations Text
+    infosText.appendChild(infosPara);
+
+    // Add link (a tag) To informations Text
+    infosText.appendChild(infosLink);
+
+    // Add Posted Div To informations Text
+    infosText.appendChild(posted);
+
+    // Add Cart To Parent Div (Info Div)
+    exploreBlogInfo.appendChild(card);
+
+    // Add informations Text To Parent Div (Info Div)
+    exploreBlogInfo.appendChild(infosText);
   }
 }
 
@@ -671,18 +845,42 @@ function renderBlogs(blogArray, targetContainer, limit = blogArray.length) {
   if (targetContainer) {
     targetContainer.innerHTML = "";
 
-    for (let i = 0; i < limit; i++) {
-      targetContainer.innerHTML += `
-        <div class="card" id="${i}" data-aos="fade-${blogArray[i].dataAos}">
-          <img src="../../assets/${blogArray[i].src}.jpg" alt="phone" title="phone" loading="lazy" />
-          <button class="arrow flexCenter">
-          <i class="fa-solid fa-angle-up flexCenter"></i>
-          </button>
-        </div>
-      `;
-    }
+    blogCardLayout(blogArray, targetContainer, limit);
   }
   setupCardListeners(targetContainer, blogArray);
+}
+
+function blogCardLayout(blogArray, targetContainer, limit) {
+  for (let i = 0; i < limit; i++) {
+    let card = document.createElement("div");
+    card.classList.add("card");
+    card.id = `${i}`;
+    card.setAttribute("data-aos", `fade-${blogArray[i].dataAos}`);
+
+    let cardImg = document.createElement("img");
+    cardImg.src = `../../assets/${blogArray[i].src}.jpg`;
+    cardImg.alt = `${blogArray[i].title}`;
+    cardImg.title = `${blogArray[i].priveTitle}`;
+    cardImg.setAttribute("loading", "lazy");
+
+    let arrowBtn = document.createElement("button");
+    arrowBtn.classList.add("arrow", "flexCenter");
+
+    let arrowIcon = document.createElement("i");
+    arrowIcon.classList.add("fa-solid", "fa-angle-up", "flexCenter");
+
+    // Add Arrow Icon To Arrow button
+    arrowBtn.appendChild(arrowIcon);
+
+    // Add Card Image To Card
+    card.appendChild(cardImg);
+
+    // Add Arrow Button To Card
+    card.appendChild(arrowBtn);
+
+    // Add Card To Target Container
+    targetContainer.appendChild(card);
+  }
 }
 
 // =================== Move To Blog Page Based On Blog Id  =================== //

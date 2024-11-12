@@ -206,7 +206,14 @@ img {
   font-size: 20px;
   cursor: pointer;
   z-index: 1000;
-  display: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+}
+
+.floating.show {
+  opacity: 1;
+  visibility: visible;
 }
 
 /* ============================= Mdeia Query ============================= */
@@ -224,6 +231,8 @@ img {
     bottom: 15px;
   }
 }
+
+/* ============================= Loading ============================= */
 
 .loading {
   position: fixed;
