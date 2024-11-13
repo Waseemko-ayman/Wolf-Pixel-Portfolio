@@ -183,10 +183,10 @@ let offeringsInfoArr = [
 
 for (let i = 0; i < offeringsInfoArr.length; i++) {
   if (offeringsCards) {
+    // Build Offerings Cards Layout
     offeringsCardsLayout(offeringsCards, offeringsInfoArr[i]);
     
     let offeringsCard = document.querySelectorAll(".offerings_cards .card");
-
     // Open Offerings Card in Services Page Based On Section (Current Target Id)
     offeringsCard.forEach((offCard) => {
       offCard.addEventListener("click", function (e) {
@@ -196,6 +196,7 @@ for (let i = 0; i < offeringsInfoArr.length; i++) {
   }
 };
 
+// Build Offerings Cards Layout
 function offeringsCardsLayout(offeringsCards, offeringsInfoArr) {
   let card = document.createElement("div");
   card.classList.add("card");
@@ -279,29 +280,100 @@ let experienceDtls = [
 
 for (let i = 0; i < experienceDtls.length; i++) {
   if (experiencesCards) {
-    experiencesCards.innerHTML += `
-      <div class="card">
-        <div class="card-info gridFrFr">
-          <div class="address" data-aos="fade-right">
-            <h4><span>${experienceDtls[i].profession},</span> ${experienceDtls[i].address}</h4>
-            <div class="date flexAlignCenter">
-              <i class="fa-solid fa-dot-circle"></i>
-              <p>${experienceDtls[i].date}</p>
-            </div>
-          </div>
-          <div class="experience flexBetween" data-aos="fade-left">
-            <p>${experienceDtls[i].desc}</p>
-            <div class="skills flexAlignStart">
-              <span class="flexCenter">UIUX</span>
-              <span class="flexCenter">Branding</span>
-            </div>
-          </div>
-        </div>
-        ${experienceDtls[i].imgShow === true ? `<img src="../../assets/image-1.jpg" alt="phone" title="phone" data-aos="fade-up" loading="lazy" />` : ""}
-      </div>
-    `;
+    experiencesCardsLayout(experiencesCards, experienceDtls[i])
   }
 };
+
+// Build Experiences Cards Layout
+function experiencesCardsLayout(experiencesCards, experienceDtls) {
+  let card = document.createElement("div");
+  card.classList.add("card");
+
+  let cardInfo = document.createElement("div");
+  cardInfo.classList.add("card-info", "gridFrFr");
+
+  let address = document.createElement("address");
+  address.classList.add("address");
+  address.setAttribute("data-aos", "fade-right");
+
+  let h4 = document.createElement("h4");
+  h4.textContent = `${experienceDtls.address}`;
+  let span = document.createElement("span");
+  span.textContent = `${experienceDtls.profession}, `;
+
+  h4.prepend(span);
+
+  let dateDiv = document.createElement("div");
+  dateDiv.classList.add("date", "flexAlignCenter");
+
+  let dateIcon = document.createElement("i");
+  dateIcon.classList.add("fa-solid", "fa-dot-circle");
+
+  let datePara = document.createElement("p");
+  datePara.textContent = `${experienceDtls.date}`;
+
+  // Experience Div
+  let experience = document.createElement("div");
+  experience.classList.add("experience", "flexBetween");
+  experience.setAttribute("data-aos", "fade-left");
+
+  let expPara = document.createElement("p");
+  expPara.textContent = `${experienceDtls.desc}`;
+
+  let skillsDiv = document.createElement("div");
+  skillsDiv.classList.add("skills", "flexAlignStart");
+
+  // Display Skills
+  for (let j = 0; j < experienceDtls.skills.length; j++) {
+    let span = document.createElement("span");
+    span.classList.add("flexCenter");
+    span.textContent = `${experienceDtls.skills[j]}`;
+    // Add spans To Skills Div
+    skillsDiv.appendChild(span);
+  }
+
+  let cardImg = document.createElement("img");
+  cardImg.src = "../../assets/image-1.jpg";
+  cardImg.alt = "phone paper";
+  cardImg.title = "phone paper";
+  cardImg.setAttribute("data-aos", "fade-up");
+  cardImg.setAttribute("loading", "lazy");
+
+  // Add Experience Para To Experience Div
+  experience.appendChild(expPara);
+
+  // Add Skills To Experience Div
+  experience.appendChild(skillsDiv);
+
+  // Add Date Icon To Date Div
+  dateDiv.appendChild(dateIcon);
+
+  // Add Date Para To Date Div
+  dateDiv.appendChild(datePara);
+
+  // Add h4 To Address Div
+  address.appendChild(h4);
+
+  // Add Date Div To Address
+  address.appendChild(dateDiv);
+
+  // Add Address To Card Information Div
+  cardInfo.appendChild(address);
+
+  // Add Experience To Card Information Div
+  cardInfo.appendChild(experience);
+
+  // Add Card Information To Card
+  card.appendChild(cardInfo);
+
+  // Add Or Not Image
+  if (experienceDtls.imgShow) {
+    card.appendChild(cardImg);
+  }
+
+  // Add Card To Experiences Cards
+  experiencesCards.appendChild(card);
+}
 
 // ================== Home Page - My Work Section ================== //
 
@@ -340,19 +412,8 @@ let workDetailsArr = [
 
 for (let i = 0; i < workDetailsArr.length; i++) {
   if (workCards) {
-    workCards.innerHTML += `
-      <div class="card flexCenterBetween" id="${workDetailsArr[i].id}" data-aos="${workDetailsArr[i].dataAos}">
-        <span>0${workDetailsArr[i].id}</span>
-        <div class="work">
-          <h4>${workDetailsArr[i].profession}, ${workDetailsArr[i].address}</h4>
-          <div class="date flexAlignCenter">
-            <i class="fa-solid fa-dot-circle"></i>
-            <p>${workDetailsArr[i].date}</p>
-          </div>
-        </div>
-        <i class="fa-solid fa-angle-right"></i>
-      </div>
-    `;
+    // Build My Works Cards Layout
+    myWorksCardsLayout(workCards, workDetailsArr[i]);
   }
 
   let workCard = document.querySelectorAll(".work_cards .card");
@@ -395,37 +456,139 @@ for (let i = 0; i < workDetailsArr.length; i++) {
   });
 };
 
+// Build My Works Cards Layout
+function myWorksCardsLayout(workCards, workDetailsArr) {
+  let card = document.createElement("div");
+  card.classList.add("card", "flexCenterBetween");
+  card.setAttribute("data-aos", workDetailsArr.dataAos);
+  card.id = `${workDetailsArr.id}`;
+
+  let spanId = document.createElement("span");
+  spanId.textContent = `0${workDetailsArr.id}`;
+
+  let work = document.createElement("div");
+  work.classList.add("work");
+
+  let h4 = document.createElement("h4");
+  h4.textContent = `${workDetailsArr.profession}, ${workDetailsArr.address}`;
+
+  let dateDiv = document.createElement("div");
+  dateDiv.classList.add("date", "flexAlignCenter");
+
+  let dateIcon = document.createElement("i");
+  dateIcon.classList.add("fa-solid", "fa-dot-circle");
+
+  let datePara = document.createElement("p");
+  datePara.textContent = `${workDetailsArr.date}`;
+
+  // Card Icon (Angle Right)
+  let cardIcon = document.createElement("i");
+  cardIcon.classList.add("fa-solid", "fa-angle-right");
+
+  // Add Date Icon To Date Div
+  dateDiv.appendChild(dateIcon);
+
+  // Add Para To Date Div
+  dateDiv.appendChild(datePara);
+
+  // Add h4 To Work Div
+  work.appendChild(h4);
+
+  // Add Date Div To Work Div
+  work.appendChild(dateDiv);
+
+  // Add Span Id To Card
+  card.appendChild(spanId);
+
+  // Add Work Div To Card
+  card.appendChild(work);
+
+  // Add Card Icon (Angle Right) To Card
+  card.appendChild(cardIcon);
+
+  // Add Card To my Works Div
+  workCards.appendChild(card);
+}
+
 // ==================== Services Page ==================== //
 
 let servicesCards = document.querySelector(".services .services-cards");
 
 for (let i = 0; i < offeringsInfoArr.length; i++) {
   if (servicesCards) {
-    servicesCards.innerHTML += `
-      <div class="info" id="${offeringsInfoArr[i].id}">
-        <img
-          src="../../assets/${offeringsInfoArr[i].imgSrc}.jpg"
-          alt="offerings"
-          title="offerings"
-          data-aos="fade-right"
-          loading="lazy"
-          style="order: ${offeringsInfoArr[i].imgOrder};"
-        />
-        <div class="infos_text" data-aos="fade-left">
-          <h2>${offeringsInfoArr[i].title}</h2>
-          <p>${offeringsInfoArr[i].description}</p>
-          <div class="links flexAlignCenter">
-            <a href="#" onclick="move('letsStartTalk.html')" class="btn style_btn">
-              Let's Talk
-              <i class="fa-solid fa-angle-right"></i>
-            </a>
-            <a href="#" class="btn">View Works</a>
-          </div>
-        </div>
-      </div>
-    `;
+    // Build Services Cards Layout
+    servicesCardsLayout(servicesCards, offeringsInfoArr[i]);
   }
 };
+
+// Build Services Cards Layout
+function servicesCardsLayout(servicesCards, offeringsInfoArr) {
+  let infoDiv = document.createElement("div");
+  infoDiv.classList.add("info");
+  infoDiv.id = `${offeringsInfoArr.id}`;
+
+  let servicesImg = document.createElement("img");
+  servicesImg.src = `../../assets/${offeringsInfoArr.imgSrc}.jpg`;
+  servicesImg.alt = `${offeringsInfoArr.title}`;
+  servicesImg.title = `${offeringsInfoArr.title}`;
+  servicesImg.setAttribute("loading", "lazy");
+  servicesImg.style.order = `${offeringsInfoArr.imgOrder}`;
+
+  let infosText = document.createElement("div");
+  infosText.classList.add("infos_text");
+
+  let h2 = document.createElement("h2");
+  h2.textContent = `${offeringsInfoArr.title}`;
+  
+  let p = document.createElement("p");
+  p.textContent = `${offeringsInfoArr.description}`;
+
+  let links = document.createElement("div");
+  links.classList.add("links", "flexAlignCenter");
+
+  let talkLink = document.createElement("a");
+  talkLink.classList.add("btn", "style_btn");
+  // talkLink.onclick = function () {
+  //   move('letsStartTalk.html');
+  // };
+  talkLink.href = "#";
+  talkLink.textContent = "Let's Talk";
+
+  let talkLinkIcon = document.createElement("i");
+  talkLinkIcon.classList.add("fa-solid", "fa-angle-right");
+
+  let viewWorks = document.createElement("a");
+  viewWorks.classList.add("btn");
+  viewWorks.href = "#";
+  viewWorks.textContent = "View Works";
+
+  // Add Talk Link Icon To Talk Link
+  talkLink.appendChild(talkLinkIcon);
+
+  // Add Talk link To Links Div
+  links.appendChild(talkLink);
+
+  // Add View Works link To Links Div
+  links.appendChild(viewWorks);
+
+  // Add Services h2 To Information Card
+  infosText.appendChild(h2);
+
+  // Add Services Para To Information Card
+  infosText.appendChild(p);
+
+  // Add Services Links To Information Card
+  infosText.appendChild(links);
+
+  // Add Services Image To Information Card
+  infoDiv.appendChild(servicesImg);
+
+  // Add informations Text To Information Card
+  infoDiv.appendChild(infosText);
+
+  // Add Information Div To Services Cards
+  servicesCards.appendChild(infoDiv);
+}
 
 // ================================ Portfolio Page ================================= //
 
@@ -633,12 +796,13 @@ function displayBlogsTab(filteredBlogs) {
   if (portfolioCards) {
     // Clear Existing Blogs
     portfolioCards.innerHTML = "";
-
-    createPortfolioTabsCards(filteredBlogs, portfolioCards);
+    // Build Create Portfolio Tabs Cards Layout
+    createPortfolioTabsCardsLayout(filteredBlogs, portfolioCards);
   }
 };
 
-function createPortfolioTabsCards(filteredBlogs, portfolioCards) {
+// Build Create Portfolio Tabs Cards Layout
+function createPortfolioTabsCardsLayout(filteredBlogs, portfolioCards) {
   for (let i = 0; i < filteredBlogs.length; i++) {
     let card = document.createElement("div");
     card.classList.add("card");
@@ -844,12 +1008,13 @@ function renderBlogs(blogArray, targetContainer, limit = blogArray.length) {
   // Clear Existing Blogs
   if (targetContainer) {
     targetContainer.innerHTML = "";
-
+    // Build Blog Card Layout
     blogCardLayout(blogArray, targetContainer, limit);
   }
   setupCardListeners(targetContainer, blogArray);
 }
 
+// Build Blog Card Layout
 function blogCardLayout(blogArray, targetContainer, limit) {
   for (let i = 0; i < limit; i++) {
     let card = document.createElement("div");
@@ -1059,7 +1224,6 @@ function checkMsg() {
 
 // ============= Storage The User Data (Token) To Array ============= //
 function storageUserDataInArray() {
-  // userData = [];
   const userToken = {
     fullName: `${fNameInput.value} ${lNameInput.value}`,
     email: emailInput.value,
