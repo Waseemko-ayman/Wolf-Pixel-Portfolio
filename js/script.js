@@ -185,7 +185,7 @@ for (let i = 0; i < offeringsInfoArr.length; i++) {
   if (offeringsCards) {
     // Build Offerings Cards Layout
     offeringsCardsLayout(offeringsCards, offeringsInfoArr[i]);
-    
+
     let offeringsCard = document.querySelectorAll(".offerings_cards .card");
     // Open Offerings Card in Services Page Based On Section (Current Target Id)
     offeringsCard.forEach((offCard) => {
@@ -539,7 +539,7 @@ function servicesCardsLayout(servicesCards, offeringsInfoArr) {
 
   let h2 = document.createElement("h2");
   h2.textContent = `${offeringsInfoArr.title}`;
-  
+
   let p = document.createElement("p");
   p.textContent = `${offeringsInfoArr.description}`;
 
@@ -548,9 +548,9 @@ function servicesCardsLayout(servicesCards, offeringsInfoArr) {
 
   let talkLink = document.createElement("a");
   talkLink.classList.add("btn", "style_btn");
-  // talkLink.onclick = function () {
-  //   move('letsStartTalk.html');
-  // };
+  talkLink.onclick = function () {
+    move('letsStartTalk.html');
+  };
   talkLink.href = "#";
   talkLink.textContent = "Let's Talk";
 
@@ -1072,7 +1072,6 @@ let submit = document.getElementById("submit");
 let popUp = document.querySelector(".connected-popup");
 let popUpText = document.querySelector(".connected-popup h2");
 let popUpClose = document.getElementById("popup-close");
-// let progress = document.querySelector(".connected-popup .progress");
 // ====================== Errors ====================== //
 let footerEmailError = document.getElementById("email-error");
 
@@ -1114,11 +1113,43 @@ function errorsStyling(inputType, errorType, borderColor, errorDisplay, errorMsg
 function emailValueValidTest() {
   window.sessionStorage.setItem("connectedEmail", footerEmail.value);
 
-  // ======================== Footer - Popup ======================== //
-  // Show Popup
-  popUp.style.display = "block";
+  // ======================== Footer - Show Popup ======================== //
+  let sendedPopup = document.createElement("div");
+  sendedPopup.classList.add("connected-popup", "flexCenter");
+
+  let popupDiv = document.createElement("div");
+  popupDiv.classList.add("popup");
+
+  let checkIcon = document.createElement("i");
+  checkIcon.classList.add("fas", "fa-check", "flexCenter");
+
+  let h2 = document.createElement("h2");
+  h2.innerHTML = "Your Email has been sent, you will be communicated with you soon,<br> Thank you.";
+
+  let closeBtn = document.createElement("button");
+  closeBtn.classList.add("flexCenter");
+  closeBtn.id = "popup-close";
+
+  let closeIcon = document.createElement("i");
+  closeIcon.classList.add("fas", "fa-times");
+  closeBtn.appendChild(closeIcon);
+
+  popupDiv.appendChild(checkIcon);
+  popupDiv.appendChild(h2);
+  popupDiv.appendChild(closeBtn);
+  sendedPopup.appendChild(popupDiv);
+  document.body.appendChild(sendedPopup);
+
+  // Prevent scrolling
+  document.body.style.overflow = "hidden";
+
   // Hide Popup
-  popUpClose.addEventListener("click", () => popUp.style.display = "none");
+  closeBtn.addEventListener("click", () => {
+    // Re-enable page scrolling and hide popup
+    document.body.style.overflow = "auto";
+
+    sendedPopup.style.display = "none";
+  });
 
   errorsStyling(footerForm, footerEmailError, "var(--valid-color)", "block", "Send Done.");
   footerEmailError.style.color = "var(--valid-color)";

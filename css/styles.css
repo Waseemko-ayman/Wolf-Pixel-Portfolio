@@ -1,5 +1,4 @@
 :root {
-  /* --blue-color: #1464ff; */
   --blue-color: #1a80b6;
   --gold-color: #e79500;
   --light-gray-color: #ccc;
@@ -7,6 +6,7 @@
   --bold-gray-color: #35353d;
   --black-color: #01030a;
   --white-color: white;
+  --f2f2f2-color: #f2f2f2;
   --error-color: rgb(240, 53, 53);
   --valid-color: rgb(2, 156, 2);
   --section-padding: 50px;
@@ -24,6 +24,14 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   font-display: swap;
   overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  background-color: var(--light-gray-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--blue-color);
 }
 
 ul {
@@ -609,6 +617,12 @@ header nav li a:hover::before {
 
 .offerings_cards .card:hover {
   box-shadow: 0 0 10px #ddd;
+  transform: translateY(-5px);
+}
+
+.offerings_cards .card:hover:not(.card:hover) {
+  box-shadow: 0 0 10px red;
+  opacity: 0;
 }
 
 .offerings_cards .card .image {
@@ -1090,7 +1104,6 @@ footer .connect .form button img {
   top: 0;
   left: 0;
   z-index: 100000;
-  display: none;
   transition: var(--transition);
 }
 
@@ -1100,11 +1113,20 @@ footer .connect .form button img {
   left: 50%;
   transform: translate(-50%, -50%);
   color: var(--white-color);
-  background-color: var(--valid-color);
+  background-color: var(--blue-color);
   width: 100%;
   max-width: 500px;
   padding: 20px;
   border-radius: 10px;
+}
+
+.connected-popup .popup > i {
+  margin-bottom: 10px;
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--white-color);
+  border-radius: 50%;
 }
 
 .connected-popup .popup button {
@@ -1113,7 +1135,7 @@ footer .connect .form button img {
   position: absolute;
   top: -15px;
   right: -15px;
-  color: var(--valid-color);
+  color: var(--blue-color);
   background-color: var(--white-color);
   width: 40px;
   height: 40px;
@@ -1127,16 +1149,6 @@ footer .connect .form button img {
   text-align: center;
   line-height: 1.5;
 }
-
-/* .connected-popup .popup .progress {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0;
-  height: 3px;
-  background-color: var(--white-color);
-  transition: var(--transition);
-} */
 
 footer .social_sec {
   margin-top: 45px;
