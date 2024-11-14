@@ -190,7 +190,7 @@ for (let i = 0; i < offeringsInfoArr.length; i++) {
     // Open Offerings Card in Services Page Based On Section (Current Target Id)
     offeringsCard.forEach((offCard) => {
       offCard.addEventListener("click", function (e) {
-        location.href = `/html/Pages/services.html#${e.currentTarget.id}`;
+        location.href = `/html/services.html#${e.currentTarget.id}`;
       })
     })
   }

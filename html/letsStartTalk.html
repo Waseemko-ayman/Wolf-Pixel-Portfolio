@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Awessome Library -->
+    <link rel="stylesheet" href="../../css/all.min.css" />
+    <link rel="stylesheet" href="../../css/letsStartTalk.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <!-- <link rel="stylesheet" href="../../css/sweetalert.css" /> -->
+    <!-- AOS Library -->
+    <!-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" /> -->
+    <!-- <script src="https://unpkg.com/browser-image-compression@latest/dist/browser-image-compression.js"></script> -->
+    <!-- tab image -->
+    <link rel="shortcut icon" href="../../assets/Walf logo.png" />
+    <title>Wolf Pixel | let's Start Talk</title>
+  </head>
+  <body>
+    <!--============================== Loading =============================-->
+    <div class="loading">
+      <div class="logo">
+        <div class="flexAlignCenter">
+          <img
+            src="../../assets/Walf logo.png"
+            alt="Walf Pixel"
+            title="Walf Pixel"
+            loading="lazy"
+          />
+          <h2>Wolf Pixel</h2>
+        </div>
+      </div>
+    </div>
+    <!--========================= Floating Button =========================-->
+    <button
+      class="floating"
+      id="floating_btn"
+      name="floating-button"
+      title="Floating Button"
+    >
+      <i class="fa-solid fa-angle-up"></i>
+    </button>
+    <!--============================== Header =============================-->
+    <header class="start_talk">
+      <div class="container flexCenterBetween">
+        <div class="logo" data-aos="fade-right">
+          <a class="flexAlignCenter" onclick="move('home.html')">
+            <img
+              src="../../assets/Walf logo.png"
+              alt="Walf Pixel"
+              title="Walf Pixel"
+              loading="lazy"
+            />
+            <h2>Wolf Pixel</h2>
+          </a>
+        </div>
+        <nav class="flexCenterBetween" data-aos="fade-left">
+          <ul class="flexCenterBetween">
+            <li>
+              <a href="#" onclick="move('home.html')" class="flexAlignCenter">
+                <i class="fas fa-home nav-icon"></i> Home
+              </a>
+            </li>
+            <li>
+              <a href="#" onclick="move('about.html')" class="flexAlignCenter">
+                <i class="fas fa-info-circle nav-icon"></i> About</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                onclick="move('services.html')"
+                class="flexAlignCenter"
+                ><i class="fas fa-cogs nav-icon"></i>Services</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                onclick="move('portfolio.html')"
+                class="flexAlignCenter"
+                ><i class="fas fa-briefcase nav-icon"></i>Portfolio</a
+              >
+            </li>
+            <li>
+              <a href="#" class="flexAlignCenter"
+                ><i class="fas fa-folder-open nav-icon"></i>Resourse</a
+              >
+            </li>
+          </ul>
+          <a
+            href="#"
+            onclick="move('letsStartTalk.html')"
+            class="btn page_active"
+          >
+            Let's Talk <i class="fa-solid fa-angle-right"></i>
+          </a>
+        </nav>
+        <div class="menu-wrapper" data-aos="fade-left">
+          <div id="menu" class="flexColumnBetween">
+            <span></span> <span></span> <span></span>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!--============================== Sign out ============================-->
+    <section class="wrapper">
+      <div class="title">
+        <h2 data-aos="fade-right">Let's Start Talk</h2>
+        <p data-aos="fade-left">
+          Reach out to us and let's discuss how We're here to listen and help
+          you achieve your goals.
+        </p>
+      </div>
+      <div class="talk_wrapper flexCenter">
+        <div class="talk_box">
+          <form class="flex" id="talk_form" method="get" autocomplete="off">
+            <!-- First Name & Last Name -->
+            <div class="field name flex">
+              <div>
+                <label>First name</label>
+                <input type="text" name="first-name" placeholder="First Name" />
+                <p class="error name_error"></p>
+              </div>
+              <div>
+                <label>Last name</label>
+                <input type="text" name="last-name" placeholder="Last Name" />
+                <p class="error name_error"></p>
+              </div>
+            </div>
+            <!-- Email -->
+            <div class="field email">
+              <label>Email</label>
+              <input type="email" name="email" placeholder="you@example.com" />
+              <p class="error email_error">
+                Please enter a valid email: you@example.com
+              </p>
+            </div>
+            <!-- Phone -->
+            <div class="field phone">
+              <label>Phone number</label>
+              <input
+                type="text"
+                name="phone"
+                placeholder="00(123) 45678-91011"
+              />
+              <p class="error phone_error"></p>
+            </div>
+            <div class="field message">
+              <label>Message</label>
+              <textarea
+                name="message"
+                id="message"
+                placeholder="Leave us a message..."
+                rows="6"
+              ></textarea>
+              <p class="error message_error"></p>
+            </div>
+            <div class="agree flex">
+              <input type="checkbox" name="agree" id="agree" />
+              <p>You agree to our friendly <a href="#">privacy policy</a></p>
+            </div>
+            <button type="submit" name="submit" class="field flexCenter">
+              Send message <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <!--============================== Contact Us ============================-->
+    <div class="contact_us">
+      <div class="container">
+        <div class="information flexBetween">
+          <div class="text">
+            <span>Contact us</span>
+            <h3>Reach Out to Us:</h3>
+            <p>We're Here to Listen, Collaborate, and Bring Your Vision</p>
+          </div>
+          <div class="contact_info">
+            <div class="location flex">
+              <i class="fa-solid fa-location-dot"></i>
+              <div>
+                <span>Palestine</span>
+                <span>594 Views, Gaza, OK 72908-2340</span>
+              </div>
+            </div>
+            <div class="location flex">
+              <i class="fa-solid fa-location-dot"></i>
+              <div>
+                <span>Giary Tunnel</span>
+                <span>913, Palestine, UT 266045-4848</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--============================== Paper =============================-->
+    <div class="paper">
+      <div class="container">
+        <img
+          src="../../assets/image-1.jpg"
+          alt="contact us"
+          title="contact us"
+          data-aos="fade-up"
+          loading="lazy"
+        />
+      </div>
+    </div>
+    <!--============================== Blog ===============================-->
+    <section class="blog_section">
+      <div class="container">
+        <div class="information flexBetween">
+          <h2 data-aos="fade-right">Latest <span> blog post</span></h2>
+          <div class="text" data-aos="fade-left">
+            <p>
+              Fresh Insights, Dive into My Latest Blog Post for Innovative Ideas
+              and Inspirations.
+            </p>
+            <a href="#" class="btn style_btn">
+              See More <i class="fa-solid fa-angle-right"></i>
+            </a>
+          </div>
+        </div>
+        <div class="main_blogs blog_cards flexCenterBetween">
+          <!-- Code In JavaScript -->
+        </div>
+      </div>
+    </section>
+    <!--============================== Footer =============================-->
+    <footer>
+      <div class="container">
+        <div class="connect flexCenterBetween">
+          <h4 data-aos="fade-right">Stay connected w/ me.</h4>
+          <div class="connected" data-aos="fade-left">
+            <div class="form flexCenterBetween" id="footer_form">
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                autocomplete="off"
+              />
+              <button type="submit" id="submit" name="footer-submit">
+                <img
+                  src="../../assets/send-icon.png"
+                  alt="send"
+                  loading="lazy"
+                />
+              </button>
+            </div>
+            <p class="error" id="email-error"></p>
+          </div>
+        </div>
+        <div class="social_sec flexEndBetween">
+          <div class="info" data-aos="fade-right">
+            <div class="logo">
+              <a class="flexAlignCenter">
+                <img
+                  src="../../assets/Walf logo.png"
+                  alt="Walf Pixel"
+                  title="Walf Pixel"
+                  loading="lazy"
+                />
+                Wolf Pixel
+              </a>
+            </div>
+            <p>
+              I'm Waseem, a Front-End Developer with 3 years of experience.
+              planning, designing, and implementing high-quality websites.
+            </p>
+          </div>
+          <div class="social flexAlignCenter" data-aos="fade-left">
+            <a href="#" class="flexCenter"
+              ><i class="fa-brands fa-facebook-f"></i
+            ></a>
+            <a href="#" class="flexCenter"
+              ><i class="fa-brands fa-linkedin-in"></i
+            ></a>
+            <a href="#" class="flexCenter"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+            <a href="#" class="flexCenter"
+              ><i class="fa-brands fa-youtube"></i
+            ></a>
+          </div>
+        </div>
+        <div class="copy_right flexCenterBetween">
+          <p>&copy; 2024 All Rights Reserved by Wolf pixel</p>
+          <div class="policy flexAlignCenter">
+            <a href="#" onclick="move()">Terms Of Service</a>
+            <a href="#">Privacy Policy</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="../../js/script.js"></script>
+    <!-- <script src="../../js/sweetalert.min.js"></script> -->
+  </body>
+</html>
