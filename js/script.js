@@ -109,6 +109,8 @@ async function data() {
     // Services Logic
     services(result.myOfferings);
     // My Works Experiences Logic
+    experienceCardsLogic(result.worksExperiences);
+    // My Works Experiences Logic
     worksExperiences(result.worksExperiences);
     // Display Blogs Data
     blogsData(result.blogs);
@@ -190,49 +192,16 @@ function offeringsCardsLayout(offeringsCards, myOfferings) {
 
 let experiencesCards = document.querySelector(".experiences .details");
 
-let experienceDtls = [
-  {
-    profession: "Creative Minds",
-    address: "New York City, USA",
-    date: "February 2022 - Present",
-    desc: "Innvoated designs, New York, Senior Product Designer",
-    skills: ["UXUI", "Branding"],
-    imgShow: true,
-  },
-  {
-    profession: "Innovative Designs Inc",
-    address: "USA",
-    date: "January 2020 - February 2022",
-    desc: "Led UXUI, San Francisco. Crafting tomorrow's experiences",
-    skills: ["UXUI", "Branding"],
-    imgShow: false,
-  },
-  {
-    profession: "Visionary Creations Ltd",
-    address: "London, UK",
-    date: "January 2020 - September 2021",
-    desc: "Directed designs, London, Design Director, January 2020",
-    skills: ["UXUI", "Branding"],
-    imgShow: false,
-  },
-  {
-    profession: "FutureTech Berlin",
-    address: "Germany",
-    date: "January 2020 - August 2021",
-    desc: "Principal Designer, Berlin, Crafting tomorrow's experiences",
-    skills: ["UXUI", "Branding"],
-    imgShow: false,
-  },
-];
-
-for (let i = 0; i < experienceDtls.length; i++) {
-  if (experiencesCards) {
-    experiencesCardsLayout(experiencesCards, experienceDtls[i])
-  }
-};
+function experienceCardsLogic(worksExp) {
+  for (let i = 0; i < worksExp.length; i++) {
+    if (experiencesCards) {
+      experiencesCardsLayout(experiencesCards, worksExp[i])
+    }
+  };
+}
 
 // Build Experiences Cards Layout
-function experiencesCardsLayout(experiencesCards, experienceDtls) {
+function experiencesCardsLayout(experiencesCards, worksExp) {
   let card = document.createElement("div");
   card.classList.add("card");
 
@@ -244,9 +213,9 @@ function experiencesCardsLayout(experiencesCards, experienceDtls) {
   address.setAttribute("data-aos", "fade-right");
 
   let h4 = document.createElement("h4");
-  h4.textContent = `${experienceDtls.address}`;
+  h4.textContent = `${worksExp.address}`;
   let span = document.createElement("span");
-  span.textContent = `${experienceDtls.profession}, `;
+  span.textContent = `${worksExp.profession}, `;
 
   h4.prepend(span);
 
@@ -257,7 +226,7 @@ function experiencesCardsLayout(experiencesCards, experienceDtls) {
   dateIcon.classList.add("fa-solid", "fa-dot-circle");
 
   let datePara = document.createElement("p");
-  datePara.textContent = `${experienceDtls.date}`;
+  datePara.textContent = `${worksExp.date}`;
 
   // Experience Div
   let experience = document.createElement("div");
@@ -265,16 +234,16 @@ function experiencesCardsLayout(experiencesCards, experienceDtls) {
   experience.setAttribute("data-aos", "fade-left");
 
   let expPara = document.createElement("p");
-  expPara.textContent = `${experienceDtls.desc}`;
+  expPara.textContent = `${worksExp.desc}`;
 
   let skillsDiv = document.createElement("div");
   skillsDiv.classList.add("skills", "flexAlignStart");
 
   // Display Skills
-  for (let j = 0; j < experienceDtls.skills.length; j++) {
+  for (let j = 0; j < worksExp.skills.length; j++) {
     let span = document.createElement("span");
     span.classList.add("flexCenter");
-    span.textContent = `${experienceDtls.skills[j]}`;
+    span.textContent = `${worksExp.skills[j]}`;
     // Add spans To Skills Div
     skillsDiv.appendChild(span);
   }
@@ -314,7 +283,7 @@ function experiencesCardsLayout(experiencesCards, experienceDtls) {
   card.appendChild(cardInfo);
 
   // Add Or Not Image
-  if (experienceDtls.imgShow) {
+  if (worksExp.imgShow) {
     card.appendChild(cardImg);
   }
 
