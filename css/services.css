@@ -1,5 +1,11 @@
 /* ============================= Services ============================= */
 
+.services {
+  position: relative;
+  padding-top: var(--section-padding);
+  padding-bottom: var(--section-padding);
+}
+
 .services .info {
   margin-top: 60px !important;
   display: grid;
@@ -52,8 +58,20 @@
 }
 
 @media (max-width: 479px) {
-    .services .info img {
+  .services .info img {
     width: 100%;
     height: 100%;
   }
+}
+
+/* ============================= News Ticker ============================= */
+.ticker {
+  padding-top: var(--section-padding);
+  padding-bottom: var(--section-padding);
+}
+
+.ticker marquee {
+  font-size: 280px;
+  color: var(--white-color);
+  background-color: var(--blue-color);
 }

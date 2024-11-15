@@ -56,7 +56,9 @@
 
 window.addEventListener("load", function () {
   let loader = document.querySelector(".loading");
+  document.body.style.overflow = "hidden";
   setTimeout(() => {
+    document.body.style.overflow = "auto";
     loader.style.display = "none";
   }, 900);
 })
@@ -98,127 +100,72 @@ menuWrapper.addEventListener('click', () => {
 });
 
 // ======================= Home Page - Offerings Section ======================== //
+async function data() {
+  try {
+    let data = await fetch("/json/data.json");
+    let result = await data.json();
+    // My Offerings Logic
+    offerings(result.myOfferings);
+    // Services Logic
+    services(result.myOfferings);
+    // My Works Experiences Logic
+    worksExperiences(result.worksExperiences);
+    // Display Blogs Data
+    blogsData(result.blogs);
+    // Blog Page - Display Blogs Search
+    searchOperation(result.blogs);
+    // Render Blogs Function
+    renderBlogs(result.blogs, mainBlogCards, 3);
+  } catch (error) {
+    console.log(error);
+  }
+}
+data();
 
-// async function works() {
-//   try {
-//     let data = await fetch("/json/works.json");
-//     let result = await data.json();
-//     console.log(result);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
-// works();
+// ======================= Home Page - Offerings Section ======================== //
 
 let offeringsCards = document.querySelector(".offerings_cards");
-
-let offeringsInfoArr = [
-  {
-    id: "userExperience",
-    imgSrc: "image-5",
-    imgOrder: "-1",
-    iconSrc: "ux-icon",
-    title: "User Experience Design",
-    priefDesc: "Crafting seamless and intuitive user joumeys to enhance engagement and satisfaction.",
-    description: "At Wolf Pixel, we consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad.Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae. Itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum molestiae temporibus pariatur and reiciendis. Lorem ipsum dolor sit amet consectetur.",
-    dataAos: "fade-right",
-    iconAlt: "ux-experience design",
-  },
-  {
-    id: "userInterface",
-    imgSrc: "image-7",
-    imgOrder: "1",
-    iconSrc: "ui-icon",
-    title: "User Interface Design",
-    priefDesc: "Creating visually appending interfaces that combine aesthetics with functionality.",
-    description: "At Wolf Pixel, we consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad.Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae. Itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum molestiae temporibus pariatur and reiciendis. Lorem ipsum dolor sit amet consectetur.",
-    dataAos: "fade-up",
-    iconAlt: "user interface design",
-  },
-  {
-    id: "productPrototyping",
-    imgSrc: "image-5",
-    imgOrder: "-1",
-    iconSrc: "product-prototype-icon",
-    title: "Product Prototyping",
-    priefDesc: "ransforming concepts into tangible prototypes to valiedate ideas and iterate quickly.",
-    description: "At Wolf Pixel, we consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad.Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae. Itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum molestiae temporibus pariatur and reiciendis. Lorem ipsum dolor sit amet consectetur.",
-    dataAos: "fade-left",
-    iconAlt: "product prototype",
-  },
-  {
-    id: "wireframing",
-    imgSrc: "image-7",
-    imgOrder: "1",
-    iconSrc: "wireframe-icon",
-    title: "Wireframing & Mockups",
-    priefDesc: "Developing detaild wireframes and high-fidelity mockups to visualize design effectively.",
-    description: "At Wolf Pixel, we consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad.Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae. Itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum molestiae temporibus pariatur and reiciendis. Lorem ipsum dolor sit amet consectetur.",
-    dataAos: "fade-right",
-    iconAlt: "wireframing & mockup",
-  },
-  {
-    id: "responsiveWebDesign",
-    imgSrc: "image-5",
-    imgOrder: "-1",
-    iconSrc: "responsive-icon",
-    title: "Responsive Web Design",
-    priefDesc: "Designing adaptable and responsive website that a consistent user experience devices.",
-    description: "At Wolf Pixel, we consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad.Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae. Itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum molestiae temporibus pariatur and reiciendis. Lorem ipsum dolor sit amet consectetur.",
-    dataAos: "fade-up",
-    iconAlt: "responsive design",
-  },
-  {
-    id: "mobileApp",
-    imgSrc: "image-7",
-    imgOrder: "1",
-    iconSrc: "mobile-icon",
-    title: "Mobile App Design",
-    priefDesc: "Designing intuitive and user-friendly mobile applicationsfor iOS and Android platforms.",
-    description: "At Wolf Pixel, we consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad.Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae. Itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum molestiae temporibus pariatur and reiciendis. Lorem ipsum dolor sit amet consectetur.",
-    dataAos: "fade-left",
-    iconAlt: "mobile app design",
-  },
-];
-
-for (let i = 0; i < offeringsInfoArr.length; i++) {
-  if (offeringsCards) {
+// My Offerings Logic
+function offerings(myOfferings) {
+  if (!offeringsCards) return;
+  for (let i = 0; i < myOfferings.length; i++) {
     // Build Offerings Cards Layout
-    offeringsCardsLayout(offeringsCards, offeringsInfoArr[i]);
+    offeringsCardsLayout(offeringsCards, myOfferings[i]);
+  };
 
-    let offeringsCard = document.querySelectorAll(".offerings_cards .card");
-    // Open Offerings Card in Services Page Based On Section (Current Target Id)
-    offeringsCard.forEach((offCard) => {
-      offCard.addEventListener("click", function (e) {
-        location.href = `/html/services.html#${e.currentTarget.id}`;
-      })
+  let offeringsCard = document.querySelectorAll(".offerings_cards .card");
+  // Open Offerings Card in Services Page Based On Section (Current Target Id)
+  offeringsCard.forEach((offCard) => {
+    offCard.addEventListener("click", function (e) {
+      console.log(e.currentTarget.id);
+      location.href = `/html/services.html#${e.currentTarget.id}`;
     })
-  }
-};
+  })
+}
 
 // Build Offerings Cards Layout
-function offeringsCardsLayout(offeringsCards, offeringsInfoArr) {
+function offeringsCardsLayout(offeringsCards, myOfferings) {
   let card = document.createElement("div");
   card.classList.add("card");
-  card.id = `${offeringsInfoArr.id}`;
-  card.setAttribute("data-aos", `${offeringsInfoArr.dataAos}`);
+  card.id = `${myOfferings.id}`;
+  card.setAttribute("data-aos", `${myOfferings.dataAos}`);
 
   let imageWrapper = document.createElement("image");
   imageWrapper.classList.add("image", "flexCenter");
 
   let cardImg = document.createElement("img");
-  cardImg.src = `../../assets/${offeringsInfoArr.iconSrc}.png`;
-  cardImg.alt = `${offeringsInfoArr.iconAlt}`;
+  cardImg.src = `../../assets/${myOfferings.iconSrc}.png`;
+  cardImg.alt = `${myOfferings.iconAlt}`;
   cardImg.setAttribute("loading", "lazy");
 
   let cardInfo = document.createElement("div");
   cardInfo.classList.add("info");
 
   let cardH3 = document.createElement("h3");
-  cardH3.textContent = `${offeringsInfoArr.title}`;
+  cardH3.textContent = `${myOfferings.title}`;
 
   let cardPara = document.createElement("p");
-  cardPara.textContent = `${offeringsInfoArr.priefDesc}`;
+  cardPara.textContent = `${myOfferings.priefDesc}`;
 
   // Add H3 To Card Info
   cardInfo.appendChild(cardH3);
@@ -379,98 +326,63 @@ function experiencesCardsLayout(experiencesCards, experienceDtls) {
 
 let workCards = document.querySelector(".my_work .work_cards");
 
-let workDetailsArr = [
-  {
-    id: 1,
-    profession: "Creative Minds",
-    address: "New York",
-    date: "February 2022 - Present",
-    dataAos: "fade-right",
-  },
-  {
-    id: 2,
-    profession: "Innovative Designs Inc",
-    address: "USA",
-    date: "January 2020 - February 2022",
-    dataAos: "fade-left",
-  },
-  {
-    id: 3,
-    profession: "Visionary Ltd",
-    address: "London, UK",
-    date: "January 2020 - September 2021",
-    dataAos: "fade-right",
-  },
-  {
-    id: 4,
-    profession: "FutureTech Berlin",
-    address: "Germany",
-    date: "January 2020 - August 2021",
-    dataAos: "fade-left",
-  },
-];
+// My Works Experiences Logic
+function worksExperiences(worksExp) {
+  for (let i = 0; i < worksExp.length; i++) {
+    if (workCards) {
+      // Build My Works Cards Layout
+      myWorksCardsLayout(workCards, worksExp[i]);
+    }
+    let workCard = document.querySelectorAll(".work_cards .card");
+    // [2] Check for saved ID in localStorage
+    const storedWorkId = window.localStorage.getItem("workSection_workId");
 
-for (let i = 0; i < workDetailsArr.length; i++) {
-  if (workCards) {
-    // Build My Works Cards Layout
-    myWorksCardsLayout(workCards, workDetailsArr[i]);
-  }
-
-  let workCard = document.querySelectorAll(".work_cards .card");
-
-  // [2]
-  if (window.localStorage.getItem("workId")) {
-    workCard.forEach((card) => {
-      // Remove Class active From All Cards
-      card.classList.remove("active");
-      card.lastElementChild.classList.remove("iconRotate");
-    });
-
-    let currentElId = document.querySelector(`[id="${window.localStorage.getItem("workId")}"]`);
-    currentElId?.classList.add("active");
-
-    if (currentElId?.classList.contains("active")) {
-      // Add Class iconRotate to Icon In Current Target By Id
-      currentElId?.lastElementChild?.classList.add("iconRotate");
-    };
-  };
-
-  // [1]
-  workCard.forEach((card) => {
-    card.addEventListener("click", function (e) {
-
+    if (storedWorkId) {
       workCard.forEach((card) => {
         // Remove Class active From All Cards
         card.classList.remove("active");
         card.lastElementChild.classList.remove("iconRotate");
       });
+      let currentElId = document.querySelector(`[id="${storedWorkId}"]`);
+      currentElId?.classList.add("active");
+      if (currentElId?.classList.contains("active")) {
+        // Add Class iconRotate to Icon In Current Target By Id
+        currentElId?.lastElementChild?.classList.add("iconRotate");
+      };
+    };
 
-      // Add Class active to Current Target
-      card.classList.add("active");
-
-      // Add Class iconRotate to Icon In Current Target
-      e.currentTarget.lastElementChild.classList.add("iconRotate");
-
-      window.localStorage.setItem("workId", e.currentTarget.id);
+    // [1] Add click event listener to each card
+    workCard.forEach((card) => {
+      card.addEventListener("click", function (e) {
+        workCard.forEach((card) => {
+          // Remove Class active From All Cards
+          card.classList.remove("active");
+          card.lastElementChild.classList.remove("iconRotate");
+        });
+        // Add Class active to Current Target
+        card.classList.add("active");
+        // Add Class iconRotate to Icon In Current Target
+        e.currentTarget.lastElementChild.classList.add("iconRotate");
+        window.localStorage.setItem("workSection_workId", e.currentTarget.id);
+      });
     });
-  });
-};
-
+  };
+}
 // Build My Works Cards Layout
-function myWorksCardsLayout(workCards, workDetailsArr) {
+function myWorksCardsLayout(workCards, worksExp) {
   let card = document.createElement("div");
   card.classList.add("card", "flexCenterBetween");
-  card.setAttribute("data-aos", workDetailsArr.dataAos);
-  card.id = `${workDetailsArr.id}`;
+  card.setAttribute("data-aos", worksExp.dataAos);
+  card.id = `${worksExp.id}`;
 
   let spanId = document.createElement("span");
-  spanId.textContent = `0${workDetailsArr.id}`;
+  spanId.textContent = `0${worksExp.id}`;
 
   let work = document.createElement("div");
   work.classList.add("work");
 
   let h4 = document.createElement("h4");
-  h4.textContent = `${workDetailsArr.profession}, ${workDetailsArr.address}`;
+  h4.textContent = `${worksExp.profession}, ${worksExp.address}`;
 
   let dateDiv = document.createElement("div");
   dateDiv.classList.add("date", "flexAlignCenter");
@@ -479,7 +391,7 @@ function myWorksCardsLayout(workCards, workDetailsArr) {
   dateIcon.classList.add("fa-solid", "fa-dot-circle");
 
   let datePara = document.createElement("p");
-  datePara.textContent = `${workDetailsArr.date}`;
+  datePara.textContent = `${worksExp.date}`;
 
   // Card Icon (Angle Right)
   let cardIcon = document.createElement("i");
@@ -514,34 +426,36 @@ function myWorksCardsLayout(workCards, workDetailsArr) {
 
 let servicesCards = document.querySelector(".services .services-cards");
 
-for (let i = 0; i < offeringsInfoArr.length; i++) {
-  if (servicesCards) {
+// Services Logic
+function services(myOfferings) {
+  if (!servicesCards) return;
+  for (let i = 0; i < myOfferings.length; i++) {
     // Build Services Cards Layout
-    servicesCardsLayout(servicesCards, offeringsInfoArr[i]);
-  }
-};
+    servicesCardsLayout(servicesCards, myOfferings[i]);
+  };
+}
 
 // Build Services Cards Layout
-function servicesCardsLayout(servicesCards, offeringsInfoArr) {
+function servicesCardsLayout(servicesCards, myOfferings) {
   let infoDiv = document.createElement("div");
   infoDiv.classList.add("info");
-  infoDiv.id = `${offeringsInfoArr.id}`;
+  infoDiv.id = `${myOfferings.id}`;
 
   let servicesImg = document.createElement("img");
-  servicesImg.src = `../../assets/${offeringsInfoArr.imgSrc}.jpg`;
-  servicesImg.alt = `${offeringsInfoArr.title}`;
-  servicesImg.title = `${offeringsInfoArr.title}`;
+  servicesImg.src = `../../assets/${myOfferings.imgSrc}.jpg`;
+  servicesImg.alt = `${myOfferings.title}`;
+  servicesImg.title = `${myOfferings.title}`;
   servicesImg.setAttribute("loading", "lazy");
-  servicesImg.style.order = `${offeringsInfoArr.imgOrder}`;
+  servicesImg.style.order = `${myOfferings.imgOrder}`;
 
   let infosText = document.createElement("div");
   infosText.classList.add("infos_text");
 
   let h2 = document.createElement("h2");
-  h2.textContent = `${offeringsInfoArr.title}`;
+  h2.textContent = `${myOfferings.title}`;
 
   let p = document.createElement("p");
-  p.textContent = `${offeringsInfoArr.description}`;
+  p.textContent = `${myOfferings.description}`;
 
   let links = document.createElement("div");
   links.classList.add("links", "flexAlignCenter");
@@ -745,39 +659,42 @@ let portfolioCards = document.querySelector(".portfolio .portfolio_cards");
 // ================ Trigger Get Blog From localStorage Fucntion =============== //
 getBlogsTabFromLocalStorage();
 
-if (window.localStorage.getItem("tabId")) {
+function blogsData(blogs) {
+  const storedTabId = window.localStorage.getItem("portfolioTab_tabId");
+  if (storedTabId) {
+    tabs.forEach((tab) => {
+      tab.classList.remove("checked");
+    });
+    document.querySelector(`[id="${storedTabId}"]`)?.classList.add("checked");
+  };
+
   tabs.forEach((tab) => {
-    tab.classList.remove("checked");
+    tab.addEventListener("click", function (e) {
+      // Remove Checked Class From All Tabs
+      tabs.forEach((tab) => { tab.classList.remove("checked") });
+      // Add Checked Class To The Clicked Tab
+      tab.classList.add("checked");
+
+      // Add Id To Current Tab To LocalStorage
+      window.localStorage.setItem("portfolioTab_tabId", e.currentTarget.id);
+
+      // Add Current Category To LocalStorage
+      window.localStorage.setItem("portfolioTab_category", e.currentTarget.dataset.category);
+
+      // Get Category From LocalStorage
+      const category = window.localStorage.getItem("portfolioTab_category");
+
+      // Filtering Array of Blogs Related To Category From LocalStorage
+      const filteredBlogs = blogs.filter((blog) => blog.category === category);
+
+      // Add Blogs To LocalStorage
+      addBlogsTabToLocalStorage(filteredBlogs);
+
+      // Display Blogs Related To The Selected Tab
+      displayBlogsTab(filteredBlogs);
+    });
   });
-  document.querySelector(`[id="${window.localStorage.getItem("tabId")}"]`)?.classList.add("checked");
-};
-
-tabs.forEach((tab) => {
-  tab.addEventListener("click", function (e) {
-    // Remove Checked Class From All Tabs
-    tabs.forEach((tab) => { tab.classList.remove("checked") });
-    // Add Checked Class To The Clicked Tab
-    tab.classList.add("checked");
-
-    // Add Id To Current Tab To LocalStorage
-    window.localStorage.setItem("tabId", e.currentTarget.id);
-
-    // Add Current Category To LocalStorage
-    window.localStorage.setItem("category", e.currentTarget.dataset.category);
-
-    // Get Category From LocalStorage
-    const category = window.localStorage.getItem("category");
-
-    // Filtering Array of Blogs Related To Category From LocalStorage
-    const filteredBlogs = blogs.filter((blog) => blog.category === category);
-
-    // Add Blogs To LocalStorage
-    addBlogsTabToLocalStorage(filteredBlogs);
-
-    // Display Blogs Related To The Selected Tab
-    displayBlogsTab(filteredBlogs);
-  });
-});
+}
 
 // =================== Add Tab Blogs To LocalStorage =================== //
 function addBlogsTabToLocalStorage(filteredBlogs) { window.localStorage.setItem("blogs", JSON.stringify(filteredBlogs)); };
@@ -958,36 +875,32 @@ let searchError = document.querySelector(".error");
 let notFound = document.querySelector(".not-found");
 
 // ============== Blog Page - Display Blogs Search ============== //
-function searchOperation() {
-  if (searchInput.value !== "") {
+function searchOperation(blogs) {
+  if (searchInput && searchInput.value !== "") {
     // Filtering Array of Blogs Related To Category From LocalStorage
-    let filteredBlogs = blogs.filter(item => item.category === searchInput.value.toLowerCase());
-
+    let filteredBlogs = blogs.filter(item => item.category === searchInput.value.trim().toLowerCase());
     if (filteredBlogs.length > 0) {
       // Add Blogs To LocalStorage
       addBlogsSearchToLocalStorage(filteredBlogs);
-
       // Display Blogs Related To The Selected Tab
       renderBlogs(filteredBlogs, searchBlogCards);
-
       // Show Pagination
       pagintion.style.display = "inline-block";
-
       // Hide Not found Message
       notFound.style.display = "none";
     } else {
+      searchBlogCards.innerHTML = "";
       // Show Pagination
       pagintion.style.display = "none";
-
       // Show Not found Message
       notFound.style.display = "block";
     }
   } else {
-    errorsStyling(searchInput, searchError, "var(--error-color)", "block", "Please enter a search query.");
+    errorsStyling(searchInput, searchError, "var(--error-color)", "block", "Please enter a search query: <br> [Web, Mobile, Brand, Design]");
   }
 }
 
-if (search) { search.addEventListener("click", function () { searchOperation(); }); }
+if (search) { search.addEventListener("click", function () { searchOperation(blogs); }); }
 
 // ============= Blog Page - Add Blogs Search To LocalStorage ============= //
 function addBlogsSearchToLocalStorage(filteredBlogs) { window.localStorage.setItem("blogs search", JSON.stringify(filteredBlogs)); }
@@ -998,6 +911,8 @@ function getBlogsFromLocalStorage() {
   if (data) {
     let blogs = JSON.parse(data);
     renderBlogs(blogs, searchBlogCards);
+  } else {
+
   }
 }
 // Trigger Get Blog Search From localStorage Fucntion
@@ -1104,9 +1019,11 @@ function checkFooterEmail(e) {
 
 // ======================== Errors Styling  ======================== //
 function errorsStyling(inputType, errorType, borderColor, errorDisplay, errorMsg) {
-  inputType.style.borderColor = borderColor;
-  errorType.style.display = errorDisplay;
-  errorType.innerHTML = errorMsg;
+  if (inputType) { inputType.style.borderColor = borderColor; };
+  if (errorType) {
+    errorType.style.display = errorDisplay;
+    errorType.innerHTML = errorMsg;
+  }
 };
 
 // ===================== Email Value Valid Test ==================== //

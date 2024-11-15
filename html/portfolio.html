@@ -80,11 +80,6 @@
                 ><i class="fas fa-briefcase nav-icon"></i>Portfolio</a
               >
             </li>
-            <li>
-              <a href="#" class="flexAlignCenter"
-                ><i class="fas fa-folder-open nav-icon"></i>Resourse</a
-              >
-            </li>
           </ul>
           <a href="#" onclick="move('letsStartTalk.html')" class="btn">
             Let's Talk <i class="fa-solid fa-angle-right"></i>
@@ -98,7 +93,7 @@
       </div>
     </header>
     <!--============================= Portfolio ===========================-->
-    <section class="portfolio">
+    <div class="portfolio">
       <div class="container">
         <div class="title">
           <h2>Discover Our Creative Project</h2>
@@ -168,9 +163,9 @@
           </button>
         </div>
       </div>
-    </section>
+    </div>
     <!--============================== Blog ===============================-->
-    <section class="blog_section">
+    <div class="blog_section">
       <div class="container">
         <div class="information flexBetween">
           <h2>Latest <br /><span> blog post</span></h2>
@@ -188,13 +183,13 @@
           <!-- Code In JavaScript -->
         </div>
       </div>
-    </section>
+    </div>
     <!--============================== Footer =============================-->
     <footer>
       <div class="container">
         <div class="connect flexCenterBetween">
           <h4>Stay connected w/ me.</h4>
-          <div>
+          <div class="connected" data-aos="fade-left">
             <div class="form flexCenterBetween" id="footer_form">
               <input
                 type="email"
@@ -210,7 +205,7 @@
                 />
               </button>
             </div>
-            <p class="error" id="error"></p>
+            <p class="error" id="email-error"></p>
           </div>
         </div>
         <div class="social_sec flexEndBetween">

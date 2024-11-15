@@ -130,7 +130,7 @@ a {
 
 /* ============================= Component ============================= */
 
-:is(section, footer) {
+:is(.landing, .offerings, .experiences, .my_work, .blog_section, footer) {
   position: relative;
   padding-top: var(--section-padding);
   padding-bottom: var(--section-padding);
@@ -361,7 +361,17 @@ header nav li a:hover::before {
 }
 
 .page_active::before {
-  width: 100% !important;
+  animation: goup 2s linear infinite alternate;
+}
+
+@keyframes goup {
+  0%,
+  100% {
+    width: 10%;
+  }
+  50% {
+    width: 100%;
+  }
 }
 
 /* ============================= Header - Media Query ============================= */
@@ -962,6 +972,12 @@ header nav li a:hover::before {
   overflow: hidden;
   border-radius: 10px;
   width: 400px;
+  transition: var(--transition);
+}
+
+.blog_cards .card:hover {
+  background-color: var(--blue-color);
+  transform: translateY(-5px);
 }
 
 .blog_cards .card button.arrow {
@@ -1012,7 +1028,7 @@ header nav li a:hover::before {
   }
 
   .blog_cards::-webkit-scrollbar-thumb {
-    background-color: var(--bold-gray-color);
+    background-color: var(--blue-color);
   }
 }
 

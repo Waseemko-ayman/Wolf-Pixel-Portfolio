@@ -1,5 +1,11 @@
 /* ============================= About ============================= */
 
+.about-us {
+  position: relative;
+  padding-top: var(--section-padding);
+  padding-bottom: var(--section-padding);
+}
+
 .about-us .info {
   margin-top: 60px;
   display: grid;

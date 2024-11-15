@@ -1,5 +1,11 @@
 /* ============================= Portfolio ============================= */
 
+.portfolio {
+  position: relative;
+  padding-top: var(--section-padding);
+  padding-bottom: var(--section-padding);
+}
+
 .portfolio button {
   outline: none;
   color: var(--black-color);

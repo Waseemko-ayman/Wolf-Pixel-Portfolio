@@ -80,11 +80,6 @@
                 ><i class="fas fa-briefcase nav-icon"></i>Portfolio</a
               >
             </li>
-            <li>
-              <a href="#" class="flexAlignCenter"
-                ><i class="fas fa-folder-open nav-icon"></i>Resourse</a
-              >
-            </li>
           </ul>
           <a href="#" onclick="move('letsStartTalk.html')" class="btn">
             Let's Talk <i class="fa-solid fa-angle-right"></i>
@@ -98,7 +93,7 @@
       </div>
     </header>
     <!--============================= Services ============================-->
-    <section class="services">
+    <div class="services">
       <div class="container">
         <div class="title" data-aos="fade-up">
           <h2>Explore <span>My Offerings</span> for You</h2>
@@ -109,9 +104,17 @@
         </div>
         <div class="services-cards"><!-- Code In Js --></div>
       </div>
-    </section>
+    </div>
+    <!--=========================== News Ticker ===========================-->
+    <div class="ticker">
+      <marquee loop="-1" scrollamount="30" width="100%">
+        Explore My Offerings for You: User Experience Design, User Interface
+        Design, Product Prototyping, Wireframing & Mockups, Responsive Web
+        Design & Mobile App Design
+      </marquee>
+    </div>
     <!--============================== Blog ===============================-->
-    <section class="blog_section">
+    <div class="blog_section">
       <div class="container">
         <div class="information flexBetween">
           <h2 data-aos="fade-right">Latest <span> blog post</span></h2>
@@ -129,13 +132,13 @@
           <!-- Code In JavaScript -->
         </div>
       </div>
-    </section>
+    </div>
     <!--============================== Footer =============================-->
     <footer>
       <div class="container">
         <div class="connect flexCenterBetween">
           <h4 data-aos="fade-right">Stay connected w/ me.</h4>
-          <div data-aos="fade-left">
+          <div class="connected" data-aos="fade-left">
             <div class="form flexCenterBetween" id="footer_form">
               <input
                 type="email"
@@ -151,7 +154,7 @@
                 />
               </button>
             </div>
-            <p class="error" id="error"></p>
+            <p class="error" id="email-error"></p>
           </div>
         </div>
         <div class="social_sec flexEndBetween">

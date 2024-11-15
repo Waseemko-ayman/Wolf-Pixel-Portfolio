@@ -80,11 +80,6 @@
                 ><i class="fas fa-briefcase nav-icon"></i>Portfolio</a
               >
             </li>
-            <li>
-              <a href="#" class="flexAlignCenter"
-                ><i class="fas fa-folder-open nav-icon"></i>Resourse</a
-              >
-            </li>
           </ul>
           <a href="#" onclick="move('letsStartTalk.html')" class="btn">
             Let's Talk <i class="fa-solid fa-angle-right"></i>
@@ -123,7 +118,7 @@
                 placeholder="Search Your Article"
                 autocomplete="off"
               />
-              <p class="error">Error</p>
+              <p class="error"></p>
             </div>
             <button id="searchBtn" name="search">Search</button>
           </div>
@@ -147,7 +142,7 @@
       <div class="container">
         <div class="connect flexCenterBetween">
           <h4>Stay connected w/ me.</h4>
-          <div>
+          <div class="connected" data-aos="fade-left">
             <div class="form flexCenterBetween" id="footer_form">
               <input
                 type="email"
@@ -163,7 +158,7 @@
                 />
               </button>
             </div>
-            <p class="error" id="error"></p>
+            <p class="error" id="email-error"></p>
           </div>
         </div>
         <div class="social_sec flexEndBetween">

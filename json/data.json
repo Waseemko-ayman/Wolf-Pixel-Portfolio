@@ -1,0 +1,267 @@
+{
+  "blogs": [
+    {
+      "id": 1,
+      "src": "image-5",
+      "title": "Blogs with Compelling Mobile App that will Inspire You",
+      "priveTitle": "Parking App Casestudy",
+      "description": "Consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum",
+      "postDate": "June 27, 2022",
+      "category": "mobile",
+      "skills": ["Mobile App", "UIUX"],
+      "dataAos": "right"
+    },
+    {
+      "id": 2,
+      "src": "image-6",
+      "title": "Blogs with Compelling Website that will Inspire You",
+      "priveTitle": "Agency Website Design",
+      "description": "Consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum",
+      "postDate": "Aug 17, 2023",
+      "category": "web",
+      "skills": ["Website", "UIUX"],
+      "dataAos": "up"
+    },
+    {
+      "id": 3,
+      "src": "image-7",
+      "title": "Blogs with Compelling UI Design that will Inspire You",
+      "priveTitle": "Creative Saas Design",
+      "description": "Consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum",
+      "postDate": "Sep 5, 2024",
+      "category": "design",
+      "skills": ["Design", "UIUX"],
+      "dataAos": "left"
+    },
+    {
+      "id": 4,
+      "src": "image-7",
+      "title": "Blogs with Compelling Mobile App that will Inspire You",
+      "priveTitle": "Parking App Casestudy",
+      "description": "Consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum",
+      "postDate": "Oct 2, 2019",
+      "category": "mobile",
+      "skills": ["Mobile App", "UIUX"],
+      "dataAos": "right"
+    },
+    {
+      "id": 5,
+      "src": "image-6",
+      "title": "Blogs with Compelling Website that will Inspire You",
+      "priveTitle": "Real Estate Website Design",
+      "description": "Consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum",
+      "postDate": "May 20, 2015",
+      "category": "web",
+      "skills": ["Website", "UIUX"],
+      "dataAos": "up"
+    },
+    {
+      "id": 6,
+      "src": "image-6",
+      "title": "Blogs with Compelling UI Design that will Inspire You",
+      "priveTitle": "UI/UX Design for App",
+      "description": "Consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum",
+      "postDate": "Sep 5, 2024",
+      "category": "design",
+      "skills": ["Design", "UIUX"],
+      "dataAos": "left"
+    },
+    {
+      "id": 7,
+      "src": "image-5",
+      "title": "Blogs with Compelling Mobile App that will Inspire You",
+      "priveTitle": "Parking App Casestudy",
+      "description": "Consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum",
+      "postDate": "Nov 14, 2020",
+      "category": "mobile",
+      "skills": ["Mobile App", "UIUX"],
+      "dataAos": "right"
+    },
+    {
+      "id": 8,
+      "src": "image-6",
+      "title": "Blogs with Compelling Website that will Inspire You",
+      "priveTitle": "Website Design: Landing Page",
+      "description": "Consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum",
+      "postDate": "Dec 10, 2022",
+      "category": "web",
+      "skills": ["Website", "UIUX"],
+      "dataAos": "up"
+    },
+    {
+      "id": 9,
+      "src": "image-7",
+      "title": "Blogs with Compelling UI Design that will Inspire You",
+      "priveTitle": "UI/UX Design for App",
+      "description": "Consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum",
+      "postDate": "Sep 5, 2024",
+      "category": "design",
+      "skills": ["Design", "UIUX"],
+      "dataAos": "left"
+    },
+    {
+      "id": 10,
+      "src": "image-5",
+      "title": "Blogs with Compelling Mobile App that will Inspire You",
+      "priveTitle": "Parking App Casestudy",
+      "description": "Consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum",
+      "postDate": "June 27, 2022",
+      "category": "mobile",
+      "skills": ["Mobile App", "UIUX"],
+      "dataAos": "right"
+    },
+    {
+      "id": 11,
+      "src": "image-6",
+      "title": "Blogs with Compelling Website that will Inspire You",
+      "priveTitle": "Website Design: Landing Page",
+      "description": "Consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum",
+      "postDate": "Aug 17, 2023",
+      "category": "web",
+      "skills": ["Website", "UIUX"],
+      "dataAos": "up"
+    },
+    {
+      "id": 12,
+      "src": "image-7",
+      "title": "Blogs with Compelling Brand that will Inspire You",
+      "priveTitle": "Creative Design Agency (Brand)",
+      "description": "Consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum",
+      "postDate": "June 27, 2022",
+      "category": "brand",
+      "skills": ["Branding", "UIUX"],
+      "dataAos": "right"
+    },
+    {
+      "id": 13,
+      "src": "image-5",
+      "title": "Blogs with Compelling WebFlow that will Inspire You",
+      "priveTitle": "WebFlow Project",
+      "description": "Consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum",
+      "postDate": "Aug 17, 2023",
+      "category": "webflow",
+      "skills": ["Webflow", "UIUX"],
+      "dataAos": "up"
+    }
+  ],
+  "myOfferings": [
+    {
+      "id": "userExperience",
+      "imgSrc": "image-5",
+      "imgOrder": "-1",
+      "iconSrc": "ux-icon",
+      "title": "User Experience Design",
+      "priefDesc": "Crafting seamless and intuitive user joumeys to enhance engagement and satisfaction.",
+      "description": "At Wolf Pixel, we consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad.Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae. Itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum molestiae temporibus pariatur and reiciendis. Lorem ipsum dolor sit amet consectetur.",
+      "dataAos": "fade-right",
+      "iconAlt": "ux-experience design"
+    },
+    {
+      "id": "userInterface",
+      "imgSrc": "image-7",
+      "imgOrder": "1",
+      "iconSrc": "ui-icon",
+      "title": "User Interface Design",
+      "priefDesc": "Creating visually appending interfaces that combine aesthetics with functionality.",
+      "description": "At Wolf Pixel, we consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad.Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae. Itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum molestiae temporibus pariatur and reiciendis. Lorem ipsum dolor sit amet consectetur.",
+      "dataAos": "fade-up",
+      "iconAlt": "user interface design"
+    },
+    {
+      "id": "productPrototyping",
+      "imgSrc": "image-5",
+      "imgOrder": "-1",
+      "iconSrc": "product-prototype-icon",
+      "title": "Product Prototyping",
+      "priefDesc": "ransforming concepts into tangible prototypes to valiedate ideas and iterate quickly.",
+      "description": "At Wolf Pixel, we consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad.Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae. Itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum molestiae temporibus pariatur and reiciendis. Lorem ipsum dolor sit amet consectetur.",
+      "dataAos": "fade-left",
+      "iconAlt": "product prototype"
+    },
+    {
+      "id": "wireframing",
+      "imgSrc": "image-7",
+      "imgOrder": "1",
+      "iconSrc": "wireframe-icon",
+      "title": "Wireframing & Mockups",
+      "priefDesc": "Developing detaild wireframes and high-fidelity mockups to visualize design effectively.",
+      "description": "At Wolf Pixel, we consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad.Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae. Itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum molestiae temporibus pariatur and reiciendis. Lorem ipsum dolor sit amet consectetur.",
+      "dataAos": "fade-right",
+      "iconAlt": "wireframing & mockup"
+    },
+    {
+      "id": "responsiveWebDesign",
+      "imgSrc": "image-5",
+      "imgOrder": "-1",
+      "iconSrc": "responsive-icon",
+      "title": "Responsive Web Design",
+      "priefDesc": "Designing adaptable and responsive website that a consistent user experience devices.",
+      "description": "At Wolf Pixel, we consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad.Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae. Itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum molestiae temporibus pariatur and reiciendis. Lorem ipsum dolor sit amet consectetur.",
+      "dataAos": "fade-up",
+      "iconAlt": "responsive design"
+    },
+    {
+      "id": "mobileApp",
+      "imgSrc": "image-7",
+      "imgOrder": "1",
+      "iconSrc": "mobile-icon",
+      "title": "Mobile App Design",
+      "priefDesc": "Designing intuitive and user-friendly mobile applicationsfor iOS and Android platforms.",
+      "description": "At Wolf Pixel, we consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad.Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae. Itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum molestiae temporibus pariatur and reiciendis. Lorem ipsum dolor sit amet consectetur.",
+      "dataAos": "fade-left",
+      "iconAlt": "mobile app design"
+    }
+  ],
+  "worksExperiences": [
+    {
+      "id": 1,
+      "profession": "Creative Minds",
+      "address": "New York City, USA",
+      "date": "February 2022 - Present",
+      "desc": "Innvoated designs, New York, Senior Product Designer",
+      "skills": ["UXUI", "Branding"],
+      "imgShow": true
+    },
+    {
+      "id": 2,
+      "profession": "Innovative Designs Inc",
+      "address": "USA",
+      "date": "January 2020 - February 2022",
+      "desc": "Led UXUI, San Francisco. Crafting tomorrow's experiences",
+      "skills": ["UXUI", "Branding"],
+      "imgShow": false
+    },
+    {
+      "id": 3,
+      "profession": "Visionary Creations Ltd",
+      "address": "London, UK",
+      "date": "January 2020 - September 2021",
+      "desc": "Directed designs, London, Design Director, January 2020",
+      "skills": ["UXUI", "Branding"],
+      "imgShow": false
+    },
+    {
+      "id": 4,
+      "profession": "FutureTech Berlin",
+      "address": "Germany",
+      "date": "January 2020 - August 2021",
+      "desc": "Principal Designer, Berlin, Crafting tomorrow's experiences",
+      "skills": ["UXUI", "Branding"],
+      "imgShow": false
+    }
+  ],
+  "myAbout": [
+    {
+      "id": 1,
+      "imgSrc": "assets/about-person.jpg",
+      "title": "The Journy of Product Designer Extraordinaire",
+      "summary": "I'm Lora, Product Designer with 5+ years of experience. consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum molestiae temporibus pariatur and reiciendis. Lorem, ipsum dolor sit amet consectetur adipisicing elit."
+    },
+    {
+      "id": 2,
+      "imgSrc": "assets/about-person.jpg",
+      "title": "The Journy of Product Designer Extraordinaire",
+      "summary": "Consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi porro debitis pariatur molestias et aperiam rerum incidunt dolorem."
+    }
+  ]
+}
