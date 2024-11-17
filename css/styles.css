@@ -211,6 +211,7 @@ img {
   border: none;
   color: var(--white-color);
   background-color: var(--blue-color);
+  border: 3px solid white;
   font-size: 20px;
   cursor: pointer;
   z-index: 1000;
