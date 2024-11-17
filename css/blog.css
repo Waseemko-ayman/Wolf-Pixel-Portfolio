@@ -1,5 +1,9 @@
 /* ============================= Blog ============================= */
-
+.explore_blogs {
+  position: relative;
+  padding-top: var(--section-padding);
+  padding-bottom: var(--section-padding);
+}
 
 .portfolio .pagintion {
   margin-top: 60px;
@@ -120,10 +124,13 @@
   outline: none;
 }
 
+.blog_section .search_active > div {
+  position: relative;
+}
+
 .blog_section .search_active input {
   flex: 1;
   padding: 10px 15px;
-  margin-bottom: 7px;
   width: 300px;
   font-size: 16px;
   border: 1px solid var(--medium-gray-color);
@@ -201,11 +208,14 @@
   background-color: var(--blue-color);
 }
 
-.blog_section .error {
+.blog_section .search-error {
   color: var(--error-color);
   padding-left: 15px;
+  position: absolute;
+  top: 100%;
+  left: 0;
   display: none;
-  max-width: 300px;
+  padding-top: 7px;
 }
 
 .blog_section .not-found {

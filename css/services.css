@@ -63,15 +63,3 @@
     height: 100%;
   }
 }
-
-/* ============================= News Ticker ============================= */
-.ticker {
-  padding-top: var(--section-padding);
-  padding-bottom: var(--section-padding);
-}
-
-.ticker marquee {
-  font-size: 280px;
-  color: var(--white-color);
-  background-color: var(--blue-color);
-}

@@ -19,19 +19,19 @@
   box-sizing: border-box;
 }
 
+*::-webkit-scrollbar {
+  background-color: var(--light-gray-color);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--blue-color);
+}
+
 body {
   background-color: var(--white-color);
   font-family: Arial, Helvetica, sans-serif;
   font-display: swap;
   overflow-x: hidden;
-}
-
-::-webkit-scrollbar {
-  background-color: var(--light-gray-color);
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: var(--blue-color);
 }
 
 ul {
@@ -1004,7 +1004,7 @@ header nav li a:hover::before {
   transform: rotate(40deg);
 }
 
-/* ============================= My Work - Media Query ============================= */
+/* ============================= Blog - Media Query ============================= */
 
 @media (max-width: 991px) {
   .blog_cards {
@@ -1023,12 +1023,7 @@ header nav li a:hover::before {
   }
 
   .blog_cards::-webkit-scrollbar {
-    background-color: var(--light-gray-color);
     height: 10px;
-  }
-
-  .blog_cards::-webkit-scrollbar-thumb {
-    background-color: var(--blue-color);
   }
 }
 
@@ -1040,6 +1035,18 @@ header nav li a:hover::before {
   .blog_cards::-webkit-scrollbar {
     height: 0;
   }
+}
+
+/* ============================= News Ticker ============================= */
+.ticker {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.ticker marquee {
+  font-size: 280px;
+  color: var(--white-color);
+  background-color: var(--blue-color);
 }
 
 /* ============================= Footer ============================= */

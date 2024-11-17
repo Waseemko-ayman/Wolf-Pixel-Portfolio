@@ -114,8 +114,11 @@ async function data() {
     worksExperiences(result.worksExperiences);
     // Display Blogs Data
     blogsData(result.blogs);
-    // Blog Page - Display Blogs Search
-    searchOperation(result.blogs);
+    if (searchBtn) {
+      searchBtn.addEventListener("click", () => {
+        searchOperation(result.blogs);
+      });
+    }
     // Render Blogs Function
     renderBlogs(result.blogs, mainBlogCards, 3);
   } catch (error) {
@@ -123,7 +126,6 @@ async function data() {
   }
 }
 data();
-
 // ======================= Home Page - Offerings Section ======================== //
 
 let offeringsCards = document.querySelector(".offerings_cards");
@@ -302,40 +304,45 @@ function worksExperiences(worksExp) {
       // Build My Works Cards Layout
       myWorksCardsLayout(workCards, worksExp[i]);
     }
-    let workCard = document.querySelectorAll(".work_cards .card");
-    // [2] Check for saved ID in localStorage
-    const storedWorkId = window.localStorage.getItem("workSection_workId");
+  };
+  let workCard = document.querySelectorAll(".work_cards .card");
 
-    if (storedWorkId) {
+  // [2] Check for saved ID in localStorage
+  const storedWorkId = window.localStorage.getItem("workSection_workId");
+
+  if (storedWorkId) {
+    workCard.forEach((card) => {
+      // Remove Class active From All Cards
+      card.classList.remove("active");
+      card.lastElementChild.classList.remove("iconRotate");
+    });
+
+    let currentElId = document.querySelector(`[id="${storedWorkId}"]`);
+    let arrowRight = document.querySelector(`[id="${storedWorkId}"] .arrow-right`);
+
+    currentElId?.classList.add("active");
+    if (currentElId?.classList.contains("active")) {
+      // Add Class iconRotate to Icon In Current Target By Id
+      arrowRight?.classList.add("iconRotate");
+    };
+  };
+
+  // [1] Add click event listener to each card
+  workCard.forEach((card) => {
+    card.addEventListener("click", function (e) {
       workCard.forEach((card) => {
         // Remove Class active From All Cards
         card.classList.remove("active");
         card.lastElementChild.classList.remove("iconRotate");
       });
-      let currentElId = document.querySelector(`[id="${storedWorkId}"]`);
-      currentElId?.classList.add("active");
-      if (currentElId?.classList.contains("active")) {
-        // Add Class iconRotate to Icon In Current Target By Id
-        currentElId?.lastElementChild?.classList.add("iconRotate");
-      };
-    };
-
-    // [1] Add click event listener to each card
-    workCard.forEach((card) => {
-      card.addEventListener("click", function (e) {
-        workCard.forEach((card) => {
-          // Remove Class active From All Cards
-          card.classList.remove("active");
-          card.lastElementChild.classList.remove("iconRotate");
-        });
-        // Add Class active to Current Target
-        card.classList.add("active");
-        // Add Class iconRotate to Icon In Current Target
-        e.currentTarget.lastElementChild.classList.add("iconRotate");
-        window.localStorage.setItem("workSection_workId", e.currentTarget.id);
-      });
+      // Add Class active to Current Target
+      card.classList.add("active");
+      let eTargetArrow = document.querySelector(`.${e.currentTarget.getAttribute("class").split(" ")[2]} .arrow-right`);
+      // Add Class iconRotate to Icon In Current Target
+      eTargetArrow.classList.add("iconRotate");
+      window.localStorage.setItem("workSection_workId", e.currentTarget.id);
     });
-  };
+  });
 }
 // Build My Works Cards Layout
 function myWorksCardsLayout(workCards, worksExp) {
@@ -364,7 +371,7 @@ function myWorksCardsLayout(workCards, worksExp) {
 
   // Card Icon (Angle Right)
   let cardIcon = document.createElement("i");
-  cardIcon.classList.add("fa-solid", "fa-angle-right");
+  cardIcon.classList.add("fa-solid", "fa-angle-right", "arrow-right");
 
   // Add Date Icon To Date Div
   dateDiv.appendChild(dateIcon);
@@ -474,152 +481,6 @@ function servicesCardsLayout(servicesCards, myOfferings) {
 }
 
 // ================================ Portfolio Page ================================= //
-
-let blogs = [
-  {
-    id: 1,
-    src: "image-5",
-    title: "Blogs with Compelling Mobile App that will Inspire You",
-    priveTitle: "Parking App Casestudy",
-    description: "Consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum",
-    postDate: "June 27, 2022",
-    category: "mobile",
-    skills: ["Mobile App", "UIUX"],
-    dataAos: "right",
-  },
-  {
-    id: 2,
-    src: "image-6",
-    title: "Blogs with Compelling Website that will Inspire You",
-    priveTitle: "Agency Website Design",
-    description: "Consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum",
-    postDate: "Aug 17, 2023",
-    category: "web",
-    skills: ["Website", "UIUX"],
-    dataAos: "up",
-  },
-  {
-    id: 3,
-    src: "image-7",
-    title: "Blogs with Compelling UI Design that will Inspire You",
-    priveTitle: "Creative Saas Design",
-    description: "Consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum",
-    postDate: "Sep 5, 2024",
-    category: "design",
-    skills: ["Design", "UIUX"],
-    dataAos: "left",
-  },
-  {
-    id: 4,
-    src: "image-7",
-    title: "Blogs with Compelling Mobile App that will Inspire You",
-    priveTitle: "Parking App Casestudy",
-    description: "Consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum",
-    postDate: "Oct 2, 2019",
-    category: "mobile",
-    skills: ["Mobile App", "UIUX"],
-    dataAos: "right",
-  },
-  {
-    id: 5,
-    src: "image-6",
-    title: "Blogs with Compelling Website that will Inspire You",
-    priveTitle: "Real Estate Website Design",
-    description: "Consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum",
-    postDate: "May 20, 2015",
-    category: "web",
-    skills: ["Website", "UIUX"],
-    dataAos: "up",
-  },
-  {
-    id: 6,
-    src: "image-6",
-    title: "Blogs with Compelling UI Design that will Inspire You",
-    priveTitle: "UI/UX Design for App",
-    description: "Consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum",
-    postDate: "Sep 5, 2024",
-    category: "design",
-    skills: ["Design", "UIUX"],
-    dataAos: "left",
-  },
-  {
-    id: 7,
-    src: "image-5",
-    title: "Blogs with Compelling Mobile App that will Inspire You",
-    priveTitle: "Parking App Casestudy",
-    description: "Consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum",
-    postDate: "Nov 14, 2020",
-    category: "mobile",
-    skills: ["Mobile App", "UIUX"],
-    dataAos: "right",
-  },
-  {
-    id: 8,
-    src: "image-6",
-    title: "Blogs with Compelling Website that will Inspire You",
-    priveTitle: "Website Design: Landing Page",
-    description: "Consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum",
-    postDate: "Dec 10, 2022",
-    category: "web",
-    skills: ["Website", "UIUX"],
-    dataAos: "up",
-  },
-  {
-    id: 9,
-    src: "image-7",
-    title: "Blogs with Compelling UI Design that will Inspire You",
-    priveTitle: "UI/UX Design for App",
-    description: "Consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum",
-    postDate: "Sep 5, 2024",
-    category: "design",
-    skills: ["Design", "UIUX"],
-    dataAos: "left",
-  },
-  {
-    id: 10,
-    src: "image-5",
-    title: "Blogs with Compelling Mobile App that will Inspire You",
-    priveTitle: "Parking App Casestudy",
-    description: "Consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum",
-    postDate: "June 27, 2022",
-    category: "mobile",
-    skills: ["Mobile App", "UIUX"],
-    dataAos: "right",
-  },
-  {
-    id: 11,
-    src: "image-6",
-    title: "Blogs with Compelling Website that will Inspire You",
-    priveTitle: "Website Design: Landing Page",
-    description: "Consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum",
-    postDate: "Aug 17, 2023",
-    category: "web",
-    skills: ["Website", "UIUX"],
-    dataAos: "up",
-  },
-  {
-    id: 12,
-    src: "image-7",
-    title: "Blogs with Compelling Brand that will Inspire You",
-    priveTitle: "Creative Design Agency (Brand)",
-    description: "Consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum",
-    postDate: "June 27, 2022",
-    category: "brand",
-    skills: ["Branding", "UIUX"],
-    dataAos: "right",
-  },
-  {
-    id: 13,
-    src: "image-5",
-    title: "Blogs with Compelling WebFlow that will Inspire You",
-    priveTitle: "WebFlow Project",
-    description: "Consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum",
-    postDate: "Aug 17, 2023",
-    category: "webflow",
-    skills: ["Webflow", "UIUX"],
-    dataAos: "up",
-  },
-];
 
 // ============= Portfolio Page - Select tabs and blogs elements ============== //
 let tabs = document.querySelectorAll(".tabs button");
@@ -836,10 +697,10 @@ function exploreBlogCardLayout(blogData, exploreBlogInfo) {
 
 // ================== Blog Page - Show Search Blog ================= //
 let searchInput = document.getElementById("search");
-let search = document.getElementById("searchBtn");
+let searchBtn = document.getElementById("searchBtn");
 let pagintion = document.getElementById("pagintion");
 // ====================== Errors ====================== //
-let searchError = document.querySelector(".error");
+let searchError = document.getElementById("search-error");
 // ===================== Not Found ==================== //
 let notFound = document.querySelector(".not-found");
 
@@ -853,8 +714,6 @@ function searchOperation(blogs) {
       addBlogsSearchToLocalStorage(filteredBlogs);
       // Display Blogs Related To The Selected Tab
       renderBlogs(filteredBlogs, searchBlogCards);
-      // Show Pagination
-      pagintion.style.display = "inline-block";
       // Hide Not found Message
       notFound.style.display = "none";
     } else {
@@ -865,11 +724,9 @@ function searchOperation(blogs) {
       notFound.style.display = "block";
     }
   } else {
-    errorsStyling(searchInput, searchError, "var(--error-color)", "block", "Please enter a search query: <br> [Web, Mobile, Brand, Design]");
+    errorsStyling(searchInput, searchError, "var(--error-color)", "block", "Please enter a search query: [Web, Mobile, Brand, Design]");
   }
 }
-
-if (search) { search.addEventListener("click", function () { searchOperation(blogs); }); }
 
 // ============= Blog Page - Add Blogs Search To LocalStorage ============= //
 function addBlogsSearchToLocalStorage(filteredBlogs) { window.localStorage.setItem("blogs search", JSON.stringify(filteredBlogs)); }
@@ -880,8 +737,6 @@ function getBlogsFromLocalStorage() {
   if (data) {
     let blogs = JSON.parse(data);
     renderBlogs(blogs, searchBlogCards);
-  } else {
-
   }
 }
 // Trigger Get Blog Search From localStorage Fucntion
@@ -945,8 +800,6 @@ function setupCardListeners(targetContainer, blogArray) {
     });
   }
 }
-
-renderBlogs(blogs, mainBlogCards, 3);
 
 // ======================= Footer - Email Validation ======================= //
 
@@ -1078,13 +931,18 @@ let msgTextArea = document.querySelector(".talk_wrapper [name='message']");
 let emailError = document.querySelector(".talk_wrapper .email_error");
 let phoneError = document.querySelector(".talk_wrapper .phone_error");
 let messageError = document.querySelector(".talk_wrapper .message_error");
+let userData = [];
 
 // ======================== Name Validation ======================== //
 function checkTalkName() {
-  const nameReg = /[a-zA-Z]/ig;
+  const nameReg = /^[a-zA-Z\s]+$/;
+  // Regular expression to validate names:
+  // - Allows only letters (a-z, A-Z) and spaces.
+  // - Ensures the entire input matches the pattern (no extra characters).
+  // - At least one character is required (no empty names).
 
   nameInputs.forEach((nameInput) => {
-    if (nameInput.value !== "") {
+    if (nameInput.value.trim() !== "") {
       if (nameReg.test(nameInput.value)) {
         errorsStyling(nameInput, nameInput.nextElementSibling, "#ccc", "none");
       } else {
@@ -1155,17 +1013,26 @@ function storageUserDataInArray() {
 }
 
 // =================== Add Tokens To LocalStorage =================== //
-let userData = [];
 function addTokensToLocalStorage(userData) { window.localStorage.setItem("token", JSON.stringify(userData)); }
 
 // ================ Calling Function on From Submit ================ //
 if (startTalkForm) {
   startTalkForm.addEventListener("submit", function (e) {
+    let hasError = false;
+
     allInputs.forEach((input) => {
-      if (input.value === "" && msgTextArea.value === "") { e.preventDefault(); }
+      if (input.value === "") {
+        hasError = true;
+        e.preventDefault();
+      }
     });
 
-    if (fNameInput.value !== "" && lNameInput.value !== "" && emailInput.value !== "" && phoneInput.value !== "" && msgTextArea.value !== "") {
+    if (msgTextArea.value === "" || msgTextArea.value.length < 20) {
+      hasError = true;
+      e.preventDefault();
+    }
+
+    if (!hasError) {
       // Storage The User Data (Token) To Array
       storageUserDataInArray();
     }
