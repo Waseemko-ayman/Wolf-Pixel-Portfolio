@@ -141,7 +141,7 @@ function offerings(myOfferings) {
   // Open Offerings Card in Services Page Based On Section (Current Target Id)
   offeringsCard.forEach((offCard) => {
     offCard.addEventListener("click", function (e) {
-      console.log(e.currentTarget.id);
+      // console.log(e.currentTarget.id);
       location.href = `/html/services.html#${e.currentTarget.id}`;
     })
   })
@@ -436,7 +436,7 @@ function servicesCardsLayout(servicesCards, myOfferings) {
   let links = document.createElement("div");
   links.classList.add("links", "flexAlignCenter");
 
-  let talkLink = document.createElement("a");
+  let talkLink = document.createElement("button");
   talkLink.classList.add("btn", "style_btn");
   talkLink.onclick = function () {
     move('letsStartTalk.html');
@@ -447,7 +447,7 @@ function servicesCardsLayout(servicesCards, myOfferings) {
   let talkLinkIcon = document.createElement("i");
   talkLinkIcon.classList.add("fa-solid", "fa-angle-right");
 
-  let viewWorks = document.createElement("a");
+  let viewWorks = document.createElement("button");
   viewWorks.classList.add("btn");
   viewWorks.href = "#";
   viewWorks.textContent = "View Works";
@@ -631,15 +631,15 @@ function exploreBlogCardLayout(blogData, exploreBlogInfo) {
     let infosPara = document.createElement("p");
     infosPara.textContent = `${blogData.description}`;
 
-    let infosLink = document.createElement("a");
-    infosLink.href = "#";
-    infosLink.classList.add("btn", "style_btn")
-    infosLink.textContent = "Read More";
+    let infosBtn = document.createElement("button");
+    infosBtn.href = "#";
+    infosBtn.classList.add("btn", "style_btn")
+    infosBtn.textContent = "Read More";
 
     let linkIcon = document.createElement("i");
     linkIcon.classList.add("fa-solid", "fa-angle-right");
     // Add Link Icon To Link
-    infosLink.appendChild(linkIcon);
+    infosBtn.appendChild(linkIcon);
 
     let posted = document.createElement("div");
     posted.classList.add("posted");
@@ -682,7 +682,7 @@ function exploreBlogCardLayout(blogData, exploreBlogInfo) {
     infosText.appendChild(infosPara);
 
     // Add link (a tag) To informations Text
-    infosText.appendChild(infosLink);
+    infosText.appendChild(infosBtn);
 
     // Add Posted Div To informations Text
     infosText.appendChild(posted);

@@ -60,15 +60,6 @@
   resize: none;
 }
 
-/* .talk_box form .input-field {
-  padding-right: 10px;
-}
-
-.talk_box form .input-field i {
-  padding-left: 5px;
-  cursor: pointer;
-} */
-
 .talk_box form button {
   color: var(--white-color);
   background-color: var(--blue-color);
@@ -78,7 +69,6 @@
   font-size: 13px;
   letter-spacing: 1px;
   border: none;
-  cursor: pointer;
 }
 
 .talk_box form button i {

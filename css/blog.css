@@ -73,7 +73,7 @@
   line-height: 1.5;
 }
 
-.explore_blogs .info a.btn {
+.explore_blogs .info button {
   display: inline-block;
   margin-top: 40px;
 }
@@ -121,7 +121,6 @@
 
 .blog_section .search_active :is(input, button) {
   border-radius: 30px;
-  outline: none;
 }
 
 .blog_section .search_active > div {
@@ -146,7 +145,6 @@
   background-color: var(--blue-color);
   font-size: 15px;
   border: none;
-  cursor: pointer;
 }
 
 .blog_cards {
@@ -199,8 +197,6 @@
   width: 30px;
   height: 30px;
   font-size: 13px;
-  cursor: pointer;
-  transition: var(--transition);
 }
 
 .blog_section .pagintion button:hover {
