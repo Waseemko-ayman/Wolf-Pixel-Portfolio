@@ -1,30 +1,3 @@
-
-// // Initialize EmailJS with your User ID
-// (function() {
-//   emailjs.init("YOUR_USER_ID");
-// })();
-
-// document.getElementById("emailForm").addEventListener("submit", function(event) {
-//   event.preventDefault(); // لمنع إعادة تحميل الصفحة
-
-//   // الحصول على قيمة البريد الإلكتروني
-//   const emailValue = document.getElementById("userEmail").value;
-
-//   // إعداد بيانات البريد الإلكتروني
-//   const templateParams = {
-//     to_email: emailValue,
-//   };
-
-//   // إرسال البريد باستخدام EmailJS
-//   emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", templateParams)
-//     .then((response) => {
-//       console.log("Email sent successfully!", response.status, response.text);
-//     })
-//     .catch((error) => {
-//       console.error("Error sending email:", error);
-//     });
-// });
-
 // ================ Optimize Images in JavaScript ================ //
 
 // document.addEventListener("DOMContentLoaded", async () => {
