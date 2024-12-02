@@ -37,6 +37,11 @@
   gap: 15px;
 }
 
+.talk_box :is(input, textarea) {
+  color: var(--black-color);
+  background-color: var(--fff-color);
+}
+
 .talk_box form :is(input:not(input[name="agree"]), textarea) {
   margin-top: 5px;
 }
@@ -53,7 +58,7 @@
 .talk_box
   form
   :is(.input-field, input:not([type="password"]), .name input, textarea) {
-  border: 1px solid var(--light-gray-color);
+  border: 1px solid var(--medium-gray-color);
 }
 
 .talk_box form textarea {
@@ -61,7 +66,7 @@
 }
 
 .talk_box form button {
-  color: var(--white-color);
+  color: white;
   background-color: var(--blue-color);
   margin: 15px 0 20px;
   gap: 10px;

@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Awessome Library -->
-    <link rel="stylesheet" href="../../css/all.min.css" />
-    <link rel="stylesheet" href="../../css/letsStartTalk.css" />
-    <link rel="stylesheet" href="../../css/styles.css" />
-    <!-- <link rel="stylesheet" href="../../css/sweetalert.css" /> -->
+    <link rel="stylesheet" href="../../css/all.min.css">
+    <link rel="stylesheet" href="../../css/letsStartTalk.css">
+    <link rel="stylesheet" href="../../css/styles.css">
+    <!-- <link rel="stylesheet" href="../../css/sweetalert.css"> -->
     <!-- AOS Library -->
-    <!-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" /> -->
+    <!-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> -->
     <!-- <script src="https://unpkg.com/browser-image-compression@latest/dist/browser-image-compression.js"></script> -->
     <!-- tab image -->
-    <link rel="shortcut icon" href="../../assets/Walf logo.png" />
+    <link rel="shortcut icon" href="../../assets/Walf logo.png">
     <title>Wolf Pixel | let's Start Talk</title>
   </head>
   <body>
@@ -25,7 +25,7 @@
             alt="Walf Pixel"
             title="Walf Pixel"
             loading="lazy"
-          />
+        >
           <h2>Wolf Pixel</h2>
         </div>
       </div>
@@ -39,6 +39,15 @@
     >
       <i class="fa-solid fa-angle-up"></i>
     </button>
+    <!--========================= Theme Settings ==========================-->
+    <div class="theme-wrapper flexAlignCenter">
+      <div class="theme flexCenter">
+        <i class="fa-solid fa-moon"></i>
+      </div>
+      <div class="gear-wrapper flexCenter">
+        <i class="fa-solid fa-gear"></i>
+      </div>
+    </div>
     <!--============================== Header =============================-->
     <header class="start_talk">
       <div class="container flexCenterBetween">
@@ -49,7 +58,7 @@
               alt="Walf Pixel"
               title="Walf Pixel"
               loading="lazy"
-            />
+          >
             <h2>Wolf Pixel</h2>
           </a>
         </div>
@@ -82,10 +91,7 @@
               >
             </li>
           </ul>
-          <button
-            onclick="move('letsStartTalk.html')"
-            class="btn page_active"
-          >
+          <button onclick="move('letsStartTalk.html')" class="btn page_active">
             Let's Talk <i class="fa-solid fa-angle-right"></i>
           </button>
         </nav>
@@ -107,24 +113,30 @@
       </div>
       <div class="talk_wrapper flexCenter">
         <div class="talk_box">
-          <form action="https://formspree.io/f/manybqvl" class="flex" id="talk_form" method="POST" autocomplete="off">
+          <form
+            action="https://formspree.io/f/manybqvl"
+            class="flex"
+            id="talk_form"
+            method="POST"
+            autocomplete="off"
+          >
             <!-- First Name & Last Name -->
             <div class="field name flex">
               <div>
                 <label>First name</label>
-                <input type="text" name="first-name" placeholder="First Name" />
+                <input type="text" name="first-name" placeholder="First Name">
                 <p class="error name_error"></p>
               </div>
               <div>
                 <label>Last name</label>
-                <input type="text" name="last-name" placeholder="Last Name" />
+                <input type="text" name="last-name" placeholder="Last Name">
                 <p class="error name_error"></p>
               </div>
             </div>
             <!-- Email -->
             <div class="field email">
               <label>Email</label>
-              <input type="email" name="email" placeholder="you@example.com" />
+              <input type="email" name="email" placeholder="you@example.com">
               <p class="error email_error">
                 Please enter a valid email: you@example.com
               </p>
@@ -136,7 +148,7 @@
                 type="text"
                 name="phone"
                 placeholder="00(123) 45678-91011"
-              />
+            >
               <p class="error phone_error"></p>
             </div>
             <div class="field message">
@@ -150,7 +162,7 @@
               <p class="error message_error"></p>
             </div>
             <div class="agree flex">
-              <input type="checkbox" name="agree" id="agree" />
+              <input type="checkbox" name="agree" id="agree">
               <p>You agree to our friendly <a href="#">privacy policy</a></p>
             </div>
             <button type="submit" name="submit" class="field flexCenter">
@@ -197,11 +209,11 @@
           title="contact us"
           data-aos="fade-up"
           loading="lazy"
-        />
+      >
       </div>
     </div>
     <!--============================== Blog ===============================-->
-    <section class="blog_section">
+    <div class="blog_section">
       <div class="container">
         <div class="information flexBetween">
           <h2 data-aos="fade-right">Latest <span> blog post</span></h2>
@@ -219,7 +231,7 @@
           <!-- Code In JavaScript -->
         </div>
       </div>
-    </section>
+    </div>
     <!--============================== Footer =============================-->
     <footer>
       <div class="container">
@@ -232,13 +244,13 @@
                 name="email"
                 placeholder="Enter your email"
                 autocomplete="off"
-              />
+            >
               <button type="submit" id="submit" name="footer-submit">
                 <img
                   src="../../assets/send-icon.png"
                   alt="send"
                   loading="lazy"
-                />
+              >
               </button>
             </div>
             <p class="error" id="email-error"></p>
@@ -253,7 +265,7 @@
                   alt="Walf Pixel"
                   title="Walf Pixel"
                   loading="lazy"
-                />
+              >
                 Wolf Pixel
               </a>
             </div>

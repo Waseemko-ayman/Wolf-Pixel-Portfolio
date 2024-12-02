@@ -25,15 +25,16 @@
   width: 550px;
   height: 440px;
   object-fit: cover;
-  box-shadow: 0 0 10px #ddd;
 }
 
 .services .info h2 {
+  color: var(--black-color);
   font-size: 35px;
   margin-bottom: 30px;
 }
 
 .services .info p {
+  color: var(--bold-gray-color);
   font-size: 18px;
   line-height: 1.5;
 }

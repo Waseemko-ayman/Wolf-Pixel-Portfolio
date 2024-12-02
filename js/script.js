@@ -26,7 +26,6 @@
 // });
 
 // ========================== Loading Page ======================= //
-
 window.addEventListener("load", function () {
   let loader = document.querySelector(".loading");
   document.body.style.overflow = "hidden";
@@ -37,11 +36,9 @@ window.addEventListener("load", function () {
 })
 
 // ========================== Function URL ========================== //
-
 function move(url) { window.location = url }
 
 // ========================== Floating Button ======================= //
-
 let floatBtn = document.getElementById("floating_btn");
 let header = document.querySelector("header");
 
@@ -61,8 +58,56 @@ floatBtn.onclick = function () {
   });
 };
 
-// ======================== Header - NavBar ========================= //
+// ======================== Theme Settings ========================== //
+let themeDiv = document.querySelector(".theme-wrapper");
+let themeIconWrapper = document.querySelector(".theme");
+let themeIcon = document.querySelector(".theme i");
+let gearWrapper = document.querySelector(".gear-wrapper");
+let gear = document.querySelector(".gear-wrapper i");
 
+// Toggle settings menu and gear icon spin
+gearWrapper.addEventListener("click", (e) => {
+  // Prevent event from propagating to document click
+  e.stopPropagation();
+  themeDiv.classList.toggle("left");
+  gear.classList.toggle("fa-spin");
+});
+
+// Remove effects when clicking anywhere outside of gearWrapper
+document.addEventListener("click", (e) => {
+  // Check if the click was outside the gearWrapper
+  if (!gearWrapper.contains(e.target)) {
+    themeDiv.classList.remove("left");
+    gear.classList.remove("fa-spin");
+  }
+});
+
+// Apply stored theme settings if available
+if (window.localStorage.getItem("darkMode") && window.localStorage.getItem("currentThemeIcon")) {
+  themeIcon.className = window.localStorage.getItem("currentThemeIcon");
+  document.body.className = window.localStorage.getItem("darkMode");
+}
+
+// Toggle dark mode when theme icon is clicked
+themeIconWrapper.addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
+
+  if (themeIcon.classList.contains("fa-moon")) {
+    // Switch to light mode
+    window.localStorage.setItem("currentThemeIcon", "fa-solid fa-sun");
+    themeIcon.className = window.localStorage.getItem("currentThemeIcon");
+    window.localStorage.setItem("darkMode", "dark-mode");
+    document.body.className = window.localStorage.getItem("darkMode");
+  } else {
+    // Switch to dark mode
+    window.localStorage.setItem("currentThemeIcon", "fa-solid fa-moon");
+    themeIcon.className = window.localStorage.getItem("currentThemeIcon");
+    window.localStorage.removeItem("darkMode");
+    document.body.classList.remove("dark-mode");
+  }
+});
+
+// ======================== Header - NavBar ========================= //
 let navBar = document.querySelector("nav");
 let menuWrapper = document.querySelector(".menu-wrapper");
 let menuIcon = document.getElementById("menu");
@@ -87,6 +132,7 @@ async function data() {
     worksExperiences(result.worksExperiences);
     // Display Blogs Data
     blogsData(result.blogs);
+    // Search Button Event
     if (searchBtn) {
       searchBtn.addEventListener("click", () => {
         searchOperation(result.blogs);
@@ -99,6 +145,7 @@ async function data() {
   }
 }
 data();
+
 // ======================= Home Page - Offerings Section ======================== //
 
 let offeringsCards = document.querySelector(".offerings_cards");
@@ -324,11 +371,16 @@ function myWorksCardsLayout(workCards, worksExp) {
   card.setAttribute("data-aos", worksExp.dataAos);
   card.id = `${worksExp.id}`;
 
+  let infoDiv = document.createElement("div");
+  infoDiv.classList.add("info-div", "flexAlignCenter");
+  infoDiv.style.gap = "20px";
+
   let spanId = document.createElement("span");
   spanId.textContent = `0${worksExp.id}`;
 
   let work = document.createElement("div");
   work.classList.add("work");
+  work.style.marginLeft = "200px";
 
   let h4 = document.createElement("h4");
   h4.textContent = `${worksExp.profession}, ${worksExp.address}`;
@@ -358,11 +410,14 @@ function myWorksCardsLayout(workCards, worksExp) {
   // Add Date Div To Work Div
   work.appendChild(dateDiv);
 
-  // Add Span Id To Card
-  card.appendChild(spanId);
+  // Add Span Id To Info Card
+  infoDiv.appendChild(spanId);
 
-  // Add Work Div To Card
-  card.appendChild(work);
+  // Add Work Div To Info Card
+  infoDiv.appendChild(work);
+
+  // Add Info Carrd To Card
+  card.appendChild(infoDiv);
 
   // Add Card Icon (Angle Right) To Card
   card.appendChild(cardIcon);

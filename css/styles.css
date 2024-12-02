@@ -4,13 +4,23 @@
   --light-gray-color: #ccc;
   --medium-gray-color: #b9b9b9;
   --bold-gray-color: #35353d;
-  --black-color: #01030a;
+  --black-color: #1c1d1f;
   --white-color: white;
   --f2f2f2-color: #f2f2f2;
+  --f9f9f9-color: #f9f9f9;
+  --fff-color: #fff;
   --error-color: rgb(240, 53, 53);
   --valid-color: rgb(2, 156, 2);
   --section-padding: 50px;
   --transition: all 0.3s;
+}
+
+.dark-mode {
+  --white-color: #1c1d1f;
+  --black-color: white;
+  --bold-gray-color: #b9b9b9;
+  --f9f9f9-color: #282828;
+  --fff-color: #282828;
 }
 
 * {
@@ -144,7 +154,8 @@ button {
 }
 
 .style_btn {
-  color: var(--white-color);
+  /* color: var(--white-color); */
+  color: white;
   background-color: var(--blue-color) !important;
   border-color: var(--blue-color) !important;
 }
@@ -159,7 +170,7 @@ button {
 }
 
 .btn:hover {
-  color: var(--white-color);
+  color: white;
   background-color: var(--blue-color);
   border-color: var(--blue-color);
 }
@@ -220,7 +231,7 @@ img {
   border: none;
   color: var(--white-color);
   background-color: var(--blue-color);
-  border: 3px solid white;
+  border: 3px solid var(--white-color);
   font-size: 20px;
   cursor: pointer;
   z-index: 1000;
@@ -259,7 +270,7 @@ img {
   width: 100%;
   height: 100%;
   background-color: var(--white-color);
-  z-index: 99999;
+  z-index: 999999;
 }
 
 .loading .logo {
@@ -275,6 +286,7 @@ img {
 }
 
 .loading h2 {
+  color: var(--black-color);
   font-size: 50px;
 }
 
@@ -298,12 +310,49 @@ img {
   }
 }
 
+/* ========================= Theme Settings ========================= */
+.theme-wrapper {
+  background-color: var(--white-color);
+  position: fixed;
+  left: -55px;
+  top: 20%;
+  border-radius: 0 30px 30px 0;
+  z-index: 99999;
+  transition: var(--transition);
+}
+.theme-wrapper.left {
+  left: -1px !important;
+}
+.theme-wrapper :is(.theme, .gear-wrapper) {
+  padding: 10px 0;
+  width: 50px;
+  font-size: 17px;
+  cursor: pointer;
+}
+.theme-wrapper .theme {
+  background-color: inherit;
+  border: 1px solid #dbdbdb;
+  border-right: none;
+}
+.theme-wrapper .theme i {
+  color: var(--black-color);
+}
+.theme-wrapper .gear-wrapper {
+  background-color: inherit;
+  border: 1px solid #dbdbdb;
+  border-radius: 0 30px 30px 0;
+  cursor: pointer;
+}
+.theme-wrapper .gear-wrapper i {
+  color: var(--blue-color);
+}
+
 /* ============================= Header ============================= */
 
 header {
   position: relative;
   padding: 20px 0;
-  background-color: var(--white-color);
+  background-color: inherit;
   border-bottom: 1px solid var(--light-gray-color);
 }
 
@@ -556,7 +605,7 @@ header nav li a:hover::before {
 }
 
 .landing h1 span {
-  color: var(--v-color);
+  color: var(--blue-color);
 }
 
 .links {
@@ -913,17 +962,17 @@ header nav li a:hover::before {
   font-size: 15px;
 }
 
-.my_work .work_cards .card .work + i {
-  transition: var(--transition);
-}
-
 .my_work .work_cards .card :is(span, i) {
   font-size: 30px;
   font-weight: bold;
 }
 
-.active {
-  color: var(--white-color) !important;
+.my_work .work_cards i {
+  transition: var(--transition);
+}
+
+:is(.active, .active .date i) {
+  color: white !important;
   background-color: var(--blue-color) !important;
   border-radius: 8px;
 }
@@ -933,6 +982,18 @@ header nav li a:hover::before {
 }
 
 /* ============================= My Work - Media Query ============================= */
+
+@media (max-width: 991px) {
+  .my_work .info-div .work {
+    margin-left: 50px !important;
+  }
+}
+
+@media (max-width: 601px) {
+  .my_work .info-div .work {
+    margin-left: 20px !important;
+  }
+}
 
 @media (max-width: 426px) {
   .my_work .work_cards .card {
@@ -947,9 +1008,15 @@ header nav li a:hover::before {
     p {
       font-size: 14px;
     }
-    .work + i {
-      display: none;
-    }
+  }
+  .info-div + i {
+    display: none;
+  }
+  .my_work .info-div {
+    justify-content: space-between;
+  }
+  .my_work .info-div .work {
+    margin-left: 0 !important;
   }
 }
 
@@ -1061,7 +1128,7 @@ header nav li a:hover::before {
 
 footer {
   color: var(--white-color);
-  background-color: var(--black-color);
+  background-color: #1c1d1f;
 }
 
 footer :is(.connect, .social_sec) {
@@ -1070,13 +1137,18 @@ footer :is(.connect, .social_sec) {
   border-bottom: 1px solid var(--medium-gray-color);
 }
 
+footer .connect h4 {
+  color: white !important;
+  font-size: 18px;
+  font-weight: normal;
+}
+
 footer .social_sec .logo {
   display: inline-block;
 }
 
-footer .connect h4 {
-  font-size: 18px;
-  font-weight: normal;
+footer .social_sec .logo a {
+  color: white !important;
 }
 
 footer .connect .connected {
@@ -1207,15 +1279,16 @@ footer .social_sec .social {
 
 footer .social_sec .social a {
   font-size: 18px;
-  color: var(--white-color);
+  color: white;
   width: 45px;
   height: 45px;
   border-radius: 50%;
-  background-color: #04112d;
+  background-color: #35353d;
   transition: var(--transition);
 }
 
 footer .social_sec .social a:hover {
+  color: white;
   background-color: var(--blue-color);
 }
 
