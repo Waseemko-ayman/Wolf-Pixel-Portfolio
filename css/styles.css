@@ -1113,15 +1113,28 @@ header nav li a:hover::before {
 }
 
 /* ============================= News Ticker ============================= */
-.ticker {
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
-
-.ticker marquee {
-  font-size: 280px;
+.marquee-wrapper {
   color: var(--white-color);
   background-color: var(--blue-color);
+  width: 100%;
+  overflow: hidden; /* يخفى النص الذي يخرج من الحاوية */
+  position: relative;
+}
+
+.marquee-content {
+  font-size: 280px;
+  display: inline-block;
+  white-space: nowrap; /* منع التفاف النص */
+  animation: marquee 30s linear infinite; /* التأثير المتحرك */
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(20%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 /* ============================= Footer ============================= */
