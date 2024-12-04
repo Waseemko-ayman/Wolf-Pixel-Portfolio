@@ -269,7 +269,7 @@ img {
   visibility: visible;
 }
 
-/* ============================= Mdeia Query ============================= */
+/* ====================== Floating Button - Mdeia Query ====================== */
 
 @media (min-width: 426px) and (max-width: 769px) {
   .floating {
