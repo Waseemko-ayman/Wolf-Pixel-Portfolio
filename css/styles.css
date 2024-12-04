@@ -176,7 +176,7 @@ button {
   border-radius: 50px;
   overflow: hidden;
   background: transparent;
-  transition: all .3s linear;
+  transition: all 0.3s linear;
 }
 
 .btn:hover {
@@ -192,7 +192,7 @@ button {
   left: 0;
   background-color: var(--blue-color);
   z-index: -1;
-  transition: all .3s linear;
+  transition: all 0.3s linear;
 }
 
 .btn:hover::before {
@@ -1225,12 +1225,32 @@ footer .connect .error {
 
 footer .connect .form button {
   background-color: transparent;
+  padding: 4px 0px 4px 4px;
   border: none;
 }
 
 footer .connect .form button i {
   color: var(--white-color);
   font-size: 18px;
+  transition: var(--transition);
+}
+
+footer .connect .form button:hover .paper-wrapper {
+  animation: fly 0.6s ease-in-out infinite alternate;
+}
+
+footer .connect .form button:hover i {
+  transform: rotate(45deg) scale(1.1);
+}
+
+@keyframes fly {
+  from {
+    transform: translateY(0.1em);
+  }
+
+  to {
+    transform: translateY(-0.1em);
+  }
 }
 
 .connected-popup {
@@ -1324,8 +1344,21 @@ footer .social_sec .social a {
 }
 
 footer .social_sec .social a:hover {
-  color: white;
   background-color: var(--blue-color);
+}
+
+footer .social_sec .social a:hover i {
+  color: white;
+  animation: shake .2s ease-in-out infinite alternate;
+}
+
+@keyframes shake {
+  from {
+    transform: rotate(0) scale(1.2);
+  }
+  to {
+    transform: rotate(7deg) scale(1.2);
+  }
 }
 
 footer .copy_right {
