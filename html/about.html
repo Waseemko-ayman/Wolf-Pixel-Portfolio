@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="../../css/about.css">
     <link rel="stylesheet" href="../../css/styles.css">
     <!-- AOS Library -->
-    <!-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> -->
-    <!-- <script src="https://unpkg.com/browser-image-compression@latest/dist/browser-image-compression.js"></script> -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/browser-image-compression@latest/dist/browser-image-compression.js"></script>
     <!-- tab image -->
     <link rel="shortcut icon" href="../../assets/Walf-logo.png">
     <title>Wolf Pixel | About</title>
@@ -46,7 +46,7 @@
       </div>
     </div>
     <!--============================== Header =============================-->
-    <header>
+    <header class="overflowHidden">
       <div class="container flexCenterBetween">
         <div class="logo" data-aos="fade-right">
           <a class="flexAlignCenter" onclick="move('home.html')">
@@ -97,11 +97,11 @@
       </div>
     </header>
     <!--======================== About Us Section =========================-->
-    <div class="about-us">
+    <div class="about-us overflowHidden">
       <div class="container">
         <div class="title">
-          <h2 data-aos="fade-right">About Us</h2>
-          <p data-aos="fade-left">
+          <h2 data-aos="fade-down">About Us</h2>
+          <p data-aos="fade-up">
             Creativity roars and Innovation HosIs, Unveiling Our Origins,
             Vision, and Unyieding Commitment to Crafting Unforgettable
             Experiences Talicored Just for You.
@@ -163,7 +163,7 @@
       </div>
     </div>
     <!--============================ My Work ==============================-->
-    <div class="my_work">
+    <div class="my_work overflowHidden">
       <div class="container">
         <div class="title" data-aos="fade-up">
           <h2>My Work <span>Experience</span></h2>
@@ -177,7 +177,7 @@
       </div>
     </div>
     <!--============================== Blog ===============================-->
-    <div class="blog_section">
+    <div class="blog_section overflowHidden">
       <div class="container">
         <div class="information flexBetween">
           <h2 data-aos="fade-right">Latest <br><span> blog post</span></h2>
@@ -197,7 +197,7 @@
       </div>
     </div>
     <!--============================== Footer =============================-->
-    <footer>
+    <footer class="overflowHidden">
       <div class="container">
         <div class="connect flexCenterBetween">
           <h4 data-aos="fade-right">Stay connected w/ me.</h4>
@@ -252,6 +252,6 @@
       </div>
     </footer>
     <script src="../../js/script.js"></script>
-    <!-- <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> <script> AOS.init(); </script> -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> <script> AOS.init(); </script>
   </body>
 </html>

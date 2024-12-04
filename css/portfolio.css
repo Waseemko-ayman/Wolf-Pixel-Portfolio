@@ -61,18 +61,6 @@
   font-size: 20px;
 }
 
-.portfolio .pagintion {
-  margin-top: 60px;
-  gap: 7px;
-}
-
-.portfolio .pagintion button {
-  border: 1px solid #eee;
-  width: 30px;
-  height: 30px;
-  font-size: 13px;
-}
-
 /* ============================= Portfolio - Media Query ============================= */
 
 @media (min-width: 769px) {

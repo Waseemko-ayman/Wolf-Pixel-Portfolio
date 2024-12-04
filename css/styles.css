@@ -138,6 +138,10 @@ a {
   grid-template-columns: 1fr 1fr;
 }
 
+.overflowHidden {
+  overflow: hidden;
+}
+
 /* ============================= Component ============================= */
 
 :is(.landing, .offerings, .experiences, .my_work, .blog_section, footer) {
@@ -146,9 +150,12 @@ a {
   padding-bottom: var(--section-padding);
 }
 
+:is(input, button) {
+  outline: none;
+}
+
 button {
   color: var(--black-color);
-  outline: none;
   cursor: pointer;
   transition: var(--transition);
 }
@@ -1180,7 +1187,6 @@ footer .connect .form input {
   color: var(--white-color);
   background-color: inherit;
   border: none;
-  outline: none;
   flex: 1;
   height: 35px;
   padding-right: 10px;

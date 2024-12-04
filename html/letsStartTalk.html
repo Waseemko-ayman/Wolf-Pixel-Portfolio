@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="../../css/styles.css">
     <!-- <link rel="stylesheet" href="../../css/sweetalert.css"> -->
     <!-- AOS Library -->
-    <!-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> -->
-    <!-- <script src="https://unpkg.com/browser-image-compression@latest/dist/browser-image-compression.js"></script> -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/browser-image-compression@latest/dist/browser-image-compression.js"></script>
     <!-- tab image -->
     <link rel="shortcut icon" href="../../assets/Walf-logo.png">
     <title>Wolf Pixel | let's Start Talk</title>
@@ -47,7 +47,7 @@
       </div>
     </div>
     <!--============================== Header =============================-->
-    <header class="start_talk">
+    <header class="start_talk overflowHidden">
       <div class="container flexCenterBetween">
         <div class="logo" data-aos="fade-right">
           <a class="flexAlignCenter" onclick="move('home.html')">
@@ -95,10 +95,10 @@
       </div>
     </header>
     <!--============================== let's Talk ============================-->
-    <section class="wrapper">
+    <div class="wrapper overflowHidden">
       <div class="title">
-        <h2 data-aos="fade-right">Let's Start Talk</h2>
-        <p data-aos="fade-left">
+        <h2 data-aos="fade-down">Let's Start Talk</h2>
+        <p data-aos="fade-up">
           Reach out to us and let's discuss how We're here to listen and help
           you achieve your goals.
         </p>
@@ -113,19 +113,19 @@
             autocomplete="off">
             <!-- First Name & Last Name -->
             <div class="field name flex">
-              <div>
+              <div data-aos="fade-right">
                 <label>First name</label>
                 <input type="text" name="first-name" placeholder="First Name">
                 <p class="error name_error"></p>
               </div>
-              <div>
+              <div data-aos="fade-left">
                 <label>Last name</label>
                 <input type="text" name="last-name" placeholder="Last Name">
                 <p class="error name_error"></p>
               </div>
             </div>
             <!-- Email -->
-            <div class="field email">
+            <div class="field email" data-aos="fade-right">
               <label>Email</label>
               <input type="email" name="email" placeholder="you@example.com">
               <p class="error email_error">
@@ -133,7 +133,7 @@
               </p>
             </div>
             <!-- Phone -->
-            <div class="field phone">
+            <div class="field phone" data-aos="fade-left">
               <label>Phone number</label>
               <input
                 type="text"
@@ -141,7 +141,7 @@
                 placeholder="00(123) 45678-91011">
               <p class="error phone_error"></p>
             </div>
-            <div class="field message">
+            <div class="field message" data-aos="fade-right">
               <label>Message</label>
               <textarea
                 name="message"
@@ -150,35 +150,35 @@
                 rows="6"></textarea>
               <p class="error message_error"></p>
             </div>
-            <div class="agree flex">
+            <div class="agree flex" data-aos="fade-left">
               <input type="checkbox" name="agree" id="agree">
               <p>You agree to our friendly <a href="#">privacy policy</a></p>
             </div>
-            <button type="submit" name="submit" class="field flexCenter">
+            <button type="submit" name="submit" class="field flexCenter" data-aos="fade-up">
               Send message <i class="fa-solid fa-arrow-right"></i>
             </button>
           </form>
         </div>
       </div>
-    </section>
+    </div>
     <!--============================== Contact Us ============================-->
     <div class="contact_us">
       <div class="container">
         <div class="information flexBetween">
           <div class="text">
-            <span>Contact us</span>
-            <h3>Reach Out to Us:</h3>
-            <p>We're Here to Listen, Collaborate, and Bring Your Vision</p>
+            <span data-aos="fade-down">Contact us</span>
+            <h3 data-aos="fade-right">Reach Out to Us:</h3>
+            <p data-aos="fade-up">We're Here to Listen, Collaborate, and Bring Your Vision</p>
           </div>
           <div class="contact_info">
-            <div class="location flex">
+            <div class="location flex" data-aos="fade-left">
               <i class="fa-solid fa-location-dot"></i>
               <div>
                 <span>Palestine</span>
                 <span>594 Views, Gaza, OK 72908-2340</span>
               </div>
             </div>
-            <div class="location flex">
+            <div class="location flex"  data-aos="fade-left">
               <i class="fa-solid fa-location-dot"></i>
               <div>
                 <span>Giary Tunnel</span>
@@ -190,7 +190,7 @@
       </div>
     </div>
     <!--============================== Paper =============================-->
-    <div class="paper">
+    <div class="paper overflowHidden">
       <div class="container">
         <img
           src="../../assets/image-1.jpg"
@@ -201,7 +201,7 @@
       </div>
     </div>
     <!--============================== Blog ===============================-->
-    <div class="blog_section">
+    <div class="blog_section overflowHidden">
       <div class="container">
         <div class="information flexBetween">
           <h2 data-aos="fade-right">Latest <span> blog post</span></h2>
@@ -221,7 +221,7 @@
       </div>
     </div>
     <!--============================== Footer =============================-->
-    <footer>
+    <footer class="overflowHidden">
       <div class="container">
         <div class="connect flexCenterBetween">
           <h4 data-aos="fade-right">Stay connected w/ me.</h4>
@@ -276,6 +276,6 @@
       </div>
     </footer>
     <script src="../../js/script.js"></script>
-    <!-- <script src="../../js/sweetalert.min.js"></script> -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> <script> AOS.init(); </script>
   </body>
 </html>

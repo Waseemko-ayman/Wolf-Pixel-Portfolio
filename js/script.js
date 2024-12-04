@@ -172,7 +172,7 @@ function offeringsCardsLayout(offeringsCards, myOfferings) {
   let card = document.createElement("div");
   card.classList.add("card");
   card.id = `${myOfferings.id}`;
-  card.setAttribute("data-aos", `${myOfferings.dataAos}`);
+  card.setAttribute("data-aos", `fade-${myOfferings.cardDataAos}`);
 
   let imageWrapper = document.createElement("image");
   imageWrapper.classList.add("image", "flexCenter");
@@ -368,7 +368,7 @@ function worksExperiences(worksExp) {
 function myWorksCardsLayout(workCards, worksExp) {
   let card = document.createElement("div");
   card.classList.add("card", "flexCenterBetween");
-  card.setAttribute("data-aos", worksExp.dataAos);
+  card.setAttribute("data-aos", `fade-${worksExp.dataAos}`);
   card.id = `${worksExp.id}`;
 
   let infoDiv = document.createElement("div");
@@ -450,10 +450,12 @@ function servicesCardsLayout(servicesCards, myOfferings) {
   servicesImg.alt = `${myOfferings.title}`;
   servicesImg.title = `${myOfferings.title}`;
   servicesImg.setAttribute("loading", "lazy");
+  servicesImg.setAttribute("data-aos", `fade-${myOfferings.infoDataAos}`);
   servicesImg.style.order = `${myOfferings.imgOrder}`;
-
+  
   let infosText = document.createElement("div");
   infosText.classList.add("infos_text");
+  infosText.setAttribute("data-aos", `fade-${myOfferings.cardDataAos}`);
 
   let h2 = document.createElement("h2");
   h2.textContent = `${myOfferings.title}`;
@@ -644,14 +646,16 @@ function exploreBlogCardLayout(blogData, exploreBlogInfo) {
     cardImg.title = `${blogData.title}`;
     cardImg.alt = `${blogData.priveTitle}`;
     cardImg.setAttribute("loading", "lazy");
-
+    cardImg.setAttribute("data-aos", "fade-right");
+    
     // Add Image To Image Wrapper
     imageWrapper.appendChild(cardImg);
     // Add Image Wrapper To Card
     card.appendChild(imageWrapper);
-
+    
     let infosText = document.createElement("infos_text");
     infosText.classList.add("infos_text");
+    infosText.setAttribute("data-aos", "fade-left");
 
     let infosHeading = document.createElement("h2");
     infosHeading.textContent = `${blogData.title}`;
@@ -726,7 +730,6 @@ function exploreBlogCardLayout(blogData, exploreBlogInfo) {
 // ================== Blog Page - Show Search Blog ================= //
 let searchInput = document.getElementById("search");
 let searchBtn = document.getElementById("searchBtn");
-let pagintion = document.getElementById("pagintion");
 // ====================== Errors ====================== //
 let searchError = document.getElementById("search-error");
 // ===================== Not Found ==================== //
@@ -746,8 +749,6 @@ function searchOperation(blogs) {
       notFound.style.display = "none";
     } else {
       searchBlogCards.innerHTML = "";
-      // Show Pagination
-      pagintion.style.display = "none";
       // Show Not found Message
       notFound.style.display = "block";
     }

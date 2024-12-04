@@ -153,7 +153,8 @@
       "title": "User Experience Design",
       "priefDesc": "Crafting seamless and intuitive user joumeys to enhance engagement and satisfaction.",
       "description": "At Wolf Pixel, we consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad.Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae. Itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum molestiae temporibus pariatur and reiciendis. Lorem ipsum dolor sit amet consectetur.",
-      "dataAos": "fade-right",
+      "cardDataAos": "right",
+      "infoDataAos": "right",
       "iconAlt": "ux-experience design"
     },
     {
@@ -164,7 +165,8 @@
       "title": "User Interface Design",
       "priefDesc": "Creating visually appending interfaces that combine aesthetics with functionality.",
       "description": "At Wolf Pixel, we consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad.Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae. Itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum molestiae temporibus pariatur and reiciendis. Lorem ipsum dolor sit amet consectetur.",
-      "dataAos": "fade-up",
+      "cardDataAos": "up",
+      "infoDataAos": "left",
       "iconAlt": "user interface design"
     },
     {
@@ -175,7 +177,8 @@
       "title": "Product Prototyping",
       "priefDesc": "ransforming concepts into tangible prototypes to valiedate ideas and iterate quickly.",
       "description": "At Wolf Pixel, we consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad.Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae. Itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum molestiae temporibus pariatur and reiciendis. Lorem ipsum dolor sit amet consectetur.",
-      "dataAos": "fade-left",
+      "cardDataAos": "left",
+      "infoDataAos": "right",
       "iconAlt": "product prototype"
     },
     {
@@ -186,7 +189,8 @@
       "title": "Wireframing & Mockups",
       "priefDesc": "Developing detaild wireframes and high-fidelity mockups to visualize design effectively.",
       "description": "At Wolf Pixel, we consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad.Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae. Itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum molestiae temporibus pariatur and reiciendis. Lorem ipsum dolor sit amet consectetur.",
-      "dataAos": "fade-right",
+      "cardDataAos": "right",
+      "infoDataAos": "left",
       "iconAlt": "wireframing & mockup"
     },
     {
@@ -197,7 +201,8 @@
       "title": "Responsive Web Design",
       "priefDesc": "Designing adaptable and responsive website that a consistent user experience devices.",
       "description": "At Wolf Pixel, we consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad.Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae. Itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum molestiae temporibus pariatur and reiciendis. Lorem ipsum dolor sit amet consectetur.",
-      "dataAos": "fade-up",
+      "cardDataAos": "up",
+      "infoDataAos": "right",
       "iconAlt": "responsive design"
     },
     {
@@ -208,7 +213,8 @@
       "title": "Mobile App Design",
       "priefDesc": "Designing intuitive and user-friendly mobile applicationsfor iOS and Android platforms.",
       "description": "At Wolf Pixel, we consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad.Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae. Itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum molestiae temporibus pariatur and reiciendis. Lorem ipsum dolor sit amet consectetur.",
-      "dataAos": "fade-left",
+      "cardDataAos": "left",
+      "infoDataAos": "left",
       "iconAlt": "mobile app design"
     }
   ],
@@ -220,7 +226,8 @@
       "date": "February 2022 - Present",
       "desc": "Innvoated designs, New York, Senior Product Designer",
       "skills": ["UXUI", "Branding"],
-      "imgShow": true
+      "imgShow": true,
+      "dataAos": "right"
     },
     {
       "id": 2,
@@ -229,7 +236,8 @@
       "date": "January 2020 - February 2022",
       "desc": "Led UXUI, San Francisco. Crafting tomorrow's experiences",
       "skills": ["UXUI", "Branding"],
-      "imgShow": false
+      "imgShow": false,
+      "dataAos": "left"
     },
     {
       "id": 3,
@@ -238,7 +246,8 @@
       "date": "January 2020 - September 2021",
       "desc": "Directed designs, London, Design Director, January 2020",
       "skills": ["UXUI", "Branding"],
-      "imgShow": false
+      "imgShow": false,
+      "dataAos": "right"
     },
     {
       "id": 4,
@@ -247,7 +256,8 @@
       "date": "January 2020 - August 2021",
       "desc": "Principal Designer, Berlin, Crafting tomorrow's experiences",
       "skills": ["UXUI", "Branding"],
-      "imgShow": false
+      "imgShow": false,
+      "dataAos": "left"
     }
   ],
   "myAbout": [

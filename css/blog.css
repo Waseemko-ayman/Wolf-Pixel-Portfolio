@@ -5,18 +5,6 @@
   padding-bottom: var(--section-padding);
 }
 
-.portfolio .pagintion {
-  margin-top: 60px;
-  gap: 7px;
-}
-
-.portfolio .pagintion button {
-  border: 1px solid #eee;
-  width: 30px;
-  height: 30px;
-  font-size: 13px;
-}
-
 .explore_blogs .info {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
@@ -181,27 +169,6 @@
   border-radius: 50%;
   font-size: 25px;
   transform: rotate(40deg);
-}
-
-.blog_section .pagintion {
-  margin-top: 60px;
-  gap: 7px;
-  display: none;
-}
-
-.blog_section .pagintion button {
-  outline: none;
-  color: var(--black-color);
-  background-color: transparent;
-  border: 1px solid #eee;
-  width: 30px;
-  height: 30px;
-  font-size: 13px;
-}
-
-.blog_section .pagintion button:hover {
-  color: var(--white-color);
-  background-color: var(--blue-color);
 }
 
 .blog_section .search-error {

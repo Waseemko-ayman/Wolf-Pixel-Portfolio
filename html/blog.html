@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="../../css/styles.css">
     <link rel="stylesheet" href="../../css/blog.css">
     <!-- AOS Library -->
-    <!-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> -->
-    <!-- <script src="https://unpkg.com/browser-image-compression@latest/dist/browser-image-compression.js"></script> -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/browser-image-compression@latest/dist/browser-image-compression.js"></script>
     <!-- tab image -->
     <link rel="shortcut icon" href="../../assets/Walf-logo.png">
     <title>Wolf Pixel | Expolre Our Blogs</title>
@@ -46,7 +46,7 @@
       </div>
     </div>
     <!--============================== Header ==============================-->
-    <header>
+    <header class="overflowHidden">
       <div class="container flexCenterBetween">
         <div class="logo" data-aos="fade-right">
           <a class="flexAlignCenter" onclick="move('home.html')">
@@ -94,11 +94,11 @@
       </div>
     </header>
     <!--======================== Explore Our Blogs =========================-->
-    <div class="explore_blogs">
+    <div class="explore_blogs overflowHidden">
       <div class="container">
         <div class="title">
-          <h2>Expolre Our Blogs</h2>
-          <p>
+          <h2 data-aos="fade-down">Expolre Our Blogs</h2>
+          <p data-aos="fade-up">
             Discover the Latests, Tips, and Insights to Inspire Yor Creative
             Journey
           </p>
@@ -107,11 +107,11 @@
       </div>
     </div>
     <!--============================== Blog ===============================-->
-    <div class="blog_section">
+    <div class="blog_section overflowHidden">
       <div class="container">
         <div class="information flexCenterBetween">
-          <h2>Latest blog post</h2>
-          <div class="search_active flexAlignCenter">
+          <h2 data-aos="fade-right">Latest blog post</h2>
+          <div class="search_active flexAlignCenter" data-aos="fade-left">
             <div>
               <input
                 type="text"
@@ -125,20 +125,10 @@
         </div>
         <div class="search_results blog_cards"><!-- Code In JavaScript --></div>
         <div class="not-found"><h2>Ooops! Search Not Found</h2></div>
-        <div class="pagintion flexCenter" id="pagintion">
-          <button name="pagintion-angle-left-icon">
-            <i class="fa-solid fa-angle-left"></i>
-          </button>
-          <button name="one">1</button> <button name="two">2</button>
-          <button name="three">3</button> <button name="four">4</button>
-          <button name="button-angle-right-icon">
-            <i class="fa-solid fa-angle-right"></i>
-          </button>
-        </div>
       </div>
     </div>
     <!--============================== Footer =============================-->
-    <footer>
+    <footer class="overflowHidden">
       <div class="container">
         <div class="connect flexCenterBetween">
           <h4>Stay connected w/ me.</h4>
@@ -193,6 +183,6 @@
       </div>
     </footer>
     <script src="../../js/script.js"></script>
-    <!-- <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> <script> AOS.init(); </script> -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> <script> AOS.init(); </script>
   </body>
 </html>
