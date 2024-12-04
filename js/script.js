@@ -59,51 +59,36 @@ floatBtn.onclick = function () {
 };
 
 // ======================== Theme Settings ========================== //
-let themeDiv = document.querySelector(".theme-wrapper");
-let themeIconWrapper = document.querySelector(".theme");
-let themeIcon = document.querySelector(".theme i");
-let gearWrapper = document.querySelector(".gear-wrapper");
-let gear = document.querySelector(".gear-wrapper i");
-
-// Toggle settings menu and gear icon spin
-gearWrapper.addEventListener("click", (e) => {
-  // Prevent event from propagating to document click
-  e.stopPropagation();
-  themeDiv.classList.toggle("left");
-  gear.classList.toggle("fa-spin");
-});
-
-// Remove effects when clicking anywhere outside of gearWrapper
-document.addEventListener("click", (e) => {
-  // Check if the click was outside the gearWrapper
-  if (!gearWrapper.contains(e.target)) {
-    themeDiv.classList.remove("left");
-    gear.classList.remove("fa-spin");
-  }
-});
+const themeToggle = document.querySelector('.dark-mode-toggle');
+const themeIcons = themeToggle.querySelectorAll('i');
 
 // Apply stored theme settings if available
-if (window.localStorage.getItem("darkMode") && window.localStorage.getItem("currentThemeIcon")) {
-  themeIcon.className = window.localStorage.getItem("currentThemeIcon");
-  document.body.className = window.localStorage.getItem("darkMode");
+if (localStorage.getItem("darkMode") === "enabled") {
+  document.body.classList.add("dark-mode");
+
+  // Hide moon, show sun
+  themeIcons[0].style.cssText = 'opacity: 0; transform: scale(0);';
+  themeIcons[1].style.cssText = 'opacity: 1; transform: scale(1);';
+} else {
+  // Show moon, hide sun
+  themeIcons[0].style.cssText = 'opacity: 1; transform: scale(1);';
+  themeIcons[1].style.cssText = 'opacity: 0; transform: scale(0);';
 }
 
-// Toggle dark mode when theme icon is clicked
-themeIconWrapper.addEventListener("click", () => {
-  document.body.classList.toggle("dark-mode");
+// Toggle dark mode
+themeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
 
-  if (themeIcon.classList.contains("fa-moon")) {
-    // Switch to light mode
-    window.localStorage.setItem("currentThemeIcon", "fa-solid fa-sun");
-    themeIcon.className = window.localStorage.getItem("currentThemeIcon");
-    window.localStorage.setItem("darkMode", "dark-mode");
-    document.body.className = window.localStorage.getItem("darkMode");
+  if (document.body.classList.contains("dark-mode")) {
+    // Dark mode: show sun, hide moon
+    localStorage.setItem("darkMode", "enabled");
+    themeIcons[0].style.cssText = 'opacity: 0; transform: scale(0);';
+    themeIcons[1].style.cssText = 'opacity: 1; transform: scale(1);';
   } else {
-    // Switch to dark mode
-    window.localStorage.setItem("currentThemeIcon", "fa-solid fa-moon");
-    themeIcon.className = window.localStorage.getItem("currentThemeIcon");
-    window.localStorage.removeItem("darkMode");
-    document.body.classList.remove("dark-mode");
+    // Light mode: show moon, hide sun
+    localStorage.setItem("darkMode", "disabled");
+    themeIcons[0].style.cssText = 'opacity: 1; transform: scale(1);';
+    themeIcons[1].style.cssText = 'opacity: 0; transform: scale(0);';
   }
 });
 

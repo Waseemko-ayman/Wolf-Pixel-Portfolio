@@ -37,11 +37,16 @@
   background-color: var(--blue-color);
 }
 
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #166f9f;
+}
+
 body {
   background-color: var(--white-color);
   font-family: Arial, Helvetica, sans-serif;
   font-display: swap;
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 ul {
@@ -264,6 +269,10 @@ img {
   transition: var(--transition);
 }
 
+.floating:hover {
+  background-color: #166f9f;
+}
+
 .floating.show {
   opacity: 1;
   visibility: visible;
@@ -335,40 +344,57 @@ img {
 }
 
 /* ========================= Theme Settings ========================= */
-.theme-wrapper {
-  background-color: var(--white-color);
+body.dark {
+  background-color: #121212;
+  color: white;
+}
+
+.dark-mode-toggle {
   position: fixed;
-  left: -55px;
+  left: 0;
   top: 20%;
-  border-radius: 0 30px 30px 0;
-  z-index: 99999;
-  transition: var(--transition);
-}
-.theme-wrapper.left {
-  left: -1px !important;
-}
-.theme-wrapper :is(.theme, .gear-wrapper) {
-  padding: 10px 0;
   width: 50px;
-  font-size: 17px;
-  cursor: pointer;
-}
-.theme-wrapper .theme {
-  background-color: inherit;
-  border: 1px solid #dbdbdb;
-  border-right: none;
-}
-.theme-wrapper .theme i {
-  color: var(--black-color);
-}
-.theme-wrapper .gear-wrapper {
-  background-color: inherit;
-  border: 1px solid #dbdbdb;
+  height: 50px;
+  background-color: var(--black-color);
   border-radius: 0 30px 30px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   cursor: pointer;
+  transition: left 0.3s ease;
+  z-index: 999999;
 }
-.theme-wrapper .gear-wrapper i {
-  color: var(--blue-color);
+
+.dark-mode-toggle:hover {
+  left: 0;
+}
+
+.dark-mode-toggle i {
+  font-size: 24px;
+  color: var(--white-color);
+  position: absolute;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.dark-mode-toggle .fa-moon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.dark-mode-toggle .fa-sun {
+  opacity: 0;
+  transform: scale(0);
+}
+
+body.dark-mode .fa-moon {
+  opacity: 0;
+  transform: scale(0);
+}
+
+body.dark-mode .fa-sun {
+  opacity: 1;
+  transform: scale(1);
 }
 
 /* ============================= Header ============================= */
@@ -525,7 +551,7 @@ header nav li a:hover::before {
     padding: 20px;
     border-bottom: 1px solid var(--light-gray-color);
     border-top: 1px solid var(--light-gray-color);
-    z-index: 1000;
+    z-index: 999999;
   }
 
   .menu-active {
