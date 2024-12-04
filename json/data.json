@@ -263,13 +263,13 @@
   "myAbout": [
     {
       "id": 1,
-      "imgSrc": "assets/about-person.jpg",
+      "imgSrc": "assets/about-person.webp",
       "title": "The Journy of Product Designer Extraordinaire",
       "summary": "I'm Lora, Product Designer with 5+ years of experience. consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates dolorum molestiae temporibus pariatur and reiciendis. Lorem, ipsum dolor sit amet consectetur adipisicing elit."
     },
     {
       "id": 2,
-      "imgSrc": "assets/about-person.jpg",
+      "imgSrc": "assets/about-person.webp",
       "title": "The Journy of Product Designer Extraordinaire",
       "summary": "Consectetur adipisicing elit. Recusandae at itaque repudiandae? Facilis, commodi ad. Praesentium fuga perspiciatis, facilis magnam unde porro eaque atque facere doloribus soluta nemo in beatae nam ut similique, itaque ea suscipit iusto fugiat officiis illum. Asperiores perspiciatis animi corporis voluptates. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi porro debitis pariatur molestias et aperiam rerum incidunt dolorem."
     }

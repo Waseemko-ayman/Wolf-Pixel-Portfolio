@@ -163,7 +163,7 @@ function offeringsCardsLayout(offeringsCards, myOfferings) {
   imageWrapper.classList.add("image", "flexCenter");
 
   let cardImg = document.createElement("img");
-  cardImg.src = `../../assets/${myOfferings.iconSrc}.png`;
+  cardImg.src = `../../assets/${myOfferings.iconSrc}.webp`;
   cardImg.alt = `${myOfferings.iconAlt}`;
   cardImg.setAttribute("loading", "lazy");
 
@@ -256,7 +256,7 @@ function experiencesCardsLayout(experiencesCards, worksExp) {
   }
 
   let cardImg = document.createElement("img");
-  cardImg.src = "../../assets/image-1.jpg";
+  cardImg.src = "../../assets/image-1.webp";
   cardImg.alt = "phone paper";
   cardImg.title = "phone paper";
   cardImg.setAttribute("data-aos", "fade-up");
@@ -431,7 +431,7 @@ function servicesCardsLayout(servicesCards, myOfferings) {
   infoDiv.id = `${myOfferings.id}`;
 
   let servicesImg = document.createElement("img");
-  servicesImg.src = `../../assets/${myOfferings.imgSrc}.jpg`;
+  servicesImg.src = `../../assets/${myOfferings.imgSrc}.webp`;
   servicesImg.alt = `${myOfferings.title}`;
   servicesImg.title = `${myOfferings.title}`;
   servicesImg.setAttribute("loading", "lazy");
@@ -570,7 +570,7 @@ function createPortfolioTabsCardsLayout(filteredBlogs, portfolioCards) {
     card.classList.add("card");
 
     let cardImg = document.createElement("img");
-    cardImg.src = `../../assets/${filteredBlogs[i].src}.jpg`;
+    cardImg.src = `../../assets/${filteredBlogs[i].src}.webp`;
     cardImg.alt = `${filteredBlogs[i].title}`;
     cardImg.title = `${filteredBlogs[i].priveTitle}`;
     cardImg.setAttribute("loading", "lazy");
@@ -627,7 +627,7 @@ function exploreBlogCardLayout(blogData, exploreBlogInfo) {
     imageWrapper.classList.add("image");
 
     let cardImg = document.createElement("img");
-    cardImg.src = `../../assets/${blogData.src}.jpg`;
+    cardImg.src = `../../assets/${blogData.src}.webp`;
     cardImg.title = `${blogData.title}`;
     cardImg.alt = `${blogData.priveTitle}`;
     cardImg.setAttribute("loading", "lazy");
@@ -776,7 +776,7 @@ function blogCardLayout(blogArray, targetContainer, limit) {
     card.setAttribute("data-aos", `fade-${blogArray[i].dataAos}`);
 
     let cardImg = document.createElement("img");
-    cardImg.src = `../../assets/${blogArray[i].src}.jpg`;
+    cardImg.src = `../../assets/${blogArray[i].src}.webp`;
     cardImg.alt = `${blogArray[i].title}`;
     cardImg.title = `${blogArray[i].priveTitle}`;
     cardImg.setAttribute("loading", "lazy");
