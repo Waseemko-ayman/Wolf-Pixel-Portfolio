@@ -1148,7 +1148,7 @@ header nav li a:hover::before {
 
 footer {
   color: var(--white-color);
-  background-color: #1c1d1f;
+  background-color: var(--black-color);
 }
 
 footer :is(.connect, .social_sec) {
@@ -1158,7 +1158,6 @@ footer :is(.connect, .social_sec) {
 }
 
 footer .connect h4 {
-  color: white !important;
   font-size: 18px;
   font-weight: normal;
 }
@@ -1212,8 +1211,9 @@ footer .connect .form button {
   border: none;
 }
 
-footer .connect .form button img {
-  width: 20px;
+footer .connect .form button i {
+  color: var(--white-color);
+  font-size: 18px;
 }
 
 .connected-popup {
