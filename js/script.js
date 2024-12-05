@@ -1,30 +1,9 @@
-// ================ Optimize Images in JavaScript ================ //
-
-// document.addEventListener("DOMContentLoaded", async () => {
-//   const imagesAll = document.querySelectorAll("img");
-
-//   for (let img of imagesAll) {
-//     const file = await fetch(img.src).then(res => res.blob()); // تحويل الصورة إلى Blob
-//     const options = {
-//       maxSizeMB: 1, // الحد الأقصى للحجم بالميغا بايت
-//       maxWidthOrHeight: 1024, // الحد الأقصى للعرض أو الارتفاع
-//       useWebWorker: true, // استخدام Web Worker لأداء أفضل
-//     };
-
-//     try {
-//       // Compress the image using Image Compression
-//       const compressedFile = await imageCompression(file, options);
-//       // Create a URL for the compressed image.
-//       const compressedUrl = URL.createObjectURL(compressedFile);
-
-//       // Update the original image source to point to the compressed version.
-//       img.src = compressedUrl;
-//     } catch (error) {
-//       console.error(error);
-//     }
-//   }
-// });
-
+// Close WebSocket connection before page unload to avoid bfcache issues
+window.addEventListener('beforeunload', () => {
+  if (webSocket && webSocket.readyState === WebSocket.OPEN) {
+    webSocket.close();
+  }
+});
 // ========================== Loading Page ======================= //
 window.addEventListener("load", function () {
   let loader = document.querySelector(".loading");
@@ -34,14 +13,11 @@ window.addEventListener("load", function () {
     loader.style.display = "none";
   }, 900);
 })
-
 // ========================== Function URL ========================== //
 function move(url) { window.location = url }
-
 // ========================== Floating Button ======================= //
 let floatBtn = document.getElementById("floating_btn");
 let header = document.querySelector("header");
-
 window.onscroll = function () {
   if (window.scrollY > 600) {
     floatBtn.classList.add("show");
@@ -49,7 +25,6 @@ window.onscroll = function () {
     floatBtn.classList.remove("show");
   };
 };
-
 floatBtn.onclick = function () {
   window.scrollTo({
     top: 0,
@@ -57,15 +32,12 @@ floatBtn.onclick = function () {
     behavior: "smooth"
   });
 };
-
 // ======================== Theme Settings ========================== //
 const themeToggle = document.querySelector('.dark-mode-toggle');
 const themeIcons = themeToggle.querySelectorAll('i');
-
 // Apply stored theme settings if available
 if (localStorage.getItem("darkMode") === "enabled") {
   document.body.classList.add("dark-mode");
-
   // Hide moon, show sun
   themeIcons[0].style.cssText = 'opacity: 0; transform: scale(0);';
   themeIcons[1].style.cssText = 'opacity: 1; transform: scale(1);';
@@ -74,11 +46,9 @@ if (localStorage.getItem("darkMode") === "enabled") {
   themeIcons[0].style.cssText = 'opacity: 1; transform: scale(1);';
   themeIcons[1].style.cssText = 'opacity: 0; transform: scale(0);';
 }
-
 // Toggle dark mode
 themeToggle.addEventListener('click', () => {
   document.body.classList.toggle('dark-mode');
-
   if (document.body.classList.contains("dark-mode")) {
     // Dark mode: show sun, hide moon
     localStorage.setItem("darkMode", "enabled");
@@ -91,17 +61,14 @@ themeToggle.addEventListener('click', () => {
     themeIcons[1].style.cssText = 'opacity: 0; transform: scale(0);';
   }
 });
-
 // ======================== Header - NavBar ========================= //
 let navBar = document.querySelector("nav");
 let menuWrapper = document.querySelector(".menu-wrapper");
 let menuIcon = document.getElementById("menu");
-
 menuWrapper.addEventListener('click', () => {
   menuIcon.classList.toggle('close-active');
   navBar.classList.toggle('menu-active');
 });
-
 // ======================= Home Page - Offerings Section ======================== //
 async function data() {
   try {
@@ -119,9 +86,7 @@ async function data() {
     blogsData(result.blogs);
     // Search Button Event
     if (searchBtn) {
-      searchBtn.addEventListener("click", () => {
-        searchOperation(result.blogs);
-      });
+      searchBtn.addEventListener("click", () => { searchOperation(result.blogs); });
     }
     // Render Blogs Function
     renderBlogs(result.blogs, mainBlogCards, 3);
@@ -130,9 +95,7 @@ async function data() {
   }
 }
 data();
-
 // ======================= Home Page - Offerings Section ======================== //
-
 let offeringsCards = document.querySelector(".offerings_cards");
 // My Offerings Logic
 function offerings(myOfferings) {
@@ -141,17 +104,14 @@ function offerings(myOfferings) {
     // Build Offerings Cards Layout
     offeringsCardsLayout(offeringsCards, myOfferings[i]);
   };
-
   let offeringsCard = document.querySelectorAll(".offerings_cards .card");
   // Open Offerings Card in Services Page Based On Section (Current Target Id)
   offeringsCard.forEach((offCard) => {
     offCard.addEventListener("click", function (e) {
-      // console.log(e.currentTarget.id);
       location.href = `/html/services.html#${e.currentTarget.id}`;
     })
   })
 }
-
 // Build Offerings Cards Layout
 function offeringsCardsLayout(offeringsCards, myOfferings) {
   let card = document.createElement("div");
@@ -178,27 +138,19 @@ function offeringsCardsLayout(offeringsCards, myOfferings) {
 
   // Add H3 To Card Info
   cardInfo.appendChild(cardH3);
-
   // Add Para To Card Info
   cardInfo.appendChild(cardPara);
-
   // Add Card Image to Image Wrapper
   imageWrapper.appendChild(cardImg);
-
   // Add Image Wrapper To Card
   card.appendChild(imageWrapper);
-
   // Add Card Info To Card
   card.appendChild(cardInfo);
-
   // Add Card To offerings Cards Parent Div
   offeringsCards.appendChild(card);
 }
-
 // ================ Home Page - Experiences Section ================ //
-
 let experiencesCards = document.querySelector(".experiences .details");
-
 function experienceCardsLogic(worksExp) {
   for (let i = 0; i < worksExp.length; i++) {
     if (experiencesCards) {
@@ -206,7 +158,6 @@ function experienceCardsLogic(worksExp) {
     }
   };
 }
-
 // Build Experiences Cards Layout
 function experiencesCardsLayout(experiencesCards, worksExp) {
   let card = document.createElement("div");
@@ -254,7 +205,6 @@ function experiencesCardsLayout(experiencesCards, worksExp) {
     // Add spans To Skills Div
     skillsDiv.appendChild(span);
   }
-
   let cardImg = document.createElement("img");
   cardImg.src = "../../assets/image-1.webp";
   cardImg.alt = "phone paper";
@@ -264,44 +214,29 @@ function experiencesCardsLayout(experiencesCards, worksExp) {
 
   // Add Experience Para To Experience Div
   experience.appendChild(expPara);
-
   // Add Skills To Experience Div
   experience.appendChild(skillsDiv);
-
   // Add Date Icon To Date Div
   dateDiv.appendChild(dateIcon);
-
   // Add Date Para To Date Div
   dateDiv.appendChild(datePara);
-
   // Add h4 To Address Div
   address.appendChild(h4);
-
   // Add Date Div To Address
   address.appendChild(dateDiv);
-
   // Add Address To Card Information Div
   cardInfo.appendChild(address);
-
   // Add Experience To Card Information Div
   cardInfo.appendChild(experience);
-
   // Add Card Information To Card
   card.appendChild(cardInfo);
-
   // Add Or Not Image
-  if (worksExp.imgShow) {
-    card.appendChild(cardImg);
-  }
-
+  if (worksExp.imgShow) { card.appendChild(cardImg); }
   // Add Card To Experiences Cards
   experiencesCards.appendChild(card);
 }
-
 // ================== Home Page - My Work Section ================== //
-
 let workCards = document.querySelector(".my_work .work_cards");
-
 // My Works Experiences Logic
 function worksExperiences(worksExp) {
   for (let i = 0; i < worksExp.length; i++) {
@@ -311,27 +246,22 @@ function worksExperiences(worksExp) {
     }
   };
   let workCard = document.querySelectorAll(".work_cards .card");
-
   // [2] Check for saved ID in localStorage
   const storedWorkId = window.localStorage.getItem("workSection_workId");
-
   if (storedWorkId) {
     workCard.forEach((card) => {
       // Remove Class active From All Cards
       card.classList.remove("active");
       card.lastElementChild.classList.remove("iconRotate");
     });
-
     let currentElId = document.querySelector(`[id="${storedWorkId}"]`);
     let arrowRight = document.querySelector(`[id="${storedWorkId}"] .arrow-right`);
-
     currentElId?.classList.add("active");
     if (currentElId?.classList.contains("active")) {
       // Add Class iconRotate to Icon In Current Target By Id
       arrowRight?.classList.add("iconRotate");
     };
   };
-
   // [1] Add click event listener to each card
   workCard.forEach((card) => {
     card.addEventListener("click", function (e) {
@@ -378,43 +308,30 @@ function myWorksCardsLayout(workCards, worksExp) {
 
   let datePara = document.createElement("p");
   datePara.textContent = `${worksExp.date}`;
-
   // Card Icon (Angle Right)
   let cardIcon = document.createElement("i");
   cardIcon.classList.add("fa-solid", "fa-angle-right", "arrow-right");
-
   // Add Date Icon To Date Div
   dateDiv.appendChild(dateIcon);
-
   // Add Para To Date Div
   dateDiv.appendChild(datePara);
-
   // Add h4 To Work Div
   work.appendChild(h4);
-
   // Add Date Div To Work Div
   work.appendChild(dateDiv);
-
   // Add Span Id To Info Card
   infoDiv.appendChild(spanId);
-
   // Add Work Div To Info Card
   infoDiv.appendChild(work);
-
   // Add Info Carrd To Card
   card.appendChild(infoDiv);
-
   // Add Card Icon (Angle Right) To Card
   card.appendChild(cardIcon);
-
   // Add Card To my Works Div
   workCards.appendChild(card);
 }
-
 // ==================== Services Page ==================== //
-
 let servicesCards = document.querySelector(".services .services-cards");
-
 // Services Logic
 function services(myOfferings) {
   if (!servicesCards) return;
@@ -423,7 +340,6 @@ function services(myOfferings) {
     servicesCardsLayout(servicesCards, myOfferings[i]);
   };
 }
-
 // Build Services Cards Layout
 function servicesCardsLayout(servicesCards, myOfferings) {
   let infoDiv = document.createElement("div");
@@ -437,7 +353,7 @@ function servicesCardsLayout(servicesCards, myOfferings) {
   servicesImg.setAttribute("loading", "lazy");
   servicesImg.setAttribute("data-aos", `fade-${myOfferings.infoDataAos}`);
   servicesImg.style.order = `${myOfferings.imgOrder}`;
-  
+
   let infosText = document.createElement("div");
   infosText.classList.add("infos_text");
   infosText.setAttribute("data-aos", `fade-${myOfferings.cardDataAos}`);
@@ -453,9 +369,7 @@ function servicesCardsLayout(servicesCards, myOfferings) {
 
   let talkLink = document.createElement("button");
   talkLink.classList.add("btn", "style_btn");
-  talkLink.onclick = function () {
-    move('letsStartTalk.html');
-  };
+  talkLink.onclick = function () { move('letsStartTalk.html'); };
   talkLink.href = "#";
   talkLink.textContent = "Let's Talk";
 
@@ -469,81 +383,58 @@ function servicesCardsLayout(servicesCards, myOfferings) {
 
   // Add Talk Link Icon To Talk Link
   talkLink.appendChild(talkLinkIcon);
-
   // Add Talk link To Links Div
   links.appendChild(talkLink);
-
   // Add View Works link To Links Div
   links.appendChild(viewWorks);
-
   // Add Services h2 To Information Card
   infosText.appendChild(h2);
-
   // Add Services Para To Information Card
   infosText.appendChild(p);
-
   // Add Services Links To Information Card
   infosText.appendChild(links);
-
   // Add Services Image To Information Card
   infoDiv.appendChild(servicesImg);
-
   // Add informations Text To Information Card
   infoDiv.appendChild(infosText);
-
   // Add Information Div To Services Cards
   servicesCards.appendChild(infoDiv);
 }
-
 // ================================ Portfolio Page ================================= //
-
 // ============= Portfolio Page - Select tabs and blogs elements ============== //
 let tabs = document.querySelectorAll(".tabs button");
 let portfolioCards = document.querySelector(".portfolio .portfolio_cards");
-
 // ================ Trigger Get Blog From localStorage Fucntion =============== //
 getBlogsTabFromLocalStorage();
-
 function blogsData(blogs) {
   const storedTabId = window.localStorage.getItem("portfolioTab_tabId");
   if (storedTabId) {
-    tabs.forEach((tab) => {
-      tab.classList.remove("checked");
-    });
+    tabs.forEach((tab) => { tab.classList.remove("checked"); });
     document.querySelector(`[id="${storedTabId}"]`)?.classList.add("checked");
   };
-
   tabs.forEach((tab) => {
     tab.addEventListener("click", function (e) {
       // Remove Checked Class From All Tabs
       tabs.forEach((tab) => { tab.classList.remove("checked") });
       // Add Checked Class To The Clicked Tab
       tab.classList.add("checked");
-
       // Add Id To Current Tab To LocalStorage
       window.localStorage.setItem("portfolioTab_tabId", e.currentTarget.id);
-
       // Add Current Category To LocalStorage
       window.localStorage.setItem("portfolioTab_category", e.currentTarget.dataset.category);
-
       // Get Category From LocalStorage
       const category = window.localStorage.getItem("portfolioTab_category");
-
       // Filtering Array of Blogs Related To Category From LocalStorage
       const filteredBlogs = blogs.filter((blog) => blog.category === category);
-
       // Add Blogs To LocalStorage
       addBlogsTabToLocalStorage(filteredBlogs);
-
       // Display Blogs Related To The Selected Tab
       displayBlogsTab(filteredBlogs);
     });
   });
 }
-
 // =================== Add Tab Blogs To LocalStorage =================== //
 function addBlogsTabToLocalStorage(filteredBlogs) { window.localStorage.setItem("blogs", JSON.stringify(filteredBlogs)); };
-
 // ================== Get Tab Blogs From LocalStorage ================== //
 function getBlogsTabFromLocalStorage() {
   let data = window.localStorage.getItem("blogs");
@@ -552,7 +443,6 @@ function getBlogsTabFromLocalStorage() {
     displayBlogsTab(blogs);
   };
 };
-
 // =================== Display Tab Blogs In The Page =================== //
 function displayBlogsTab(filteredBlogs) {
   if (portfolioCards) {
@@ -562,7 +452,6 @@ function displayBlogsTab(filteredBlogs) {
     createPortfolioTabsCardsLayout(filteredBlogs, portfolioCards);
   }
 };
-
 // Build Create Portfolio Tabs Cards Layout
 function createPortfolioTabsCardsLayout(filteredBlogs, portfolioCards) {
   for (let i = 0; i < filteredBlogs.length; i++) {
@@ -580,44 +469,33 @@ function createPortfolioTabsCardsLayout(filteredBlogs, portfolioCards) {
 
     let skillsDiv = document.createElement("div");
     skillsDiv.classList.add("skills", "flex");
-
     // Display Skills
     for (let j = 0; j < filteredBlogs[i].skills.length; j++) {
       let span = document.createElement("span");
       span.classList.add("flexCenter");
       span.textContent = `${filteredBlogs[i].skills[j]}`;
-
       // Add spans To Skills Div
       skillsDiv.appendChild(span);
     }
-
     let priveTitle = document.createElement("h3");
     priveTitle.textContent = `${filteredBlogs[i].priveTitle}`;
-
     projectTitle.appendChild(skillsDiv);
     projectTitle.appendChild(priveTitle);
-
     // Add Card Image To Card
     card.appendChild(cardImg);
-
     card.appendChild(projectTitle);
-
     portfolioCards.appendChild(card);
   }
 }
-
 // ========================= Blog Section ========================== //
 let mainBlogCards = document.querySelector(".main_blogs");
 let searchBlogCards = document.querySelector(".search_results");
-
 // =================== Blog Page - Blog Id Page ==================== //
 if (window.localStorage.getItem("blogId")) {
   let blogData = JSON.parse(window.localStorage.getItem("blogId"));
-
   let exploreBlogInfo = document.querySelector(".explore_blogs .info");
   exploreBlogCardLayout(blogData, exploreBlogInfo);
 }
-
 function exploreBlogCardLayout(blogData, exploreBlogInfo) {
   if (exploreBlogInfo) {
     let card = document.createElement("div");
@@ -632,12 +510,11 @@ function exploreBlogCardLayout(blogData, exploreBlogInfo) {
     cardImg.alt = `${blogData.priveTitle}`;
     cardImg.setAttribute("loading", "lazy");
     cardImg.setAttribute("data-aos", "fade-right");
-    
     // Add Image To Image Wrapper
     imageWrapper.appendChild(cardImg);
     // Add Image Wrapper To Card
     card.appendChild(imageWrapper);
-    
+
     let infosText = document.createElement("infos_text");
     infosText.classList.add("infos_text");
     infosText.setAttribute("data-aos", "fade-left");
@@ -673,45 +550,33 @@ function exploreBlogCardLayout(blogData, exploreBlogInfo) {
 
     let circleIcon = document.createElement("i");
     circleIcon.classList.add("fa-solid", "fa-dot-circle");
-
     // Add Circle Icon To Span Category
     spanCategory.prepend(circleIcon);
 
     let spanPosteDate = document.createElement("span");
     spanPosteDate.textContent = `${blogData.postDate}`;
-
     // Add Span For-Category To Data Div
     dateDiv.appendChild(spanCategory);
-
     // Add Span For-Category To Data Div
     dateDiv.appendChild(spanPosteDate);
-
     // Add P To Posted Div
     posted.appendChild(postedPara);
-
     // Add Data Div To Posted Div
     posted.appendChild(dateDiv);
-
     // Add h2 To informations Text
     infosText.appendChild(infosHeading);
-
     // Add P To informations Text
     infosText.appendChild(infosPara);
-
     // Add link (a tag) To informations Text
     infosText.appendChild(infosBtn);
-
     // Add Posted Div To informations Text
     infosText.appendChild(posted);
-
     // Add Cart To Parent Div (Info Div)
     exploreBlogInfo.appendChild(card);
-
     // Add informations Text To Parent Div (Info Div)
     exploreBlogInfo.appendChild(infosText);
-  }
-}
-
+  };
+};
 // ================== Blog Page - Show Search Blog ================= //
 let searchInput = document.getElementById("search");
 let searchBtn = document.getElementById("searchBtn");
@@ -719,7 +584,6 @@ let searchBtn = document.getElementById("searchBtn");
 let searchError = document.getElementById("search-error");
 // ===================== Not Found ==================== //
 let notFound = document.querySelector(".not-found");
-
 // ============== Blog Page - Display Blogs Search ============== //
 function searchOperation(blogs) {
   if (searchInput && searchInput.value !== "") {
@@ -736,15 +600,13 @@ function searchOperation(blogs) {
       searchBlogCards.innerHTML = "";
       // Show Not found Message
       notFound.style.display = "block";
-    }
+    };
   } else {
     errorsStyling(searchInput, searchError, "var(--error-color)", "block", "Please enter a search query: [Web, Mobile, Brand, Design]");
-  }
-}
-
+  };
+};
 // ============= Blog Page - Add Blogs Search To LocalStorage ============= //
 function addBlogsSearchToLocalStorage(filteredBlogs) { window.localStorage.setItem("blogs search", JSON.stringify(filteredBlogs)); }
-
 // ============ Blog Page - Get Blogs Search From LocalStorage ============ //
 function getBlogsFromLocalStorage() {
   let data = window.localStorage.getItem("blogs search");
@@ -755,7 +617,6 @@ function getBlogsFromLocalStorage() {
 }
 // Trigger Get Blog Search From localStorage Fucntion
 getBlogsFromLocalStorage();
-
 // =================== Render Blogs Function =================== //
 function renderBlogs(blogArray, targetContainer, limit = blogArray.length) {
   // Clear Existing Blogs
@@ -766,7 +627,6 @@ function renderBlogs(blogArray, targetContainer, limit = blogArray.length) {
   }
   setupCardListeners(targetContainer, blogArray);
 }
-
 // Build Blog Card Layout
 function blogCardLayout(blogArray, targetContainer, limit) {
   for (let i = 0; i < limit; i++) {
@@ -786,21 +646,16 @@ function blogCardLayout(blogArray, targetContainer, limit) {
 
     let arrowIcon = document.createElement("i");
     arrowIcon.classList.add("fa-solid", "fa-angle-up", "flexCenter");
-
     // Add Arrow Icon To Arrow button
     arrowBtn.appendChild(arrowIcon);
-
     // Add Card Image To Card
     card.appendChild(cardImg);
-
     // Add Arrow Button To Card
     card.appendChild(arrowBtn);
-
     // Add Card To Target Container
     targetContainer.appendChild(card);
-  }
-}
-
+  };
+};
 // =================== Move To Blog Page Based On Blog Id  =================== //
 function setupCardListeners(targetContainer, blogArray) {
   if (targetContainer) {
@@ -812,11 +667,9 @@ function setupCardListeners(targetContainer, blogArray) {
         window.localStorage.setItem("blogId", blogId);
       });
     });
-  }
-}
-
+  };
+};
 // ======================= Footer - Email Validation ======================= //
-
 let footerForm = document.getElementById("footer_form");
 let footerEmail = document.querySelector("[name='email']");
 let submit = document.getElementById("submit");
@@ -825,10 +678,8 @@ let popUpText = document.querySelector(".connected-popup h2");
 let popUpClose = document.getElementById("popup-close");
 // ====================== Errors ====================== //
 let footerEmailError = document.getElementById("email-error");
-
 function checkFooterEmail(e) {
   const emailReg = /^[^\s]+@[^\s]+\.[a-z]{2,3}$/ig;
-
   if (footerEmail.value !== "") {
     if (sessionStorage.getItem("connectedEmail")) {
       if (footerEmail.value === sessionStorage.getItem("connectedEmail")) {
@@ -838,34 +689,30 @@ function checkFooterEmail(e) {
         emailValueValidTest();
       } else {
         errorsStyling(footerForm, footerEmailError, "var(--error-color)", "block", "Please enter a valid email: you@example.com");
-      }
+      };
     } else if (emailReg.test(footerEmail.value)) {
       emailValueValidTest();
     } else {
       errorsStyling(footerForm, footerEmailError, "var(--error-color)", "block", "Please enter a valid email: you@example.com");
-    }
+    };
   } else {
     e.preventDefault();
     errorsStyling(footerForm, footerEmailError, "var(--error-color)", "block", "Please enter a your email.");
     footerEmailError.style.color = "var(--error-color)";
-  }
-
+  };
   footerEmail.oninput = function () { errorsStyling(footerForm, footerEmailError, "var(--light-gray-color)", "none"); }
-}
-
+};
 // ======================== Errors Styling  ======================== //
 function errorsStyling(inputType, errorType, borderColor, errorDisplay, errorMsg) {
   if (inputType) { inputType.style.borderColor = borderColor; };
   if (errorType) {
     errorType.style.display = errorDisplay;
     errorType.innerHTML = errorMsg;
-  }
+  };
 };
-
 // ===================== Email Value Valid Test ==================== //
 function emailValueValidTest() {
   window.sessionStorage.setItem("connectedEmail", footerEmail.value);
-
   // ======================== Footer - Show Popup ======================== //
   let sendedPopup = document.createElement("div");
   sendedPopup.classList.add("connected-popup", "flexCenter");
@@ -892,47 +739,36 @@ function emailValueValidTest() {
   popupDiv.appendChild(closeBtn);
   sendedPopup.appendChild(popupDiv);
   document.body.appendChild(sendedPopup);
-
   // Prevent scrolling
   document.body.style.overflow = "hidden";
-
   // Hide Popup
   closeBtn.addEventListener("click", () => {
     // Re-enable page scrolling and hide popup
     document.body.style.overflow = "auto";
-
     sendedPopup.style.display = "none";
   });
-
   errorsStyling(footerForm, footerEmailError, "var(--valid-color)", "block", "Send Done.");
   footerEmailError.style.color = "var(--valid-color)";
   footerEmail.value = "";
-
-  setTimeout(() => {
-    errorsStyling(footerForm, footerEmailError, "var(--light-gray-color)", "none");
-    footerEmailError.style.color = "var(--error-color)";
-  }, 2000);
-}
-
-// ======================== Connected Msg ======================== //
-function connected() {
-  errorsStyling(footerForm, footerEmailError, "var(--valid-color)", "block", "Your Are Connected.");
-  footerEmailError.style.color = "var(--valid-color)";
-  footerEmail.value = "";
-
   setTimeout(() => {
     errorsStyling(footerForm, footerEmailError, "var(--light-gray-color)", "none");
     footerEmailError.style.color = "var(--error-color)";
   }, 2000);
 };
-
+// ======================== Connected Msg ======================== //
+function connected() {
+  errorsStyling(footerForm, footerEmailError, "var(--valid-color)", "block", "Your Are Connected.");
+  footerEmailError.style.color = "var(--valid-color)";
+  footerEmail.value = "";
+  setTimeout(() => {
+    errorsStyling(footerForm, footerEmailError, "var(--light-gray-color)", "none");
+    footerEmailError.style.color = "var(--error-color)";
+  }, 2000);
+};
 // ================ Calling Function on From Submit =============== //
 submit.addEventListener("click", function (e) { checkFooterEmail(e); });
-
 footerEmail.onblur = () => { errorsStyling(footerForm, footerEmailError, "#ccc", "none"); }
-
 // ========================== let's Talk Page - Inputs Validation ========================== //
-
 let startTalkForm = document.getElementById("talk_form");
 let allInputs = document.querySelectorAll(".talk_wrapper input");
 let nameInputs = document.querySelectorAll(".talk_wrapper .name input");
@@ -946,7 +782,6 @@ let emailError = document.querySelector(".talk_wrapper .email_error");
 let phoneError = document.querySelector(".talk_wrapper .phone_error");
 let messageError = document.querySelector(".talk_wrapper .message_error");
 let userData = [];
-
 // ======================== Name Validation ======================== //
 function checkTalkName() {
   const nameReg = /^[a-zA-Z\s]+$/;
@@ -954,50 +789,44 @@ function checkTalkName() {
   // - Allows only letters (a-z, A-Z) and spaces.
   // - Ensures the entire input matches the pattern (no extra characters).
   // - At least one character is required (no empty names).
-
   nameInputs.forEach((nameInput) => {
     if (nameInput.value.trim() !== "") {
       if (nameReg.test(nameInput.value)) {
         errorsStyling(nameInput, nameInput.nextElementSibling, "#ccc", "none");
       } else {
         errorsStyling(nameInput, nameInput.nextElementSibling, "var(--error-color)", "block", "Please enter valid name.");
-      }
+      };
     } else {
       errorsStyling(nameInput, nameInput.nextElementSibling, "var(--error-color)", "block", "Please enter your name.");
-    }
+    };
   });
 };
-
 // ======================= Email Validation ======================= //
 function checkTalkEmail() {
   const emailReg = /^[^\s]+@[^\s]+\.[a-z]{2,3}$/ig;
-
   if (emailInput.value !== "") {
     if (emailReg.test(emailInput.value)) {
       errorsStyling(emailInput, emailError, "#ccc", "none");
     } else {
       errorsStyling(emailInput, emailError, "var(--error-color)", "block", "Please enter a valid email: you@example.com");
-    }
+    };
   } else {
     errorsStyling(emailInput, emailError, "var(--error-color)", "block", "Please enter a your email.");
-  }
+  };
 };
-
 // ======================= Phone Validation ======================= //
 function checkTalkPhone() {
   const phoneReg = /00\(\d{1,3}\)\s\d{4,}-\d{4,}/g; // 00(972) 59216-4680
-
   if (phoneInput.value !== "") {
     if (phoneReg.test(phoneInput.value)) {
       errorsStyling(phoneInput, phoneError, "#ccc", "none");
     } else {
       errorsStyling(phoneInput, phoneError, "var(--error-color)", "block", "Please enter a valid Phone: 00(123) 45678-9101");
-    }
+    };
   } else {
     errorsStyling(phoneInput, phoneError, "var(--error-color)", "block", "Please enter a your phone.");
-  }
+  };
 };
-
 // ====================== Password Validation ====================== //
 function checkMsg() {
   if (msgTextArea.value !== "") {
@@ -1005,12 +834,11 @@ function checkMsg() {
       errorsStyling(msgTextArea, messageError, "#ccc", "none");
     } else {
       errorsStyling(msgTextArea, messageError, "var(--error-color)", "block", "Please enter at least 20 character");
-    }
+    };
   } else {
     errorsStyling(msgTextArea, messageError, "var(--error-color)", "block", "Please enter a your password.");
-  }
+  };
 };
-
 // ============= Storage The User Data (Token) To Array ============= //
 function storageUserDataInArray() {
   const userToken = {
@@ -1019,16 +847,13 @@ function storageUserDataInArray() {
     phone: phoneInput.value,
     message: message.value,
   };
-
   // Add Token To user Data Array
   userData.push(userToken);
   // Add Tokens To LocalStorage
   addTokensToLocalStorage(userData);
-}
-
+};
 // =================== Add Tokens To LocalStorage =================== //
 function addTokensToLocalStorage(userData) { window.localStorage.setItem("token", JSON.stringify(userData)); }
-
 // ================ Calling Function on From Submit ================ //
 if (startTalkForm) {
   startTalkForm.addEventListener("submit", function (e) {
@@ -1040,23 +865,17 @@ if (startTalkForm) {
         e.preventDefault();
       }
     });
-
     if (msgTextArea.value === "" || msgTextArea.value.length < 20) {
       hasError = true;
       e.preventDefault();
     }
-
-    if (!hasError) {
-      // Storage The User Data (Token) To Array
-      storageUserDataInArray();
-    }
-
+    // Storage The User Data (Token) To Array
+    if (!hasError) { storageUserDataInArray(); }
     checkTalkName();
     checkTalkEmail();
     checkTalkPhone();
     checkMsg();
   });
-
   nameInputs.forEach((nameInput) => { nameInput.addEventListener("keyup", checkTalkName); });
   emailInput.addEventListener("keyup", checkTalkEmail);
   phoneInput.addEventListener("keyup", checkTalkPhone);
