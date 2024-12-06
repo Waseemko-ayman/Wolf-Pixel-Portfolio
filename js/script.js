@@ -38,10 +38,14 @@ const themeIcons = themeToggle.querySelectorAll('i');
 // Apply stored theme settings if available
 if (localStorage.getItem("darkMode") === "enabled") {
   document.body.classList.add("dark-mode");
+  // Set theme-color for dark mode
+  document.querySelector('meta[name="theme-color"]').setAttribute('content', '#121212');
   // Hide moon, show sun
   themeIcons[0].style.cssText = 'opacity: 0; transform: scale(0);';
   themeIcons[1].style.cssText = 'opacity: 1; transform: scale(1);';
 } else {
+  // Set theme-color for light mode
+  document.querySelector('meta[name="theme-color"]').setAttribute('content', '#1a80b6');
   // Show moon, hide sun
   themeIcons[0].style.cssText = 'opacity: 1; transform: scale(1);';
   themeIcons[1].style.cssText = 'opacity: 0; transform: scale(0);';
@@ -52,11 +56,13 @@ themeToggle.addEventListener('click', () => {
   if (document.body.classList.contains("dark-mode")) {
     // Dark mode: show sun, hide moon
     localStorage.setItem("darkMode", "enabled");
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#121212');
     themeIcons[0].style.cssText = 'opacity: 0; transform: scale(0);';
     themeIcons[1].style.cssText = 'opacity: 1; transform: scale(1);';
   } else {
     // Light mode: show moon, hide sun
     localStorage.setItem("darkMode", "disabled");
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#1a80b6');
     themeIcons[0].style.cssText = 'opacity: 1; transform: scale(1);';
     themeIcons[1].style.cssText = 'opacity: 0; transform: scale(0);';
   }
@@ -119,13 +125,11 @@ function offeringsCardsLayout(offeringsCards, myOfferings) {
   card.id = `${myOfferings.id}`;
   card.setAttribute("data-aos", `fade-${myOfferings.cardDataAos}`);
 
-  let imageWrapper = document.createElement("image");
-  imageWrapper.classList.add("image", "flexCenter");
+  let iconWrapper = document.createElement("div");
+  iconWrapper.classList.add("icon-wrapper", "flexCenter");
 
-  let cardImg = document.createElement("img");
-  cardImg.src = `../../assets/${myOfferings.iconSrc}.webp`;
-  cardImg.alt = `${myOfferings.iconAlt}`;
-  cardImg.setAttribute("loading", "lazy");
+  let cardIcon = document.createElement("i");
+  cardIcon.classList.add("fas", `${myOfferings.iconSrc}`);
 
   let cardInfo = document.createElement("div");
   cardInfo.classList.add("info");
@@ -140,10 +144,10 @@ function offeringsCardsLayout(offeringsCards, myOfferings) {
   cardInfo.appendChild(cardH3);
   // Add Para To Card Info
   cardInfo.appendChild(cardPara);
-  // Add Card Image to Image Wrapper
-  imageWrapper.appendChild(cardImg);
-  // Add Image Wrapper To Card
-  card.appendChild(imageWrapper);
+  // Add Card Icon to Icon Wrapper
+  iconWrapper.appendChild(cardIcon);
+  // Add Icon Wrapper To Card
+  card.appendChild(iconWrapper);
   // Add Card Info To Card
   card.appendChild(cardInfo);
   // Add Card To offerings Cards Parent Div
