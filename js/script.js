@@ -2,13 +2,13 @@
 async function loadContent() {
   try {
     // Load header content
-    const headerResponse = await fetch('header.html');
+    const headerResponse = await fetch('../html/partials/header.html');
     if (!headerResponse.ok) throw new Error('Failed to load header');
     const headerData = await headerResponse.text();
     document.getElementById('header-placeholder').innerHTML = headerData;
 
     // Load footer content
-    const footerResponse = await fetch('footer.html');
+    const footerResponse = await fetch('../html/partials/footer.html');
     if (!footerResponse.ok) throw new Error('Failed to load footer');
     const footerData = await footerResponse.text();
     document.getElementById('footer-placeholder').innerHTML = footerData;
@@ -20,6 +20,7 @@ async function loadContent() {
   }
 }
 loadContent();
+
 // ============================================================== //
 // Close WebSocket connection before page unload to avoid bfcache issues
 window.addEventListener('beforeunload', () => {
