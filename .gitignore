@@ -1,2 +1,2 @@
-# تجاهل ملفات CSS المصغرة
+# Ignore minified CSS files
 /css/original/*.css
