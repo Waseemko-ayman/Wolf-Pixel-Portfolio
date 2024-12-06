@@ -1,3 +1,26 @@
+// Function to update content
+async function loadContent() {
+  try {
+    // Load header content
+    const headerResponse = await fetch('header.html');
+    if (!headerResponse.ok) throw new Error('Failed to load header');
+    const headerData = await headerResponse.text();
+    document.getElementById('header-placeholder').innerHTML = headerData;
+
+    // Load footer content
+    const footerResponse = await fetch('footer.html');
+    if (!footerResponse.ok) throw new Error('Failed to load footer');
+    const footerData = await footerResponse.text();
+    document.getElementById('footer-placeholder').innerHTML = footerData;
+
+    initializeMenu();
+    initializefooter();
+  } catch (error) {
+    console.error('Error loading content:', error);
+  }
+}
+loadContent();
+// ============================================================== //
 // Close WebSocket connection before page unload to avoid bfcache issues
 window.addEventListener('beforeunload', () => {
   if (webSocket && webSocket.readyState === WebSocket.OPEN) {
@@ -68,13 +91,18 @@ themeToggle.addEventListener('click', () => {
   }
 });
 // ======================== Header - NavBar ========================= //
-let navBar = document.querySelector("nav");
-let menuWrapper = document.querySelector(".menu-wrapper");
-let menuIcon = document.getElementById("menu");
-menuWrapper.addEventListener('click', () => {
-  menuIcon.classList.toggle('close-active');
-  navBar.classList.toggle('menu-active');
-});
+function initializeMenu() {
+  const menuWrapper = document.querySelector(".menu-wrapper");
+  const navBar = document.querySelector("nav");
+  const menuIcon = document.getElementById("menu");
+
+  if (menuWrapper && navBar && menuIcon) {
+    menuWrapper.addEventListener("click", () => {
+      menuIcon.classList.toggle("close-active");
+      navBar.classList.toggle("menu-active");
+    });
+  }
+}
 // ======================= Home Page - Offerings Section ======================== //
 async function data() {
   try {
@@ -674,104 +702,106 @@ function setupCardListeners(targetContainer, blogArray) {
   };
 };
 // ======================= Footer - Email Validation ======================= //
-let footerForm = document.getElementById("footer_form");
-let footerEmail = document.querySelector("[name='email']");
-let submit = document.getElementById("submit");
-let popUp = document.querySelector(".connected-popup");
-let popUpText = document.querySelector(".connected-popup h2");
-let popUpClose = document.getElementById("popup-close");
-// ====================== Errors ====================== //
-let footerEmailError = document.getElementById("email-error");
-function checkFooterEmail(e) {
-  const emailReg = /^[^\s]+@[^\s]+\.[a-z]{2,3}$/ig;
-  if (footerEmail.value !== "") {
-    if (sessionStorage.getItem("connectedEmail")) {
-      if (footerEmail.value === sessionStorage.getItem("connectedEmail")) {
-        e.preventDefault();
-        connected();
+function initializefooter() {
+  let footerForm = document.getElementById("footer_form");
+  let footerEmail = document.querySelector("[name='email']");
+  let submit = document.getElementById("submit");
+  let popUp = document.querySelector(".connected-popup");
+  let popUpText = document.querySelector(".connected-popup h2");
+  let popUpClose = document.getElementById("popup-close");
+  // ====================== Errors ====================== //
+  let footerEmailError = document.getElementById("email-error");
+  function checkFooterEmail(e) {
+    const emailReg = /^[^\s]+@[^\s]+\.[a-z]{2,3}$/ig;
+    if (footerEmail.value !== "") {
+      if (sessionStorage.getItem("connectedEmail")) {
+        if (footerEmail.value === sessionStorage.getItem("connectedEmail")) {
+          e.preventDefault();
+          connected();
+        } else if (emailReg.test(footerEmail.value)) {
+          emailValueValidTest();
+        } else {
+          errorsStyling(footerForm, footerEmailError, "var(--error-color)", "block", "Please enter a valid email: you@example.com");
+        };
       } else if (emailReg.test(footerEmail.value)) {
         emailValueValidTest();
       } else {
         errorsStyling(footerForm, footerEmailError, "var(--error-color)", "block", "Please enter a valid email: you@example.com");
       };
-    } else if (emailReg.test(footerEmail.value)) {
-      emailValueValidTest();
     } else {
-      errorsStyling(footerForm, footerEmailError, "var(--error-color)", "block", "Please enter a valid email: you@example.com");
+      e.preventDefault();
+      errorsStyling(footerForm, footerEmailError, "var(--error-color)", "block", "Please enter a your email.");
+      footerEmailError.style.color = "var(--error-color)";
     };
-  } else {
-    e.preventDefault();
-    errorsStyling(footerForm, footerEmailError, "var(--error-color)", "block", "Please enter a your email.");
-    footerEmailError.style.color = "var(--error-color)";
+    footerEmail.oninput = function () { errorsStyling(footerForm, footerEmailError, "var(--light-gray-color)", "none"); }
   };
-  footerEmail.oninput = function () { errorsStyling(footerForm, footerEmailError, "var(--light-gray-color)", "none"); }
-};
-// ======================== Errors Styling  ======================== //
-function errorsStyling(inputType, errorType, borderColor, errorDisplay, errorMsg) {
-  if (inputType) { inputType.style.borderColor = borderColor; };
-  if (errorType) {
-    errorType.style.display = errorDisplay;
-    errorType.innerHTML = errorMsg;
+  // ======================== Errors Styling  ======================== //
+  function errorsStyling(inputType, errorType, borderColor, errorDisplay, errorMsg) {
+    if (inputType) { inputType.style.borderColor = borderColor; };
+    if (errorType) {
+      errorType.style.display = errorDisplay;
+      errorType.innerHTML = errorMsg;
+    };
   };
-};
-// ===================== Email Value Valid Test ==================== //
-function emailValueValidTest() {
-  window.sessionStorage.setItem("connectedEmail", footerEmail.value);
-  // ======================== Footer - Show Popup ======================== //
-  let sendedPopup = document.createElement("div");
-  sendedPopup.classList.add("connected-popup", "flexCenter");
+  // ===================== Email Value Valid Test ==================== //
+  function emailValueValidTest() {
+    window.sessionStorage.setItem("connectedEmail", footerEmail.value);
+    // ======================== Footer - Show Popup ======================== //
+    let sendedPopup = document.createElement("div");
+    sendedPopup.classList.add("connected-popup", "flexCenter");
 
-  let popupDiv = document.createElement("div");
-  popupDiv.classList.add("popup");
+    let popupDiv = document.createElement("div");
+    popupDiv.classList.add("popup");
 
-  let checkIcon = document.createElement("i");
-  checkIcon.classList.add("fas", "fa-check", "flexCenter");
+    let checkIcon = document.createElement("i");
+    checkIcon.classList.add("fas", "fa-check", "flexCenter");
 
-  let h2 = document.createElement("h2");
-  h2.innerHTML = "Your Email has been sent, you will be communicated with you soon,<br> Thank you.";
+    let h2 = document.createElement("h2");
+    h2.innerHTML = "Your Email has been sent, you will be communicated with you soon,<br> Thank you.";
 
-  let closeBtn = document.createElement("button");
-  closeBtn.classList.add("flexCenter");
-  closeBtn.id = "popup-close";
+    let closeBtn = document.createElement("button");
+    closeBtn.classList.add("flexCenter");
+    closeBtn.id = "popup-close";
 
-  let closeIcon = document.createElement("i");
-  closeIcon.classList.add("fas", "fa-times");
-  closeBtn.appendChild(closeIcon);
+    let closeIcon = document.createElement("i");
+    closeIcon.classList.add("fas", "fa-times");
+    closeBtn.appendChild(closeIcon);
 
-  popupDiv.appendChild(checkIcon);
-  popupDiv.appendChild(h2);
-  popupDiv.appendChild(closeBtn);
-  sendedPopup.appendChild(popupDiv);
-  document.body.appendChild(sendedPopup);
-  // Prevent scrolling
-  document.body.style.overflow = "hidden";
-  // Hide Popup
-  closeBtn.addEventListener("click", () => {
-    // Re-enable page scrolling and hide popup
-    document.body.style.overflow = "auto";
-    sendedPopup.style.display = "none";
-  });
-  errorsStyling(footerForm, footerEmailError, "var(--valid-color)", "block", "Send Done.");
-  footerEmailError.style.color = "var(--valid-color)";
-  footerEmail.value = "";
-  setTimeout(() => {
-    errorsStyling(footerForm, footerEmailError, "var(--light-gray-color)", "none");
-    footerEmailError.style.color = "var(--error-color)";
-  }, 2000);
-};
-// ======================== Connected Msg ======================== //
-function connected() {
-  errorsStyling(footerForm, footerEmailError, "var(--valid-color)", "block", "Your Are Connected.");
-  footerEmailError.style.color = "var(--valid-color)";
-  footerEmail.value = "";
-  setTimeout(() => {
-    errorsStyling(footerForm, footerEmailError, "var(--light-gray-color)", "none");
-    footerEmailError.style.color = "var(--error-color)";
-  }, 2000);
-};
-// ================ Calling Function on From Submit =============== //
-submit.addEventListener("click", function (e) { checkFooterEmail(e); });
-footerEmail.onblur = () => { errorsStyling(footerForm, footerEmailError, "#ccc", "none"); }
+    popupDiv.appendChild(checkIcon);
+    popupDiv.appendChild(h2);
+    popupDiv.appendChild(closeBtn);
+    sendedPopup.appendChild(popupDiv);
+    document.body.appendChild(sendedPopup);
+    // Prevent scrolling
+    document.body.style.overflow = "hidden";
+    // Hide Popup
+    closeBtn.addEventListener("click", () => {
+      // Re-enable page scrolling and hide popup
+      document.body.style.overflow = "auto";
+      sendedPopup.style.display = "none";
+    });
+    errorsStyling(footerForm, footerEmailError, "var(--valid-color)", "block", "Send Done.");
+    footerEmailError.style.color = "var(--valid-color)";
+    footerEmail.value = "";
+    setTimeout(() => {
+      errorsStyling(footerForm, footerEmailError, "var(--light-gray-color)", "none");
+      footerEmailError.style.color = "var(--error-color)";
+    }, 2000);
+  };
+  // ======================== Connected Msg ======================== //
+  function connected() {
+    errorsStyling(footerForm, footerEmailError, "var(--valid-color)", "block", "Your Are Connected.");
+    footerEmailError.style.color = "var(--valid-color)";
+    footerEmail.value = "";
+    setTimeout(() => {
+      errorsStyling(footerForm, footerEmailError, "var(--light-gray-color)", "none");
+      footerEmailError.style.color = "var(--error-color)";
+    }, 2000);
+  };
+  // ================ Calling Function on From Submit =============== //
+  if (submit) { submit.addEventListener("click", function (e) { checkFooterEmail(e); }); }
+  if (footerEmail) { footerEmail.onblur = () => { errorsStyling(footerForm, footerEmailError, "#ccc", "none"); } }
+}
 // ========================== let's Talk Page - Inputs Validation ========================== //
 let startTalkForm = document.getElementById("talk_form");
 let allInputs = document.querySelectorAll(".talk_wrapper input");
