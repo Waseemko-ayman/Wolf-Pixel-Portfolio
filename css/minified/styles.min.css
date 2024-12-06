@@ -176,7 +176,8 @@ button {
   }
 }
 img {
-  max-width: 100%;
+  width: 100%;
+  height: auto;
   border-radius: 10px;
 }
 .title {
@@ -571,6 +572,9 @@ header nav li a:hover::before {
   .landing .btn {
     padding: 10px 15px;
   }
+}
+.offerings {
+  min-height: 200px;
 }
 .offerings_cards {
   display: grid;
