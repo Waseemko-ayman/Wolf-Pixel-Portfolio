@@ -1,20 +1,83 @@
+/*
+  - I have defined the result variable outside the loadContent function 
+  so that the data loaded from the data() function is stored only once. 
+  This means that the data will not be loaded every time when loadContent is called.
+*/
+let result = null;
 // Function to update content
 async function loadContent() {
   try {
+    // Load loading content first
+    const loadingResponse = await fetch('../html/partials/loading.html');
+    if (!loadingResponse.ok) throw new Error('Failed to load loading page');
+    const loadingData = await loadingResponse.text();
+    let loadingPlaceholder = document.getElementById('loading-placeholder');
+    if (loadingPlaceholder) loadingPlaceholder.innerHTML = loadingData;
+
+    // Load Theme content
+    const themeResponse = await fetch('../html/partials/theme.html');
+    if (!themeResponse.ok) throw new Error('Failed to load theme');
+    const themeData = await themeResponse.text();
+    let themePlaceholder = document.getElementById('theme-placeholder');
+    if (themePlaceholder) themePlaceholder.innerHTML = themeData;
+
+    // Show the loader initially
+    let loader = document.querySelector(".loading");
+    document.body.style.overflow = "hidden";
+    loader.style.display = "block";  // Show loader
+
     // Load header content
     const headerResponse = await fetch('../html/partials/header.html');
     if (!headerResponse.ok) throw new Error('Failed to load header');
     const headerData = await headerResponse.text();
-    document.getElementById('header-placeholder').innerHTML = headerData;
+    let headerPlaceholder = document.getElementById('header-placeholder');
+    headerPlaceholder.innerHTML = headerData;
 
     // Load footer content
     const footerResponse = await fetch('../html/partials/footer.html');
     if (!footerResponse.ok) throw new Error('Failed to load footer');
     const footerData = await footerResponse.text();
-    document.getElementById('footer-placeholder').innerHTML = footerData;
+    let footerPlaceholder = document.getElementById('footer-placeholder');
+    footerPlaceholder.innerHTML = footerData;
+
+    // Load MyWork section content
+    const myWorkResponse = await fetch('../html/partials/myWork.html');
+    if (!myWorkResponse.ok) throw new Error('Failed to load footer');
+    const myWorkData = await myWorkResponse.text();
+    let myWorkPlaceholder = document.getElementById('my-work-placeholder');
+    if (myWorkPlaceholder) myWorkPlaceholder.innerHTML = myWorkData;
+
+    // Load Floating Button content
+    const floatBtnResponse = await fetch('../html/partials/floatingBtn.html');
+    if (!floatBtnResponse.ok) throw new Error('Failed to load floating Button');
+    const floatBtnData = await floatBtnResponse.text();
+    let floatBtnPlaceholder = document.getElementById('floating-btn-placeholder');
+    if (floatBtnPlaceholder) floatBtnPlaceholder.innerHTML = floatBtnData;
+
+    // Load Main Blog Cards content
+    const mainBlogsResponse = await fetch('../html/partials/mainBlogCards.html');
+    if (!mainBlogsResponse.ok) throw new Error('Failed to main blog cards');
+    const mainBlogsData = await mainBlogsResponse.text();
+    let mainBlogsPlaceholder = document.getElementById('main-blogs-placeholder');
+    if (mainBlogsPlaceholder) mainBlogsPlaceholder.innerHTML = mainBlogsData;
+
+    // After content is loaded, hide the loader
+    setTimeout(() => {
+      loader.style.display = "none";
+      document.body.style.overflow = "auto";  // Allow scrolling again
+    }, 900); // Timeout duration for loader display
+
+    // If the data has not been loaded before, we call the data() function to load it.
+    if (!result) {
+      result = await data(); // Data is loaded only once here.
+    }
+    // Load page-specific content based on the current page
+    loadPageSpecificContent(result);
 
     initializeMenu();
     initializefooter();
+    initializeFloatingBtn();
+    initializeThemeSettings();
   } catch (error) {
     console.error('Error loading content:', error);
   }
@@ -28,69 +91,63 @@ window.addEventListener('beforeunload', () => {
     webSocket.close();
   }
 });
-// ========================== Loading Page ======================= //
-window.addEventListener("load", function () {
-  let loader = document.querySelector(".loading");
-  document.body.style.overflow = "hidden";
-  setTimeout(() => {
-    document.body.style.overflow = "auto";
-    loader.style.display = "none";
-  }, 900);
-})
 // ========================== Function URL ========================== //
 function move(url) { window.location = url }
 // ========================== Floating Button ======================= //
-let floatBtn = document.getElementById("floating_btn");
-let header = document.querySelector("header");
-window.onscroll = function () {
-  if (window.scrollY > 600) {
-    floatBtn.classList.add("show");
-  } else {
-    floatBtn.classList.remove("show");
+function initializeFloatingBtn() {
+  let floatBtn = document.getElementById("floating_btn");
+  window.onscroll = function () {
+    if (window.scrollY > 600) {
+      floatBtn.classList.add("show");
+    } else {
+      floatBtn.classList.remove("show");
+    };
   };
-};
-floatBtn.onclick = function () {
-  window.scrollTo({
-    top: 0,
-    left: 0,
-    behavior: "smooth"
-  });
-};
-// ======================== Theme Settings ========================== //
-const themeToggle = document.querySelector('.dark-mode-toggle');
-const themeIcons = themeToggle.querySelectorAll('i');
-// Apply stored theme settings if available
-if (localStorage.getItem("darkMode") === "enabled") {
-  document.body.classList.add("dark-mode");
-  // Set theme-color for dark mode
-  document.querySelector('meta[name="theme-color"]').setAttribute('content', '#121212');
-  // Hide moon, show sun
-  themeIcons[0].style.cssText = 'opacity: 0; transform: scale(0);';
-  themeIcons[1].style.cssText = 'opacity: 1; transform: scale(1);';
-} else {
-  // Set theme-color for light mode
-  document.querySelector('meta[name="theme-color"]').setAttribute('content', '#1a80b6');
-  // Show moon, hide sun
-  themeIcons[0].style.cssText = 'opacity: 1; transform: scale(1);';
-  themeIcons[1].style.cssText = 'opacity: 0; transform: scale(0);';
+  floatBtn.onclick = function () {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    });
+  };
 }
-// Toggle dark mode
-themeToggle.addEventListener('click', () => {
-  document.body.classList.toggle('dark-mode');
-  if (document.body.classList.contains("dark-mode")) {
-    // Dark mode: show sun, hide moon
-    localStorage.setItem("darkMode", "enabled");
+// ======================== Theme Settings ========================== //
+function initializeThemeSettings() {
+  const themeToggle = document.querySelector('.dark-mode-toggle');
+  const themeIcons = themeToggle.querySelectorAll('i');
+  // Apply stored theme settings if available
+  if (localStorage.getItem("darkMode") === "enabled") {
+    document.body.classList.add("dark-mode");
+    // Set theme-color for dark mode
     document.querySelector('meta[name="theme-color"]').setAttribute('content', '#121212');
+    // Hide moon, show sun
     themeIcons[0].style.cssText = 'opacity: 0; transform: scale(0);';
     themeIcons[1].style.cssText = 'opacity: 1; transform: scale(1);';
   } else {
-    // Light mode: show moon, hide sun
-    localStorage.setItem("darkMode", "disabled");
+    // Set theme-color for light mode
     document.querySelector('meta[name="theme-color"]').setAttribute('content', '#1a80b6');
+    // Show moon, hide sun
     themeIcons[0].style.cssText = 'opacity: 1; transform: scale(1);';
     themeIcons[1].style.cssText = 'opacity: 0; transform: scale(0);';
   }
-});
+  // Toggle dark mode
+  themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    if (document.body.classList.contains("dark-mode")) {
+      // Dark mode: show sun, hide moon
+      localStorage.setItem("darkMode", "enabled");
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#121212');
+      themeIcons[0].style.cssText = 'opacity: 0; transform: scale(0);';
+      themeIcons[1].style.cssText = 'opacity: 1; transform: scale(1);';
+    } else {
+      // Light mode: show moon, hide sun
+      localStorage.setItem("darkMode", "disabled");
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#1a80b6');
+      themeIcons[0].style.cssText = 'opacity: 1; transform: scale(1);';
+      themeIcons[1].style.cssText = 'opacity: 0; transform: scale(0);';
+    }
+  });
+}
 // ======================== Header - NavBar ========================= //
 function initializeMenu() {
   const menuWrapper = document.querySelector(".menu-wrapper");
@@ -104,7 +161,33 @@ function initializeMenu() {
     });
   }
 }
-// ======================= Home Page - Offerings Section ======================== //
+// =========================== Fetch Data =========================== //
+/*
+  - Loading the content of the page:
+  - After loading the data in result, I used the loadPageSpecificContent 
+  function to determine which content to load based on this data. 
+  
+  For example:
+  - If we have a blog section on the page, we display only 3 blogs 
+  using the renderBlogs function.
+  - If we have a services section, we pass the services data to the 
+  services function to display it.
+  - Avoid repetition:
+  - The data is loaded only once at the beginning of loadContent, 
+  and then used in all the sections that need it.
+
+  Result:
+  - Repetition is reduced and the data is loaded only once on the page. The code is also organized so that sections are called only when they are needed.
+*/
+// Load page-specific content based on the current page
+function loadPageSpecificContent(result) {
+  // Load blogs only for the page that requires it (example: home page with blogs)
+  const mainBlogCards = document.querySelector(".main_blogs.blog_cards");
+  if (mainBlogCards) {
+    renderBlogs(result.blogs, mainBlogCards, 3);
+  }
+}
+// =========================== Fetch Data =========================== //
 async function data() {
   try {
     let data = await fetch("/json/data.json");
@@ -124,12 +207,13 @@ async function data() {
       searchBtn.addEventListener("click", () => { searchOperation(result.blogs); });
     }
     // Render Blogs Function
-    renderBlogs(result.blogs, mainBlogCards, 3);
+    // renderBlogs(result.blogs, mainBlogCards, 3);
+    return result;
   } catch (error) {
     console.log(error);
   }
 }
-data();
+// data();
 // ======================= Home Page - Offerings Section ======================== //
 let offeringsCards = document.querySelector(".offerings_cards");
 // My Offerings Logic
@@ -269,9 +353,9 @@ function experiencesCardsLayout(experiencesCards, worksExp) {
   experiencesCards.appendChild(card);
 }
 // ================== Home Page - My Work Section ================== //
-let workCards = document.querySelector(".my_work .work_cards");
 // My Works Experiences Logic
 function worksExperiences(worksExp) {
+  let workCards = document.querySelector(".my_work .work_cards");
   for (let i = 0; i < worksExp.length; i++) {
     if (workCards) {
       // Build My Works Cards Layout
@@ -287,27 +371,32 @@ function worksExperiences(worksExp) {
       card.classList.remove("active");
       card.lastElementChild.classList.remove("iconRotate");
     });
+    // Find the stored card and apply active class
     let currentElId = document.querySelector(`[id="${storedWorkId}"]`);
     let arrowRight = document.querySelector(`[id="${storedWorkId}"] .arrow-right`);
     currentElId?.classList.add("active");
     if (currentElId?.classList.contains("active")) {
       // Add Class iconRotate to Icon In Current Target By Id
       arrowRight?.classList.add("iconRotate");
-    };
-  };
+    }
+  }
   // [1] Add click event listener to each card
   workCard.forEach((card) => {
     card.addEventListener("click", function (e) {
+      // Remove Class active From All Cards and reset iconRotate
       workCard.forEach((card) => {
-        // Remove Class active From All Cards
         card.classList.remove("active");
         card.lastElementChild.classList.remove("iconRotate");
       });
       // Add Class active to Current Target
       card.classList.add("active");
-      let eTargetArrow = document.querySelector(`.${e.currentTarget.getAttribute("class").split(" ")[2]} .arrow-right`);
-      // Add Class iconRotate to Icon In Current Target
-      eTargetArrow.classList.add("iconRotate");
+      // Find the icon in the clicked card
+      let eTargetArrow = card.querySelector(".arrow-right");
+      if (eTargetArrow) {
+        // Add Class iconRotate to Icon in Current Target
+        eTargetArrow.classList.add("iconRotate");
+      }
+      // Save the current clicked card's ID to localStorage
       window.localStorage.setItem("workSection_workId", e.currentTarget.id);
     });
   });
@@ -707,9 +796,6 @@ function initializefooter() {
   let footerForm = document.getElementById("footer_form");
   let footerEmail = document.querySelector("[name='email']");
   let submit = document.getElementById("submit");
-  let popUp = document.querySelector(".connected-popup");
-  let popUpText = document.querySelector(".connected-popup h2");
-  let popUpClose = document.getElementById("popup-close");
   // ====================== Errors ====================== //
   let footerEmailError = document.getElementById("email-error");
   function checkFooterEmail(e) {
@@ -735,14 +821,6 @@ function initializefooter() {
       footerEmailError.style.color = "var(--error-color)";
     };
     footerEmail.oninput = function () { errorsStyling(footerForm, footerEmailError, "var(--light-gray-color)", "none"); }
-  };
-  // ======================== Errors Styling  ======================== //
-  function errorsStyling(inputType, errorType, borderColor, errorDisplay, errorMsg) {
-    if (inputType) { inputType.style.borderColor = borderColor; };
-    if (errorType) {
-      errorType.style.display = errorDisplay;
-      errorType.innerHTML = errorMsg;
-    };
   };
   // ===================== Email Value Valid Test ==================== //
   function emailValueValidTest() {
@@ -916,3 +994,11 @@ if (startTalkForm) {
   phoneInput.addEventListener("keyup", checkTalkPhone);
   msgTextArea.addEventListener("keyup", checkMsg);
 }
+// ======================== Errors Styling  ======================== //
+function errorsStyling(inputType, errorType, borderColor, errorDisplay, errorMsg) {
+  if (inputType) { inputType.style.borderColor = borderColor; };
+  if (errorType) {
+    errorType.style.display = errorDisplay;
+    errorType.innerHTML = errorMsg;
+  };
+};

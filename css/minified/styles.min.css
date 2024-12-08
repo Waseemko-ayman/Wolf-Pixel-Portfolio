@@ -6,6 +6,7 @@
   --primary-black-color: #1c1d1f;
   --primary-white-color: white;
   --light-gray-2-color: #f9f9f9;
+  --light-gray-3-color: #efefef;
   --pure-white-color: #fff;
   --error-color: rgb(240, 53, 53);
   --valid-color: rgb(2, 156, 2);
@@ -17,6 +18,7 @@
   --primary-black-color: white;
   --dark-gray-color: #b9b9b9;
   --light-gray-2-color: #282828;
+  --light-gray-3-color: #51545b7a;
   --pure-white-color: #282828;
 }
 * {
@@ -321,6 +323,7 @@ header {
   padding: 20px 0;
   background-color: inherit;
   border-bottom: 1px solid var(--light-gray-color);
+  box-shadow: 0 0 10px 10px var(--light-gray-3-color);
 }
 header a {
   color: var(--primary-black-color);
@@ -905,6 +908,7 @@ header nav li a:hover::before {
 @media (max-width: 991px) {
   .blog_cards {
     overflow-x: auto;
+    overflow-y: hidden;
     overscroll-behavior-inline: contain;
     scroll-snap-type: inline mandatory;
   }
