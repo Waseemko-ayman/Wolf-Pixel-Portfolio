@@ -1,6 +1,8 @@
 # Wolf Pixel - Creative Portfolio Website
 Wolf Pixel is a modern and elegant website designed to showcase services, creative projects, and blogs, focusing on delivering an exceptional user experience and an eye-catching design suited for creatives and developers.
 
+![Home](https://github.com/user-attachments/assets/0633ffe3-952c-42d3-991f-4ad2b50b1174)
+
 ## Features:
 - **User-Friendly Interface**: A clean and organized design that enhances usability.
 - **Multi-Page Structure**: The website includes diverse pages tailored to users' needs.
@@ -15,6 +17,12 @@ Wolf Pixel is a modern and elegant website designed to showcase services, creati
 4. **Portfolio**: A professional showcase of previous projects.
 5. **Explore Blog**: A blog platform with insightful articles and a modern design.
 6. **Let's Talk**: A contact page with a sleek form for messaging, featuring **real email delivery to the site owner’s inbox**.
+
+![About](https://github.com/user-attachments/assets/64f0af63-cd05-4491-9b45-87a41e77d683)
+![Services](https://github.com/user-attachments/assets/9311f9d2-7b73-4876-85e0-ec81437bf11b)
+![Portfolio](https://github.com/user-attachments/assets/b0635118-1d96-4975-ba6e-1ca112301371)
+![Blog](https://github.com/user-attachments/assets/17776768-498d-4ae6-8f69-0ce67f45cf5f)
+![Lets Talk Form Validation](https://github.com/user-attachments/assets/6bf3cf0c-23eb-46fd-abbb-379e9d165fc8)
 
 ## Technologies Used:
 - **HTML5** and **CSS3** for structuring and styling the site.
