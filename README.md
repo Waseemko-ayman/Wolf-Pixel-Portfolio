@@ -6,6 +6,7 @@ Wolf Pixel is a modern and elegant website designed to showcase services, creati
 - **Multi-Page Structure**: The website includes diverse pages tailored to users' needs.
 - **Fully Responsive**: Optimized for seamless performance on all devices.
 - **Modern Technologies**: Professionally built using HTML, CSS, and JavaScript.
+- **Dark Mode**: An intuitive dark mode option for a more comfortable viewing experience in low-light environments.
 
 ## Website Pages:
 1. **Home**: The main page providing an overview of the website and its services.
