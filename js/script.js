@@ -1,29 +1,32 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Ensure that the header is fully loaded before searching for links
+  // Ensure that the header is fully loaded before searching for links and button
   const headerLoadedInterval = setInterval(function () {
     const navLinks = document.querySelectorAll("nav a");
-
-    // If links are found in the page
-    if (navLinks.length > 0) {
-      clearInterval(headerLoadedInterval); // Stop the interval once links are found
-
+    const talkButton = document.querySelector("header button"); // Select the button in the header
+    // If links and button are found in the page
+    if (navLinks.length > 0 && talkButton) {
+      clearInterval(headerLoadedInterval); // Stop the interval once elements are found
       // Get the current page name from the URL
       const currentPage = window.location.pathname.split("/").pop(); // Example: "home.html"
-
-      // Add or remove the 'page_active' class based on the open page
+      // Add or remove the 'page_active' class for links based on the open page
       navLinks.forEach(link => {
-        // Extract the target page name (e.g., "home.html") from the onclick attribute of the link
         const targetPage = link.getAttribute("onclick").match(/move\('(.*?)'\)/);
-
         if (targetPage && targetPage[1] === currentPage) {
           link.classList.add("page_active"); // Add the class for the open page
         } else {
           link.classList.remove("page_active"); // Remove the class from other pages
         }
       });
+      // Add 'style_btn' class to the button if the "letsStartTalk.html" page is open
+      if (currentPage === "letsStartTalk.html") {
+        talkButton.classList.add("style_btn");
+      } else {
+        talkButton.classList.remove("style_btn");
+      }
     }
-  }, 100); // Check every 100 milliseconds until the links are loaded
+  }, 100); // Check every 100 milliseconds until the elements are loaded
 });
+
 // ============================================================== //
 /*
   - I have defined the result variable outside the loadContent function 
