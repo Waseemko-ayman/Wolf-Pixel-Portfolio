@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (navLinks.length > 0 && talkButton) {
       clearInterval(headerLoadedInterval); // Stop the interval once elements are found
       // Get the current page name from the URL
-      const currentPage = window.location.pathname.split("/").pop(); // Example: "home.html"
+      const currentPage = window.location.pathname.split("/").pop(); // Example: "index.html"
       // Add or remove the 'page_active' class for links based on the open page
       navLinks.forEach(link => {
         const targetPage = link.getAttribute("onclick").match(/move\('(.*?)'\)/);
