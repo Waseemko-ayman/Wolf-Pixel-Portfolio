@@ -38,14 +38,14 @@ let result = null;
 async function loadContent() {
   try {
     // Load loading content first
-    const loadingResponse = await fetch('../html/partials/loading.html');
+    const loadingResponse = await fetch('partials/loading.html');
     if (!loadingResponse.ok) throw new Error('Failed to load loading page');
     const loadingData = await loadingResponse.text();
     let loadingPlaceholder = document.getElementById('loading-placeholder');
     if (loadingPlaceholder) loadingPlaceholder.innerHTML = loadingData;
 
     // Load Theme content
-    const themeResponse = await fetch('../html/partials/theme.html');
+    const themeResponse = await fetch('partials/theme.html');
     if (!themeResponse.ok) throw new Error('Failed to load theme');
     const themeData = await themeResponse.text();
     let themePlaceholder = document.getElementById('theme-placeholder');
@@ -57,35 +57,35 @@ async function loadContent() {
     loader.style.display = "block";  // Show loader
 
     // Load header content
-    const headerResponse = await fetch('../html/partials/header.html');
+    const headerResponse = await fetch('partials/header.html');
     if (!headerResponse.ok) throw new Error('Failed to load header');
     const headerData = await headerResponse.text();
     let headerPlaceholder = document.getElementById('header-placeholder');
     headerPlaceholder.innerHTML = headerData;
 
     // Load footer content
-    const footerResponse = await fetch('../html/partials/footer.html');
+    const footerResponse = await fetch('partials/footer.html');
     if (!footerResponse.ok) throw new Error('Failed to load footer');
     const footerData = await footerResponse.text();
     let footerPlaceholder = document.getElementById('footer-placeholder');
     footerPlaceholder.innerHTML = footerData;
 
     // Load MyWork section content
-    const myWorkResponse = await fetch('../html/partials/myWork.html');
+    const myWorkResponse = await fetch('partials/myWork.html');
     if (!myWorkResponse.ok) throw new Error('Failed to load footer');
     const myWorkData = await myWorkResponse.text();
     let myWorkPlaceholder = document.getElementById('my-work-placeholder');
     if (myWorkPlaceholder) myWorkPlaceholder.innerHTML = myWorkData;
 
     // Load Floating Button content
-    const floatBtnResponse = await fetch('../html/partials/floatingBtn.html');
+    const floatBtnResponse = await fetch('partials/floatingBtn.html');
     if (!floatBtnResponse.ok) throw new Error('Failed to load floating Button');
     const floatBtnData = await floatBtnResponse.text();
     let floatBtnPlaceholder = document.getElementById('floating-btn-placeholder');
     if (floatBtnPlaceholder) floatBtnPlaceholder.innerHTML = floatBtnData;
 
     // Load Main Blog Cards content
-    const mainBlogsResponse = await fetch('../html/partials/mainBlogCards.html');
+    const mainBlogsResponse = await fetch('partials/mainBlogCards.html');
     if (!mainBlogsResponse.ok) throw new Error('Failed to main blog cards');
     const mainBlogsData = await mainBlogsResponse.text();
     let mainBlogsPlaceholder = document.getElementById('main-blogs-placeholder');
