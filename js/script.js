@@ -258,7 +258,7 @@ function offerings(myOfferings) {
   // Open Offerings Card in Services Page Based On Section (Current Target Id)
   offeringsCard.forEach((offCard) => {
     offCard.addEventListener("click", function (e) {
-      location.href = `/html/services.html#${e.currentTarget.id}`;
+      location.href = `services.html#${e.currentTarget.id}`;
     })
   })
 }
@@ -740,6 +740,8 @@ let notFound = document.querySelector(".not-found");
 // ============== Blog Page - Display Blogs Search ============== //
 function searchOperation(blogs) {
   if (searchInput && searchInput.value !== "") {
+    // searchError.style.display = "none";
+    errorsStyling(searchInput, searchError, "var(--light-gray-color)", "none");
     // Filtering Array of Blogs Related To Category From LocalStorage
     let filteredBlogs = blogs.filter(item => item.category === searchInput.value.trim().toLowerCase());
     if (filteredBlogs.length > 0) {
@@ -753,6 +755,7 @@ function searchOperation(blogs) {
       searchBlogCards.innerHTML = "";
       // Show Not found Message
       notFound.style.display = "block";
+      errorsStyling(searchInput, searchError, "var(--error-color)", "block", "Please enter a search query: [Web, Mobile, Brand, Design]");
     };
   } else {
     errorsStyling(searchInput, searchError, "var(--error-color)", "block", "Please enter a search query: [Web, Mobile, Brand, Design]");

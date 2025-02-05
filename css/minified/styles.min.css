@@ -55,6 +55,7 @@ a {
   padding-left: 15px;
   padding-right: 15px;
   margin: 0 auto;
+  overflow: hidden;
 }
 @media (min-width: 768px) {
   .container {
@@ -1167,5 +1168,6 @@ footer .copy_right .policy a:hover {
   }
   footer .copy_right {
     justify-content: center;
+    text-align: center;
   }
 }
