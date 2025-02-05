@@ -822,7 +822,6 @@ function setupCardListeners(targetContainer, blogArray) {
 function initializefooter() {
   let footerForm = document.getElementById("footer_form");
   let footerEmail = document.querySelector("[name='email']");
-  let submit = document.getElementById("submit");
   // ====================== Errors ====================== //
   let footerEmailError = document.getElementById("email-error");
   function checkFooterEmail(e) {
@@ -833,59 +832,29 @@ function initializefooter() {
           e.preventDefault();
           connected();
         } else if (emailReg.test(footerEmail.value)) {
-          emailValueValidTest();
+          emailValueValidTest(e);
         } else {
           errorsStyling(footerForm, footerEmailError, "var(--error-color)", "block", "Please enter a valid email: you@example.com");
+          e.preventDefault();
         };
       } else if (emailReg.test(footerEmail.value)) {
-        emailValueValidTest();
+        emailValueValidTest(e);
       } else {
         errorsStyling(footerForm, footerEmailError, "var(--error-color)", "block", "Please enter a valid email: you@example.com");
+        e.preventDefault();
       };
     } else {
       e.preventDefault();
-      errorsStyling(footerForm, footerEmailError, "var(--error-color)", "block", "Please enter a your email.");
+      errorsStyling(footerForm, footerEmailError, "var(--error-color)", "block", "Please enter your email.");
       footerEmailError.style.color = "var(--error-color)";
     };
     footerEmail.oninput = function () { errorsStyling(footerForm, footerEmailError, "var(--light-gray-color)", "none"); }
   };
   // ===================== Email Value Valid Test ==================== //
-  function emailValueValidTest() {
+  function emailValueValidTest(e) {
     window.sessionStorage.setItem("connectedEmail", footerEmail.value);
-    // ======================== Footer - Show Popup ======================== //
-    let sendedPopup = document.createElement("div");
-    sendedPopup.classList.add("connected-popup", "flexCenter");
-
-    let popupDiv = document.createElement("div");
-    popupDiv.classList.add("popup");
-
-    let checkIcon = document.createElement("i");
-    checkIcon.classList.add("fas", "fa-check", "flexCenter");
-
-    let h2 = document.createElement("h2");
-    h2.innerHTML = "Your Email has been sent, you will be communicated with you soon,<br> Thank you.";
-
-    let closeBtn = document.createElement("button");
-    closeBtn.classList.add("flexCenter");
-    closeBtn.id = "popup-close";
-
-    let closeIcon = document.createElement("i");
-    closeIcon.classList.add("fas", "fa-times");
-    closeBtn.appendChild(closeIcon);
-
-    popupDiv.appendChild(checkIcon);
-    popupDiv.appendChild(h2);
-    popupDiv.appendChild(closeBtn);
-    sendedPopup.appendChild(popupDiv);
-    document.body.appendChild(sendedPopup);
-    // Prevent scrolling
-    document.body.style.overflow = "hidden";
-    // Hide Popup
-    closeBtn.addEventListener("click", () => {
-      // Re-enable page scrolling and hide popup
-      document.body.style.overflow = "auto";
-      sendedPopup.style.display = "none";
-    });
+    // Allow the form to submit
+    footerForm.submit();  // This sends the form data to Formspree if validation passes.
     errorsStyling(footerForm, footerEmailError, "var(--valid-color)", "block", "Send Done.");
     footerEmailError.style.color = "var(--valid-color)";
     footerEmail.value = "";
@@ -896,7 +865,7 @@ function initializefooter() {
   };
   // ======================== Connected Msg ======================== //
   function connected() {
-    errorsStyling(footerForm, footerEmailError, "var(--valid-color)", "block", "Your Are Connected.");
+    errorsStyling(footerForm, footerEmailError, "var(--valid-color)", "block", "You Are Connected.");
     footerEmailError.style.color = "var(--valid-color)";
     footerEmail.value = "";
     setTimeout(() => {
@@ -904,8 +873,15 @@ function initializefooter() {
       footerEmailError.style.color = "var(--error-color)";
     }, 2000);
   };
-  // ================ Calling Function on From Submit =============== //
-  if (submit) { submit.addEventListener("click", function (e) { checkFooterEmail(e); }); }
+  // ================ Calling Function on Form Submit =============== //
+  if (footerForm) {
+    footerForm.addEventListener("submit", function (e) {
+      checkFooterEmail(e);
+      if (footerEmailError.style.display === "block") {
+        e.preventDefault(); // Prevent the form from submitting if there's an error
+      }
+    });
+  }
   if (footerEmail) { footerEmail.onblur = () => { errorsStyling(footerForm, footerEmailError, "#ccc", "none"); } }
 }
 // ========================== let's Talk Page - Inputs Validation ========================== //
@@ -956,15 +932,15 @@ function checkTalkEmail() {
 };
 // ======================= Phone Validation ======================= //
 function checkTalkPhone() {
-  const phoneReg = /00\(\d{1,3}\)\s\d{4,}-\d{4,}/g; // 00(972) 59216-4680
+  const phoneReg = /^(00|\+)?\d{10,15}$/;
   if (phoneInput.value !== "") {
     if (phoneReg.test(phoneInput.value)) {
       errorsStyling(phoneInput, phoneError, "#ccc", "none");
     } else {
-      errorsStyling(phoneInput, phoneError, "var(--error-color)", "block", "Please enter a valid Phone: 00(123) 45678-9101");
+      errorsStyling(phoneInput, phoneError, "var(--error-color)", "block", "Please enter a valid phone number (10 to 15 digits).");
     };
   } else {
-    errorsStyling(phoneInput, phoneError, "var(--error-color)", "block", "Please enter a your phone.");
+    errorsStyling(phoneInput, phoneError, "var(--error-color)", "block", "Please enter your phone number.");
   };
 };
 // ====================== Password Validation ====================== //

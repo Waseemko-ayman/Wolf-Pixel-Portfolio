@@ -3,7 +3,14 @@
     <div class="connect flexCenterBetween">
       <h4>Stay connected w/ me.</h4>
       <div class="connected">
-        <div class="form flexCenterBetween" id="footer_form">
+        <form
+          class="form flexCenterBetween"
+          id="footer_form"
+          action="https://formspree.io/f/manybqvl"
+          method="POST"
+          autocomplete="off"
+          novalidate
+        >
           <input
             type="email"
             name="email"
@@ -15,7 +22,7 @@
               <i class="fa-solid fa-paper-plane"></i>
             </div>
           </button>
-        </div>
+        </form>
         <p class="error" id="email-error"></p>
       </div>
     </div>
