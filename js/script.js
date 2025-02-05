@@ -44,13 +44,6 @@ async function loadContent() {
     let loadingPlaceholder = document.getElementById('loading-placeholder');
     if (loadingPlaceholder) loadingPlaceholder.innerHTML = loadingData;
 
-    // Load Theme content
-    const themeResponse = await fetch('partials/theme.html');
-    if (!themeResponse.ok) throw new Error('Failed to load theme');
-    const themeData = await themeResponse.text();
-    let themePlaceholder = document.getElementById('theme-placeholder');
-    if (themePlaceholder) themePlaceholder.innerHTML = themeData;
-
     // Show the loader initially
     let loader = document.querySelector(".loading");
     document.body.style.overflow = "hidden";
