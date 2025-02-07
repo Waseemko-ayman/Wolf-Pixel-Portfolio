@@ -1,6 +1,6 @@
 .explore_blogs {
   position: relative;
-  padding-top: var(--section-padding);
+  padding-top: 150px;
   padding-bottom: var(--section-padding);
 }
 .explore_blogs .info {
