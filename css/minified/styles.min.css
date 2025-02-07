@@ -320,11 +320,19 @@ body.dark-mode .fa-sun {
   transform: scale(1);
 }
 header {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   padding: 10px 0;
-  background-color: inherit;
+  background-color: var(--primary-white-color);
   border-bottom: 1px solid var(--light-gray-color);
   box-shadow: 0 0 10px 10px var(--light-gray-3-color);
+  z-index: 999;
+  transition: transform 0.5s ease-in-out;
+}
+header.hide {
+  transform: translateY(-120%);
 }
 header a {
   color: var(--primary-black-color);
@@ -517,6 +525,7 @@ header nav li a:hover::before {
 }
 .landing {
   text-align: center;
+  padding-top: 150px;
 }
 .landing .container {
   margin: auto;
@@ -592,7 +601,7 @@ header nav li a:hover::before {
   border: 1px solid #dbdbdb;
   border-radius: 10px;
   cursor: pointer;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 .offerings_cards .card:hover {
   box-shadow: 0 0 10px #ddd !important;

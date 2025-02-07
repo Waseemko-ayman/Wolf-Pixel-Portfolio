@@ -24,9 +24,8 @@ document.addEventListener("DOMContentLoaded", function () {
         talkButton.classList.remove("style_btn");
       }
     }
-  }, 100); // Check every 100 milliseconds until the elements are loaded
+  }, 100);
 });
-
 // ============================================================== //
 /*
   - I have defined the result variable outside the loadContent function 
@@ -172,6 +171,20 @@ function initializeThemeSettings() {
     }
   });
 }
+// ============================= Header ============================= //
+let lastScrollTop = 0;
+window.addEventListener("scroll", function () {
+  let header = document.querySelector("header");
+  let scrollTop = window.scrollY;
+
+  if (scrollTop > lastScrollTop) {
+    header.classList.add("hide");
+  } else {
+    header.classList.remove("hide");
+  }
+
+  lastScrollTop = scrollTop;
+});
 // ======================== Header - NavBar ========================= //
 function initializeMenu() {
   const menuWrapper = document.querySelector(".menu-wrapper");
