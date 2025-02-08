@@ -21,7 +21,7 @@ Wolf Pixel is a modern and elegant website designed to showcase services, creati
 ![Image](https://github.com/user-attachments/assets/5ed65331-a905-41c9-b925-e19224ff46c9)
 ![Image](https://github.com/user-attachments/assets/26d99cfe-94aa-4c94-a23a-d24d6d23365e)
 ![Image](https://github.com/user-attachments/assets/f0c92bc2-d6d1-41f9-9b28-b044b5038f93)
-![Blog](https://github.com/user-attachments/assets/17776768-498d-4ae6-8f69-0ce67f45cf5f)
+![Image](https://github.com/user-attachments/assets/393cae02-3e16-47b8-b54e-d8e1fe45201e)
 ![Lets Talk Form Validation](https://github.com/user-attachments/assets/6bf3cf0c-23eb-46fd-abbb-379e9d165fc8)
 
 ## Technologies Used:
