@@ -1,7 +1,7 @@
 # Wolf Pixel - Creative Portfolio Website
 Wolf Pixel is a modern and elegant website designed to showcase services, creative projects, and blogs, focusing on delivering an exceptional user experience and an eye-catching design suited for creatives and developers.
 
-![Home](https://github.com/user-attachments/assets/0633ffe3-952c-42d3-991f-4ad2b50b1174)
+![Image](https://github.com/user-attachments/assets/ac5eb9ef-f727-45ec-8e48-1210e2e2b866)
 
 ## Features:
 - **User-Friendly Interface**: A clean and organized design that enhances usability.
@@ -18,11 +18,11 @@ Wolf Pixel is a modern and elegant website designed to showcase services, creati
 5. **Explore Blog**: A blog platform with insightful articles and a modern design.
 6. **Let's Talk**: A contact page with a sleek form for messaging, featuring **real email delivery to the site owner’s inbox**.
 
-![About](https://github.com/user-attachments/assets/64f0af63-cd05-4491-9b45-87a41e77d683)
-![Services](https://github.com/user-attachments/assets/9311f9d2-7b73-4876-85e0-ec81437bf11b)
-![Portfolio](https://github.com/user-attachments/assets/b0635118-1d96-4975-ba6e-1ca112301371)
-![Blog](https://github.com/user-attachments/assets/17776768-498d-4ae6-8f69-0ce67f45cf5f)
-![Lets Talk Form Validation](https://github.com/user-attachments/assets/6bf3cf0c-23eb-46fd-abbb-379e9d165fc8)
+![Image](https://github.com/user-attachments/assets/5ed65331-a905-41c9-b925-e19224ff46c9)
+![Image](https://github.com/user-attachments/assets/26d99cfe-94aa-4c94-a23a-d24d6d23365e)
+![Image](https://github.com/user-attachments/assets/f0c92bc2-d6d1-41f9-9b28-b044b5038f93)
+![Image](https://github.com/user-attachments/assets/393cae02-3e16-47b8-b54e-d8e1fe45201e)
+![Image](https://github.com/user-attachments/assets/310e3bd3-5fa4-4129-aaad-93c384aa2af6)
 
 ## Technologies Used:
 - **HTML5** and **CSS3** for structuring and styling the site.
@@ -31,8 +31,6 @@ Wolf Pixel is a modern and elegant website designed to showcase services, creati
 
 ## Purpose:
 To provide a unique digital platform that reflects the professionalism of the designer or company, enhances client communication, and focuses on optimal performance with minimized code repetition to improve the development experience.
-
-Does this description meet your expectations? Let me know if you’d like further improvements! 😊
 
 ## **Installation**:
 Clone the repository to your local machine:
